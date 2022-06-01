@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "../../Header/Header2";
@@ -43,6 +43,26 @@ import Idea from "../../../public/image/idea.png";
 import Plus from "../../../public/image/plus.png";
 
 const Capacites = () => {
+
+  const [capacites, setCapacites] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("capacités", JSON.stringify(capacites)
+    );}, [capacites]);
+
+  const handleSubmit = async (e) =>  {
+    try {
+    const response = await axios.post("https://portraiscopie-dev.herokuapp.com/api/portraiscopies/", 
+      {
+        "capacités" : capacites,
+      }
+    );
+    console.log(response);
+  } catch(err) {
+      console.log("Il y a une erreur");
+  }
+}
+
   return (
     <>
       <Header />
@@ -132,7 +152,11 @@ const Capacites = () => {
           <WrapperContent>
             <Title>Vos capacités pour cette compétence</Title>
             <WrapperMenuDeroulant>
-              <input placeholder="Donnez ici une capacitié relative à cette compétence" />
+              <input 
+                placeholder="Donnez ici une capacitié relative à cette compétence" 
+                value={capacites}
+                onChange={(e) => setCapacites(e.target.value)}
+              />
 
               {/* Image 
                   src={}
@@ -154,7 +178,7 @@ const Capacites = () => {
                   </a>
                 </Link>
               </ButtonLinkPrec>
-              <ButtonLink>
+              <ButtonLink onClick={() => {handleSubmit()}}>
                 <Link href="/OffreurDeCompetence/Qualites/Qualites">
                   <a>
                     <Text>Suivant</Text>

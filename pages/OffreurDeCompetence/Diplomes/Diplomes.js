@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "../../Header/Header2";
@@ -46,6 +46,7 @@ import Idea from "../../../public/image/idea.png";
 import Plus from "../../../public/image/plus.png";
 
 const Diplomes = () => {
+  
   const [certification, setCertification] = useState("");
 
   const handleSubmit = async (e) => {
@@ -53,7 +54,7 @@ const Diplomes = () => {
       const response = await axios.post(
         "https://portraiscopie-dev.herokuapp.com/api/portraiscopies/",
         {
-          certifications: certification,
+          "diplômes": certification,
         }
       );
       console.log(response);

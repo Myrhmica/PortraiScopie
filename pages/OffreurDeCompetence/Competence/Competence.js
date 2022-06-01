@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Header2 from "../../Header/Header2";
@@ -24,21 +24,26 @@ import WrapperContent, {
 import Idea from "../../../public/image/idea.png";
 
 const Competence = () => {
+  
   const [competence, setCompetence] = useState("");
+
+  useEffect(() => {
+  localStorage.setItem("compétences", JSON.stringify(competence));
+}, [competence]);
 
   const handleSubmit = async (e) => {
     try {
       const response = await axios.post(
         "https://portraiscopie-dev.herokuapp.com/api/portraiscopies/",
         {
-          skills: competence,
-        }
-      );
-      console.log(response);
-    } catch (err) {
-      console.log("il y a une erreur");
+          "compétences" : competence,
+        });
+        console.log(response);
+      } catch(err) {
+        console.log('il y a une erreur');
     }
   };
+
 
   return (
     <>
@@ -77,18 +82,14 @@ const Competence = () => {
             />
           </WrapperInput>
           <WrapperButton>
-            <ButtonLinkLeft
-              onClick={() => {
-                handleSubmit();
-              }}
-            >
+            <ButtonLinkLeft>
               <Link href="/OffreurDeCompetence/Competence/Competence">
                 <a>
                   <TextBottom>Enregistrer et Quitter</TextBottom>
                 </a>
               </Link>
             </ButtonLinkLeft>
-            <ButtonLinkRight>
+            <ButtonLinkRight onClick={() => {handleSubmit()}}>
               <Link href="/OffreurDeCompetence/Metier/Metier">
                 <a>
                   <TextBottom>Valider</TextBottom>
