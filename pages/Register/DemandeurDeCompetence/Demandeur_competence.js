@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Footer from "../../Footer/Footer";
-import config from "../../../config.json";
 import axios from "axios";
 
 import WrapperContent, {
