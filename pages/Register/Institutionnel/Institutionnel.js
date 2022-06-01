@@ -83,30 +83,30 @@ const Institutionnel = () => {
       </WrapperImage>
       <WrapperInscription>
         <WrapperInput>
-          <Title>Création du compte</Title>
+          <Title>Entité / Raisons Sociale ou Nom Prénom</Title>
           <input
             type="text"
-            placeholder="Création du compte"
+            placeholder="exemple : Myrhmica"
             value={entityName}
             onChange={(e) => setEntityName(e.target.value)}
           />
         </WrapperInput>
 
         <WrapperInput>
-          <Title>Entité / Raisons sociale ou Nom Prénom</Title>
+          <Title>Nom</Title>
           <input
             type="text"
-            placeholder="Entité / Raisons sociale ou Nom Prénom"
+            placeholder="exemple : Durand"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
         </WrapperInput>
 
         <WrapperInput>
-          <Title>Mail</Title>
+          <Title>Email</Title>
           <input
             type="text"
-            placeholder="Mail"
+            placeholder="exemple : exemple@gmail.com"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
@@ -116,26 +116,16 @@ const Institutionnel = () => {
           <Title>Pseudo</Title>
           <input
             type="text"
-            placeholder="Pseudo"
+            placeholder="exemple : Pierre1234"
             value={pseudo}
             onChange={(e) => setPseudo(e.target.value)}
           />
         </WrapperInput>
 
         <WrapperInput>
-          <Title>Email</Title>
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </WrapperInput>
-
-        <WrapperInput>
           <Title>Mot de passe</Title>
           <input
-            type="text"
+            type="password"
             placeholder="Mot de passe"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -165,11 +155,7 @@ const Institutionnel = () => {
         </WrapperCoche>
 
         <WrapperButton>
-          <Button
-            onClick={() => {
-              signUp();
-            }}
-          >
+          <Button onClick={() => {handleSubmit()}}>
             <Link href="/OffreurDeCompetence/Conseil/Conseil">
               <a>
                 <Text>Connexion</Text>

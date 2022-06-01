@@ -83,30 +83,30 @@ const Offreur_de_competence = () => {
       </WrapperImage>
       <WrapperInscription>
         <WrapperInput>
-          <Title>Création du compte</Title>
+          <Title>Entité / Raisons Sociale ou Nom Prénom</Title>
           <input
             type="text"
-            placeholder="Création du compte"
+            placeholder="exemple : Myrhmica"
             value={entityName}
             onChange={(e) => setEntityName(e.target.value)}
           />
         </WrapperInput>
 
         <WrapperInput>
-          <Title>Entité / Raisons sociale ou Nom Prénom</Title>
+          <Title>Nom</Title>
           <input
             type="text"
-            placeholder="Entité / Raisons sociale ou Nom Prénom"
+            placeholder="exemple : Durand"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
         </WrapperInput>
 
         <WrapperInput>
-          <Title>Mail</Title>
+          <Title>Prénom</Title>
           <input
             type="text"
-            placeholder="Mail"
+            placeholder="exemple : Pierre"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
@@ -116,7 +116,7 @@ const Offreur_de_competence = () => {
           <Title>Pseudo</Title>
           <input
             type="text"
-            placeholder="Pseudo"
+            placeholder="exemple : Pierre1234"
             value={pseudo}
             onChange={(e) => setPseudo(e.target.value)}
           />
@@ -135,7 +135,7 @@ const Offreur_de_competence = () => {
         <WrapperInput>
           <Title>Mot de passe</Title>
           <input
-            type="text"
+            type="password"
             placeholder="Mot de passe"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

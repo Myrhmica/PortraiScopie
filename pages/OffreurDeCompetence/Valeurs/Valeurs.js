@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "../../Header/Header2";
@@ -43,26 +43,24 @@ import Idea from "../../../public/image/idea.png";
 import Plus from "../../../public/image/plus.png";
 
 const Valeurs = () => {
+  
   const [valeurs, setValeurs] = useState("");
 
+  useEffect(() => {
+  localStorage.setItem("Valeurs", JSON.stringify(valeurs));
+}, [valeurs]);
+
   const handleSubmit = async (e) => {
-    console.log("Le click fonctionne");
-    try {
-      const response = await axios.post(
-        config.api_url + "/api/portraiscopie/",
-        JSON.stringify({ valeurs }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      );
-      console.log(JSON.stringify(response?.data));
-    } catch (err) {
-      if (!err?.response) {
-        console.log("Il y a une erreur");
+      try {
+        const response = await axios.post("https://portraiscopie-dev.herokuapp.com/api/portraiscopies/",
+          {
+            "Valeurs" : valeurs,
+          });  
+          console.log(response);
+        } catch(err) {
+          console.log('il y a une erreur');
       }
     }
-  };
 
   return (
     <>
@@ -171,7 +169,7 @@ const Valeurs = () => {
                   </a>
                 </Link>
               </ButtonLinkPrec>
-              <ButtonLink>
+              <ButtonLink onClick={() => {handleSubmit()}}>
                 <Link href="/OffreurDeCompetence/Talents/Talents">
                   <a>
                     <Text>Suivant</Text>

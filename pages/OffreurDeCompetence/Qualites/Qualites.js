@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "../../Header/Header2";
@@ -43,26 +43,24 @@ import Idea from "../../../public/image/idea.png";
 import Plus from "../../../public/image/plus.png";
 
 const Qualites = () => {
+  
   const [qualites, setQualites] = useState("");
 
+  useEffect(() => {
+  localStorage.setItem("qualités", JSON.stringify(qualites));
+}, [qualites]);
+  
   const handleSubmit = async (e) => {
-    console.log("Le click fonctionne");
-    try {
-      const response = await axios.post(
-        config.api_url + "/api/portraiscopie/",
-        JSON.stringify({ qualites, items }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      );
-      console.log(JSON.stringify(response?.data));
-    } catch (err) {
-      if (!err?.response) {
-        console.log("Il y à une erreur...");
+      try {
+        const response = await axios.post("https://portraiscopie-dev.herokuapp.com/api/portraiscopies/",
+          {
+            "qualités" : qualites,
+          });  
+          console.log(response);
+        } catch(err) {
+          console.log('il y a une erreur');
       }
-    }
-  };
+    };
 
   return (
     <>
@@ -172,18 +170,14 @@ const Qualites = () => {
               <TextAjout>Ajouter</TextAjout>
             </WrapperAjout>
             <WrapperButton>
-              <ButtonLinkPrec
-                onClick={() => {
-                  handleSubmit();
-                }}
-              >
+              <ButtonLinkPrec>
                 <Link href="/OffreurDeCompetence/Capacites/Capacites">
                   <a>
                     <Text>Précédent</Text>
                   </a>
                 </Link>
               </ButtonLinkPrec>
-              <ButtonLink>
+              <ButtonLink onClick={() => {handleSubmit()}}>
                 <Link href="/OffreurDeCompetence/Valeurs/Valeurs">
                   <a>
                     <Text>Suivant</Text>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "../../Header/Header2";
@@ -43,6 +43,25 @@ import Idea from "../../../public/image/idea.png";
 import Plus from "../../../public/image/plus.png";
 
 const Talents = () => {
+
+  const [talent, setTalent] = useState("");
+
+  useEffect(() => {
+  localStorage.setItem("Talents", JSON.stringify(talent));
+}, [talent]);
+
+  const handleSubmit = async (e) => {
+      try {
+        const response = await axios.post("https://portraiscopie-dev.herokuapp.com/api/portraiscopies/",
+          {
+            "talents" : talent,
+          });  
+          console.log(response);
+        } catch(err) {
+          console.log('il y a une erreur');
+      }
+    }
+
   return (
     <>
       <Header />
@@ -132,7 +151,11 @@ const Talents = () => {
           <WrapperContent>
             <Title>Vos talents pour cette compétence</Title>
             <WrapperMenuDeroulant>
-              <input placeholder="Précisez ici un talent dans cette compétence" />
+              <input 
+                placeholder="Précisez ici un talent dans cette compétence" 
+                value={talent}
+                onChange={(e) => setTalent(e.target.value)}
+                />
 
               {/* Image 
                   src={}
@@ -154,7 +177,7 @@ const Talents = () => {
                   </a>
                 </Link>
               </ButtonLinkPrec>
-              <ButtonLink>
+              <ButtonLink onClick={(e) => {handleSubmit()}}>
                 <Link href="/OffreurDeCompetence/Centre_interet/Centre_interet">
                   <a>
                     <Text>Suivant</Text>

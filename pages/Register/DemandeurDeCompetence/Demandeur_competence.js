@@ -23,6 +23,7 @@ import Myrhmica from "../../../public/image/Myrhmica-color-remove.png";
 import PortraitScopie from "../../../public/image/PortraitScopie-remove.png";
 
 const Demandeur_competence = () => {
+
   const [entityName, setEntityName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -85,7 +86,7 @@ const Demandeur_competence = () => {
           <Title>Entité / Raisons sociale ou Nom Prénom</Title>
           <input
             type="text"
-            placeholder="Entité / Raisons sociale"
+            placeholder="exemple : Myrhmica"
             value={entityName}
             onChange={(e) => setEntityName(e.target.value)}
           />
@@ -95,7 +96,7 @@ const Demandeur_competence = () => {
           <Title>Nom</Title>
           <input
             type="text"
-            placeholder="Nom"
+            placeholder="exemple : Durand"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
@@ -105,7 +106,7 @@ const Demandeur_competence = () => {
           <Title>Prénom</Title>
           <input
             type="text"
-            placeholder="Prénom"
+            placeholder="exemple : Pierre"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
@@ -115,7 +116,7 @@ const Demandeur_competence = () => {
           <Title>Pseudo</Title>
           <input
             type="text"
-            placeholder="Pseudo"
+            placeholder="exemple : Pierre1234"
             value={pseudo}
             onChange={(e) => setPseudo(e.target.value)}
           />
@@ -125,7 +126,7 @@ const Demandeur_competence = () => {
           <Title>Email</Title>
           <input
             type="email"
-            placeholder="Email"
+            placeholder="exemple : exemple@gmail.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -134,7 +135,7 @@ const Demandeur_competence = () => {
         <WrapperInput>
           <Title>Mot de passe</Title>
           <input
-            type="text"
+            type="password"
             placeholder="Mot de passe"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

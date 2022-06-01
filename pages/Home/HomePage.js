@@ -45,7 +45,7 @@ const HomePage = () => {
                 <TextBox>
                   L’AVENTURE <br />
                   PORTRAISCOPIE <br />
-                  COMMENCE ICI HELLO WORLD
+                  COMMENCE ICI
                 </TextBox>
               </Wrapper1>
               <Wrapper2></Wrapper2>
