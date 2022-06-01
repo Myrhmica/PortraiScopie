@@ -1,6 +1,13 @@
 import styled from "styled-components";
 
-const WrapperTitle = styled.div`
+const WrapperALL = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+`;
+
+export const WrapperTitle = styled.div`
   display: flex;
   justify-content: center;
 `;
@@ -363,6 +370,7 @@ export const TextAjout = styled.h2`
 export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
+  padding-bottom: 30px;
 `;
 export const WrapperAll = styled.div`
   background-color: white;
@@ -426,12 +434,27 @@ export const WrapperDate = styled.div`
 
 export const WrapperButton = styled.div`
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export const ButtonLink = styled.button`
   color: white;
   background: #2a3985;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 25px;
+  margin-right: 50px;
+  line-height: 24px;
+`;
+
+export const ButtonLinkPrec = styled.button`
+  color: white;
+  background: #c4c4c4;
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
   width: 200px;
@@ -463,4 +486,4 @@ export const WrapperAjout = styled.div`
   align-items: center;
 `;
 
-export default WrapperTitle;
+export default WrapperALL;

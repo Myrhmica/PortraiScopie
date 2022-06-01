@@ -3,8 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import Header1 from "../../Header/Header1";
 import Footer from "../../Footer/Footer";
-import Container, {
+
+import WrapperALL, {
   WrapperTitle,
+  WrapperTop,
   TextTop,
   WrapperConseilsCard,
   ConseilsCard,
@@ -20,13 +22,15 @@ import Flêche from "../../../public/image/fleche-droite.png";
 const Conseil = () => {
   return (
     <>
-      <Container>
+      <WrapperALL>
         <Header1 />
         <WrapperTitle>
-          <TextTop>
-            Pour une bonne prise en main de votre PortraiScopie, veuillez suivre
-            attentivement les conseils ci-dessous
-          </TextTop>
+          <WrapperTop>
+            <TextTop>
+              Pour une bonne prise en main de votre PortraiScopie, <br></br>
+              veuillez suivre attentivement les conseils ci-dessous
+            </TextTop>
+          </WrapperTop>
         </WrapperTitle>
         <WrapperConseilsCard>
           <ConseilsCard>
@@ -61,10 +65,10 @@ const Conseil = () => {
             </a>
           </Link>
         </ButtonLink>
-      </Container>
-      <Footer1>
-        <Footer />
-      </Footer1>
+        <Footer1>
+          <Footer />
+        </Footer1>
+      </WrapperALL>
     </>
   );
 };

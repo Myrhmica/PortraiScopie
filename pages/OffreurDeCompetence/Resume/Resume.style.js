@@ -7,17 +7,9 @@ const WrapperTitle = styled.div`
 `;
 
 export const TitleTop = styled.h2`
-  margin-right: 50px;
-  background: #2a3985;
-  border-radius: 30px;
-  width: 270px;
-  height: 40px;
   font-weight: 400;
   font-size: 16px;
   color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const Title = styled.h1`
@@ -228,6 +220,16 @@ export const WrapperCopyright = styled.div`
   justify-content: center;
 `;
 
-export const ButtonLink = styled.button``;
+export const ButtonLink = styled.button`
+  margin: 10px;
+  margin-right: 50px;
+  background: #2a3985;
+  border-radius: 30px;
+  width: 250px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default WrapperTitle;

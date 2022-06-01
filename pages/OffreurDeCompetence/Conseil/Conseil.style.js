@@ -1,16 +1,30 @@
 import styled from "styled-components";
 
-const Container = styled.div`
+const WrapperALL = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+  height: 100vh;
 `;
 
 export const WrapperTitle = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   text-align: center;
+`;
+
+export const WrapperTop = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 20px;
+  background-color: #f2bf3d;
+  width: 600px;
+  height: 75px;
+  padding: 10px;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 export const Conseils = styled.div`
@@ -47,12 +61,6 @@ export const Text = styled.h2`
 
 export const TextTop = styled.h2`
   color: white;
-  border-radius: 20px;
-  background-color: #f2bf3d;
-  width: 650px;
-  height: 75px;
-  padding: 10px;
-  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 export const WrapperConseilsCard = styled.div`
@@ -79,11 +87,6 @@ export const Button = styled.button`
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
-export const Footer1 = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-`;
+export const Footer1 = styled.div``;
 
-export default Container;
+export default WrapperALL;

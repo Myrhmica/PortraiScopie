@@ -1,8 +1,14 @@
 import styled from "styled-components";
 
-const WrapperContent = styled.div`
+const WrapperALL = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+`;
+
+export const WrapperContent = styled.div`
   font-family: Sawarabi Gothic;
-  padding-bottom: 0px;
 `;
 
 export const WrapperInscription = styled.div`
@@ -52,11 +58,4 @@ export const Button = styled.button`
 
 export const Text = styled.p``;
 
-export const Footer1 = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-`;
-
-export default WrapperContent;
+export default WrapperALL;

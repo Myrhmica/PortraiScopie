@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
-const WrapperContent = styled.div`
+const WrapperALL = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
 `;
 
 export const WrapperTitle = styled.div`
@@ -79,4 +81,4 @@ export const TextBottom = styled.h2`
 
 export const Footer1 = styled.div``;
 
-export default WrapperContent;
+export default WrapperALL;

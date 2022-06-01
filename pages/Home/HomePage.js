@@ -65,7 +65,7 @@ const HomePage = () => {
             <Link href="/Register/DemandeurDeCompetence/Demandeur_competence">
               <a>
                 <Button>
-                  <Text>Crée un compte Demandeur de compétence</Text>
+                  <Text>Créer un compte Demandeur de compétence</Text>
                 </Button>
               </a>
             </Link>
@@ -82,7 +82,7 @@ const HomePage = () => {
             <Link href="/Register/Institutionnel/Institutionnel">
               <a>
                 <Button>
-                  <Text>Crée un compte Institutionnels</Text>
+                  <Text>Créer un compte Institutionnels</Text>
                 </Button>
               </a>
             </Link>
@@ -99,7 +99,7 @@ const HomePage = () => {
             <Link href="/Register/OffreurDeCompetence/Offreur_de_competence">
               <a>
                 <Button>
-                  <Text>Crée un compte Offreur de compétence</Text>
+                  <Text>Créer un compte Offreur de compétence</Text>
                 </Button>
               </a>
             </Link>

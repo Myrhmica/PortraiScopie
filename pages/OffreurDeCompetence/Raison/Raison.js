@@ -3,7 +3,7 @@ import Link from "next/link";
 import Header1 from "../../Header/Header1";
 import Footer from "../../Footer/Footer";
 
-import WrapperContent, {
+import WrapperALL, {
   WrapperTitle,
   Title,
   Text,
@@ -21,7 +21,7 @@ const Raison = () => {
   return (
     <>
       <Header1 />
-      <WrapperContent>
+      <WrapperALL>
         <WrapperTitle>
           <Title>Pour quoi souhaitez-vous faire votre PortraiScopie ?</Title>
           <Text>
@@ -122,10 +122,8 @@ const Raison = () => {
             </a>
           </Link>
         </ButtonLink>
-      </WrapperContent>
-      <Footer1>
         <Footer />
-      </Footer1>
+      </WrapperALL>
     </>
   );
 };

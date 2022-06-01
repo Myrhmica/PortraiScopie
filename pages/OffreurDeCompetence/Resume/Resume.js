@@ -41,7 +41,9 @@ const Resumes = () => {
             </a>
           </Link>
         </ButtonLink>
-        <TitleTop>Imprimer mon PortraiScopie</TitleTop>
+        <ButtonLink>
+          <TitleTop>Imprimer mon PortraiScopie</TitleTop>
+        </ButtonLink>
       </WrapperTitle>
       <WrapperAll>
         <Wrapper>
