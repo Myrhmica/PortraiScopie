@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import Header from "../../Header/Header2";
+import axios from 'axios';
 
 import WrapperTitle, {
   WrapperRecherche,
