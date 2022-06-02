@@ -158,13 +158,6 @@ const Techniques = () => {
                 value={techniques}
                 onChange={(e) => setTechniques(e.target.value)}
               />
-
-              {/* Image 
-                    src={}
-                    alt={}
-                    width={}
-                    height={}
-                /> */}
             </WrapperMenuDeroulant>
 
             <WrapperAjout>

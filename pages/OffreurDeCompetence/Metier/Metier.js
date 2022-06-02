@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "../../Header/Header2";
 import axios from "axios";
+import ComponentValue from "../../../components/ComponentValue";
 
 import WrapperTitle, {
   WrapperProgression,
@@ -66,7 +67,6 @@ import Idea from "../../../public/image/idea.png";
 import Plus from "../../../public/image/plus.png";
 
 const Metier = () => {
-  
   const [metier, setMetier] = useState("");
 
   useEffect(() => {
@@ -83,6 +83,17 @@ const Metier = () => {
         } catch(err) {
           console.log('il y a une erreur');
       }
+    };
+
+    const Ajout = () => {
+
+      console.log("Hello World");
+
+      return (
+        <>
+          <ComponentValue />
+        </>
+      );
     };
 
   return (
@@ -193,62 +204,26 @@ const Metier = () => {
                 value={metier}
                 onChange={(e) => setMetier(e.target.value)}
               />
-
-              {/* Image 
-                    src={}
-                    alt={}
-                    width={}
-                    height={}
-                /> */}
             </WrapperMenuDeroulant>
             <Title>Date de début</Title>
             <WrapperDate>
               <input placeholder="Mois" />
-
-              {/* Image 
-                    src={}
-                    alt={}
-                    width={}
-                    height={}
-                /> */}
               <input placeholder="Année" />
-              {/* Image 
-                    src={}
-                    alt={}
-                    width={}
-                    height={}
-                /> */}
             </WrapperDate>
             <Title>Date de fin</Title>
             <WrapperDate>
               <input placeholder="Mois" />
-              {/* Image 
-                    src={}
-                    alt={}
-                    width={}
-                    height={}
-                /> */}
               <input placeholder="Année" />
-              {/* Image 
-                    src={}
-                    alt={}
-                    width={}
-                    height={}
-                /> */}
             </WrapperDate>
             <WrapperDuCoche>
               <WrapperCoche></WrapperCoche>
               <Text>{"J'occupe actuellement ce poste"}</Text>
             </WrapperDuCoche>
-            <WrapperAjout>
+            <WrapperAjout onClick={() => Ajout(items)}>
               <Image src={Plus} alt={"PortraiScopie"} quality={100} />
               <TextAjout>Ajouter</TextAjout>
             </WrapperAjout>
-            <WrapperButton
-              onClick={() => {
-                handleSubmit();
-              }}
-            >
+            <WrapperButton onClick={() => {handleSubmit()}}>
               <ButtonLink>
                 <Link href="/OffreurDeCompetence/Activites/Activites">
                   <a>
