@@ -57,8 +57,16 @@ export const ContentWrapper = styled.div`
   display: flex;
 `;
 
-export const Text = styled.h2`
-  font-size: 20px;
+export const Text = styled.p`
+  @media only screen and (min-width: 801px) {
+    font-size: 22px;
+  }
+  @media only screen and (max-width: 800px) and (min-width: 601px) {
+    font-size: 18px;
+  }
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
+  }
 `;
 
 export default FooterWrapper;
