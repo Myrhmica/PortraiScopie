@@ -3,6 +3,7 @@ body {
   padding: 0px;
   margin: 0px;
   background-color: #f0efe9;
+  height: 100vh;
 }
 
 * {
