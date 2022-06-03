@@ -55,11 +55,22 @@ export const WrapperCoche = styled.div`
   width: 600px;
 `;
 
-export const Coche = styled.button`
-  background-color: white;
-  border-radius: 10px;
-  min-width: 30px;
-  min-height: 30px;
+export const Coche = styled.div`
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    width: 30px;
+    height: 30px;
+  }
+  input[type="checkbox"]:checked {
+    background-color: #f2bf3d;
+    &:before {
+    }
+  }
 `;
 
 export const ButtonLink = styled.button`
