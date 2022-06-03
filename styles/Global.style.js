@@ -1,14 +1,16 @@
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
 html,
 body {
   padding: 0px;
   margin: 0px;
-  width: 100%;
-  min-height: 100vh;
   background-color: #f0efe9;
+  height: 100vh;
 }
 
-* {
-  box-sizing: border-box;
+* { 
+box-sizing: border-box;
 }
 a {
   text-decoration: none;
@@ -23,7 +25,6 @@ h2 {
   font-family: "Lato";
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
 }
 
 #__next {
@@ -31,3 +32,7 @@ h2 {
   flex-direction: column;
   min-height: 100vh;
 }
+
+`;
+
+export default GlobalStyle;
