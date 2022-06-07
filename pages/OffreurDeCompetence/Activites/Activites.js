@@ -1,8 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "../../Header/Header2";
-import axios from 'axios';
 
 import WrapperTitle, {
   WrapperProgression,
@@ -45,24 +44,81 @@ import Plus from "../../../public/image/plus.png";
 
 const Activites = () => {
 
-  const [activite, setActivite] = useState("");
+  const [Activite, setActivite] = useState('');
+  const [erreur, setErreur] = useState('');
+  const [Activites, setActivites] = useState([]);
+  const [id, setId] = useState(null);
 
-  useEffect(() => {
-    localStorage.setItem("activités", JSON.stringify(activite)
-    );}, [activite]);
+  const submitform = (e) => {
+        e.preventDefault();
+        if (id === null) {
+            if(Activites.length === 5){
+                setErreur('Vous ne pouvez pas ajouter plus de 5 activités');
+            } else {
+                setErreur('');
+                let Acti = {
+                    id: Activites.length,
+                    Activite: Activite,
+                }
+                setActivites([...Activites, Acti]);
+                setActivite('');
+            }
+        } else {
+            let Acti = {
+                id: id,
+                Activite: Activite,
+            }
+            setActivites(Activites.map(m => m.id === id ? Acti : m));
+            setActivite('');
+            setId(null);
+        }
+    };
 
-  const handleSubmit = async (e) =>  {
-    try {
-    const response = await axios.post("https://portraiscopie-dev.herokuapp.com/api/portraiscopies/", 
-      {
-        "activités" : activite,
-      }
-    );
-    console.log(response);
-  } catch(err) {
-      console.log("Il y a une erreur");
-  }
-}
+    const updateActivite = (id) => {
+        setActivite(Activites[id].Activite);
+        setId(id);
+    };
+
+    const removeActivite = (id) => {
+        setActivites(Activites.filter(m => m.id !== id));
+    };
+
+    const nextStep = () => {
+        if(Activites.length === 0){
+            setErreur('Vous devez ajouter au moins une activité');
+        } else {
+            setErreur('');
+            localStorage.setItem('Activite', JSON.stringify(Activites));
+            console.log(localStorage.getItem('Activite'));
+        }
+      };
+
+      const listActivite = () => {
+          if (Activites.length === 0) {
+              return <Text>Vous n`avez pas encore ajouté d'activité</Text>
+          } else {
+              return (
+                  <div>
+                      {Activites.map(Acti => (
+                            <div key={Acti.id}>
+                                <Text> Activité : {Acti.Activite}</Text>
+                                <ButtonLink onClick={() => updateActivite(Acti.id)}>
+                                    <a>
+                                        <Text>Modifier</Text>
+                                    </a>
+                                </ButtonLink>
+                                <ButtonLink onClick={()=> removeActivite(Acti.id)}>
+                                    <a>
+                                        <Text>Supprimer</Text>
+                                    </a>
+                                </ButtonLink>
+                            </div>
+                      ))}
+                  </div>
+              )
+          }
+      };
+
 
   return (
     <>
@@ -157,24 +213,21 @@ const Activites = () => {
           <WrapperContent>
             <Title>Activités pour cette compétence</Title>
             <WrapperMenuDeroulant>
-              <input 
-                placeholder="Citez 1 à 5 activité.s réalisée(s) pour cette compétence"
-                value={activite}
-                onChange={(e) => setActivite(e.target.value)}
-               />
-
-              {/* Image 
-                    src={}
-                    alt={}
-                    width={}
-                    height={}
-                /> */}
+              <form onSubmit={submitform}>
+                    <input type="text" placeholder="exemple : Remplacer un tuyau" value={Activite} onChange={e => setActivite(e.target.value)} required/>
+                    <br />
+                    <Text style={{ color: 'red', marginLeft: 26, }}>{erreur}</Text>
+                    <WrapperAjout>
+                    <ButtonLink type="submit" value="Ajouter">
+                        <a>
+                            <Image src={Plus} alt={"PortraiScopie"} quality={100} />
+                            <Text>Ajouter</Text>
+                        </a>
+                    </ButtonLink>
+                    </WrapperAjout>
+                </form>
             </WrapperMenuDeroulant>
-
-            <WrapperAjout>
-              <Image src={Plus} alt={"PortraiScopie"} quality={100} />
-              <TextAjout>Ajouter</TextAjout>
-            </WrapperAjout>
+            {listActivite()}
             <WrapperButton>
               <ButtonLinkPrec>
                 <Link href="/OffreurDeCompetence/Metier/Metier">
@@ -183,7 +236,7 @@ const Activites = () => {
                   </a>
                 </Link>
               </ButtonLinkPrec>
-              <ButtonLink onClick={() => {handleSubmit()}}>
+              <ButtonLink onClick={() => {nextStep()}}>
                 <Link href="/OffreurDeCompetence/Taches/Taches">
                   <a>
                     <Text>Suivant</Text>

@@ -44,23 +44,80 @@ import Plus from "../../../public/image/plus.png";
 
 const Valeurs = () => {
   
-  const [valeurs, setValeurs] = useState("");
+  const [Valeur, setValeur] = useState('');
+  const [erreur, setErreur] = useState('');
+  const [Valeurs, setValeurs] = useState([]);
+  const [id, setId] = useState(null);
 
-  useEffect(() => {
-  localStorage.setItem("Valeurs", JSON.stringify(valeurs));
-}, [valeurs]);
+  const submitform = (e) => {
+        e.preventDefault();
+        if (id === null) {
+            if(Valeurs.length === 5){
+                setErreur('Vous ne pouvez pas ajouter plus de 5 Valeurs');
+            } else {
+                setErreur('');
+                let Val = {
+                    id: Valeurs.length,
+                    Valeur: Valeur,
+                }
+                setValeurs([...Valeurs, Val]);
+                setValeur('');
+            }
+        } else {
+            let Val = {
+                id: id,
+                Valeur: Valeur,
+            }
+            setValeurs(Valeurs.map(m => m.id === id ? Val : m));
+            setValeur('');
+            setId(null);
+        }
+    };
 
-  const handleSubmit = async (e) => {
-      try {
-        const response = await axios.post("https://portraiscopie-dev.herokuapp.com/api/portraiscopies/",
-          {
-            "Valeurs" : valeurs,
-          });  
-          console.log(response);
-        } catch(err) {
-          console.log('il y a une erreur');
-      }
-    }
+    const updateValeur = (id) => {
+        setValeur(Valeurs[id].Valeur);
+        setId(id);
+    };
+
+    const removeValeur = (id) => {
+        setValeurs(Valeurs.filter(m => m.id !== id));
+    };
+
+    const nextStep = () => {
+        if(Valeurs.length === 0){
+            setErreur('Vous devez ajouter au moins une Valeur');
+        } else {
+            setErreur('');
+            localStorage.setItem('Valeur', JSON.stringify(Valeurs));
+            console.log(localStorage.getItem('Valeur'));
+        }
+      };
+
+      const listValeur = () => {
+          if (Valeurs.length === 0) {
+              return <Text>Vous n`avez pas encore ajouté de tâche</Text>
+          } else {
+              return (
+                  <div>
+                      {Valeurs.map(Val => (
+                            <div key={Val.id}>
+                                <Text> Valeur : {Val.Valeur}</Text>
+                                <ButtonLink onClick={() => updateValeur(Val.id)}>
+                                    <a>
+                                        <Text>Modifier</Text>
+                                    </a>
+                                </ButtonLink>
+                                <ButtonLink onClick={()=> removeValeur(Val.id)}>
+                                    <a>
+                                        <Text>Supprimer</Text>
+                                    </a>
+                                </ButtonLink>
+                            </div>
+                      ))}
+                  </div>
+              )
+          }
+      };
 
   return (
     <>
@@ -151,16 +208,21 @@ const Valeurs = () => {
           <WrapperContent>
             <Title>Vos valeurs pour cette compétence</Title>
             <WrapperMenuDeroulant>
-              <input
-                placeholder="Donnez ici une valeur relative à cette compétence"
-                value={valeurs}
-                onChange={(e) => setValeurs(e.target.value)}
-              />
+             <form onSubmit={submitform}>
+                    <input type="text" placeholder="exemple : Plombier" value={Valeur} onChange={e => setValeur(e.target.value)} required/>
+                    <br />
+                    <Text style={{ color: 'red', marginLeft: 26, }}>{erreur}</Text>
+                    <WrapperAjout>
+                    <ButtonLink type="submit" value="Ajouter">
+                        <a>
+                            <Image src={Plus} alt={"PortraiScopie"} quality={100} />
+                            <Text>Ajouter</Text>
+                        </a>
+                    </ButtonLink>
+                    </WrapperAjout>
+                </form>
             </WrapperMenuDeroulant>
-            <WrapperAjout>
-              <Image src={Plus} alt={"PortraiScopie"} quality={100} />
-              <TextAjout>Ajouter</TextAjout>
-            </WrapperAjout>
+            {listValeur()}
             <WrapperButton>
               <ButtonLinkPrec>
                 <Link href="/OffreurDeCompetence/Qualites/Qualites">
@@ -169,7 +231,7 @@ const Valeurs = () => {
                   </a>
                 </Link>
               </ButtonLinkPrec>
-              <ButtonLink onClick={() => {handleSubmit()}}>
+              <ButtonLink onClick={() => {nextStep()}}>
                 <Link href="/OffreurDeCompetence/Talents/Talents">
                   <a>
                     <Text>Suivant</Text>

@@ -9,7 +9,7 @@ import Plus from "../../../public/image/plus.png";
 
 import WrapperTitle, { WrapperTop, TitleTop, TitleColor, WrapperProgression, Wrapper1, TextTop1, DividerTop1, TextBottom, Wrapper2, DividerTop2, TextTop2,
     Wrapper3, DividerTop3, TextTop3, Wrapper4, DividerTop4, TextTop4, Wrapper5, DividerTop5, TextTop5, Wrapper6, DividerTop6, TextTop6, Wrapper7,
-    DividerTop7, TextTop7, Wrapper8, DividerTop8, TextTop8, Wrapper9, DividerTop9, TextTop9, Wrapper10, DividerTop10, TextTop10, Wrapper11, DividerTop11, TextTop11, WrapperImp, TitleImp, WrapperImage, Divider, WrapperContent, Title, WrapperMenuDeroulant, Wrapper, WrapperAll, ButtonLink, Text, WrapperAjout, WrapperButton,
+    DividerTop7, TextTop7, Wrapper8, DividerTop8, TextTop8, Wrapper9, DividerTop9, TextTop9, Wrapper10, DividerTop10, TextTop10, Wrapper11, DividerTop11, TextTop11, WrapperImp, TitleImp, WrapperImage, Divider, WrapperContent, Title, WrapperMenuDeroulant, Wrapper, WrapperAll, ButtonLink, Text, WrapperAjout,
 } from './Metier.style';
 
 const Metier = () => {

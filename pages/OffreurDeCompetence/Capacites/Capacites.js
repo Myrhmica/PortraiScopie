@@ -45,24 +45,80 @@ import Plus from "../../../public/image/plus.png";
 
 const Capacites = () => {
 
-  const [capacites, setCapacites] = useState("");
+  const [Capacite, setCapacite] = useState('');
+  const [erreur, setErreur] = useState('');
+  const [Capacites, setCapacites] = useState([]);
+  const [id, setId] = useState(null);
 
-  useEffect(() => {
-    localStorage.setItem("capacités", JSON.stringify(capacites)
-    );}, [capacites]);
+  const submitform = (e) => {
+        e.preventDefault();
+        if (id === null) {
+            if(Capacites.length === 5){
+                setErreur('Vous ne pouvez pas ajouter plus de 5 Capacites');
+            } else {
+                setErreur('');
+                let Cap = {
+                    id: Capacites.length,
+                    Capacite: Capacite,
+                }
+                setCapacites([...Capacites, Cap]);
+                setCapacite('');
+            }
+        } else {
+            let Cap = {
+                id: id,
+                Capacite: Capacite,
+            }
+            setCapacites(Capacites.map(m => m.id === id ? Cap : m));
+            setCapacite('');
+            setId(null);
+        }
+    };
 
-  const handleSubmit = async (e) =>  {
-    try {
-    const response = await axios.post("https://portraiscopie-dev.herokuapp.com/api/portraiscopies/", 
-      {
-        "capacités" : capacites,
-      }
-    );
-    console.log(response);
-  } catch(err) {
-      console.log("Il y a une erreur");
-  }
-}
+    const updateCapacite = (id) => {
+        setCapacite(Capacites[id].Capacite);
+        setId(id);
+    };
+
+    const removeCapacite = (id) => {
+        setCapacites(Capacites.filter(m => m.id !== id));
+    };
+
+    const nextStep = () => {
+        if(Capacites.length === 0){
+            setErreur('Vous devez ajouter au moins une Capacite');
+        } else {
+            setErreur('');
+            localStorage.setItem('Capacite', JSON.stringify(Capacites));
+            console.log(localStorage.getItem('Capacite'));
+        }
+      };
+
+      const listCapacite = () => {
+          if (Capacites.length === 0) {
+              return <Text>Vous n`avez pas encore ajouté de tâche</Text>
+          } else {
+              return (
+                  <div>
+                      {Capacites.map(Cap => (
+                            <div key={Cap.id}>
+                                <Text> Capacite : {Cap.Capacite}</Text>
+                                <ButtonLink onClick={() => updateCapacite(Cap.id)}>
+                                    <a>
+                                        <Text>Modifier</Text>
+                                    </a>
+                                </ButtonLink>
+                                <ButtonLink onClick={()=> removeCapacite(Cap.id)}>
+                                    <a>
+                                        <Text>Supprimer</Text>
+                                    </a>
+                                </ButtonLink>
+                            </div>
+                      ))}
+                  </div>
+              )
+          }
+      };
 
   return (
     <>
@@ -153,24 +209,21 @@ const Capacites = () => {
           <WrapperContent>
             <Title>Vos capacités pour cette compétence</Title>
             <WrapperMenuDeroulant>
-              <input 
-                placeholder="Donnez ici une capacitié relative à cette compétence" 
-                value={capacites}
-                onChange={(e) => setCapacites(e.target.value)}
-              />
-
-              {/* Image 
-                  src={}
-                  alt={}
-                  width={}
-                  height={}
-              /> */}
+               <form onSubmit={submitform}>
+                    <input type="text" placeholder="exemple : Plombier" value={Capacite} onChange={e => setCapacite(e.target.value)} required/>
+                    <br />
+                    <Text style={{ color: 'red', marginLeft: 26, }}>{erreur}</Text>
+                    <WrapperAjout>
+                    <ButtonLink type="submit" value="Ajouter">
+                        <a>
+                            <Image src={Plus} alt={"PortraiScopie"} quality={100} />
+                            <Text>Ajouter</Text>
+                        </a>
+                    </ButtonLink>
+                    </WrapperAjout>
+                </form>
             </WrapperMenuDeroulant>
-
-            <WrapperAjout>
-              <Image src={Plus} alt={"PortraiScopie"} quality={100} />
-              <TextAjout>Ajouter</TextAjout>
-            </WrapperAjout>
+              {listCapacite()}
             <WrapperButton>
               <ButtonLinkPrec>
                 <Link href="/OffreurDeCompetence/Diplomes/Diplomes">
@@ -179,7 +232,7 @@ const Capacites = () => {
                   </a>
                 </Link>
               </ButtonLinkPrec>
-              <ButtonLink onClick={() => {handleSubmit()}}>
+              <ButtonLink onClick={() => {nextStep()}}>
                 <Link href="/OffreurDeCompetence/Qualites/Qualites">
                   <a>
                     <Text>Suivant</Text>
