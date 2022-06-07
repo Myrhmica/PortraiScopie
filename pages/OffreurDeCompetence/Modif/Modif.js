@@ -28,7 +28,7 @@ const Modif = () => {
       <WrapperTitle>
         <Link href="/OffreurDeCompetence/Recherche/Recherche">
           <a>
-            <TitleTop>Rechercher une offre</TitleTop>
+            <TitleTop>Rechercher une compétence</TitleTop>
           </a>
         </Link>
         <TitleTop>Générer mon PortraiScopie</TitleTop>

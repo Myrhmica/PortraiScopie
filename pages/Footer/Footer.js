@@ -21,7 +21,7 @@ const Footer = () => {
         <WrapperTextAll>
           <WrapperTextTop>
             <Text>Contact</Text>
-            <Text>Mention Légales</Text>
+            <Text>Mentions légales</Text>
             <Text>Politique de confidentialité</Text>
           </WrapperTextTop>
           <WrapperTextBottom>

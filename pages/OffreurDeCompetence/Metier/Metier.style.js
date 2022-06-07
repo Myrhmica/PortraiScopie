@@ -157,6 +157,9 @@ export const WrapperCoche = styled.div`
     width: 25px;
     height: 25px;
   }
+  input[type="checkbox"]:checked {
+    background-color: #f2bf3d;
+  }
 `;
 
 export const WrapperDuCoche = styled.div`
@@ -169,6 +172,7 @@ export const WrapperDuCoche = styled.div`
 
 export const WrapperAjout = styled.div`
   width: 100px;
+  padding-left: 7px;
   display: flex;
   flex-direction: row;
   align-items: center;

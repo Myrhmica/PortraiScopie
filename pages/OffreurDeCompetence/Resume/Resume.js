@@ -41,7 +41,7 @@ const Resumes = () => {
             </a>
           </Link>
         </ButtonLink>
-        <ButtonLink>
+        <ButtonLink onclick="window.print()">
           <TitleTop>Imprimer mon PortraiScopie</TitleTop>
         </ButtonLink>
       </WrapperTitle>
@@ -49,7 +49,7 @@ const Resumes = () => {
         <Wrapper>
           <WrapperTop>
             <WrapperActivite>
-              <Title>Activites</Title>
+              <Title>Activités</Title>
               {/**/}
             </WrapperActivite>
             <WrapperTaches>
@@ -72,12 +72,12 @@ const Resumes = () => {
             </WrapperMetiers>
             <WrapperCompetence>
               <Competence>
-                <Title>Libellé de compétences</Title>
+                <Title>Libellé de la compétence</Title>
                 {/**/}
               </Competence>
             </WrapperCompetence>
             <WrapperCentre_interet>
-              <Title>{"Centre d'intérêt"}</Title>
+              <Title>{"Centres d'intérêt"}</Title>
               {/**/}
             </WrapperCentre_interet>
           </WrapperMiddle>

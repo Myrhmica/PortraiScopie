@@ -68,7 +68,7 @@ const Metier = () => {
 
         <Wrapper>
           <WrapperAll>
-            <Progression />
+            <Progression></Progression>
             <WrapperImp>
               <TitleImp>Métiers</TitleImp>
               <WrapperImage>
@@ -81,7 +81,7 @@ const Metier = () => {
               <Title>Le metier exercé pour cette compétence</Title>
               <WrapperMenuDeroulant>
                 <input
-                  placeholder="Métier 1"
+                  placeholder="Vous pouvez ajouter 1 et 5 Métiers"
                   value={metier}
                   onChange={(e) => setMetier(e.target.value)}
                 />

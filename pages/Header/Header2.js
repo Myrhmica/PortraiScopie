@@ -66,6 +66,11 @@ const Header2 = () => {
               <Title>Visualisation</Title>
             </a>
           </Link>
+          <Link href="/OffreurDeCompetence/Recherche/Recherche">
+            <a>
+              <Title>Moteur de recherche</Title>
+            </a>
+          </Link>
         </WrapperTitle>
       </ContainerMenu>
     </>

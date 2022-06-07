@@ -25,7 +25,7 @@ const Raison = () => {
           <Title>Pour quoi souhaitez-vous faire votre PortraiScopie ?</Title>
           <Text>
             {
-              "Ces information sont anonymes et n'apparaîtront pas dans votre PortraiScopie. Vous pouvez enregistrer plusieurs réponses"
+              "Ces informations sont anonymes et n'apparaîtront pas dans votre PortraiScopie. Vous pouvez enregistrer plusieurs réponses."
             }
           </Text>
         </WrapperTitle>
@@ -105,7 +105,7 @@ const Raison = () => {
               </Coche>
               <Text>
                 Faire un état des lieux de mes compétences car je n’ai aucune
-                idée et on avenir professionnel semble flou
+                idée et mon avenir professionnel semble flou
               </Text>
             </WrapperCoche>
             <WrapperCoche>
@@ -138,7 +138,7 @@ const Raison = () => {
               <Coche>
                 <input type="checkbox" />
               </Coche>
-              <Text>Autres</Text>
+              <Text>Autres(précisez)</Text>
             </WrapperCoche>
           </WrapperCocheRight>
         </WrapperCocheAll>

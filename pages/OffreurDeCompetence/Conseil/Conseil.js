@@ -44,7 +44,7 @@ const Conseil = () => {
           </WrapperImage>
           <ConseilsCard>
             <Text>
-              Munissez-vous de tous documents retraçant votre parcours
+              Munissez-vous de tous les documents retraçant votre parcours
               professionnel (contrat de travail, fiche de poste, ...)
             </Text>
           </ConseilsCard>

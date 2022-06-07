@@ -64,14 +64,14 @@ const HomePage = () => {
             <Link href="/Register/DemandeurDeCompetence/Demandeur_competence">
               <a>
                 <Button>
-                  <Text>Créer un compte Demandeur de compétence</Text>
+                  <Text>Créer un compte Demandeur de compétences</Text>
                 </Button>
               </a>
             </Link>
             <Link href="/Login/DemandeurDeCompetence/Demandeur_competence">
               <a>
                 <Button>
-                  <Text>Connexion Demandeur de compétence</Text>
+                  <Text>Connexion Demandeur de compétences</Text>
                 </Button>
               </a>
             </Link>
@@ -81,7 +81,7 @@ const HomePage = () => {
             <Link href="/Register/Institutionnel/Institutionnel">
               <a>
                 <Button>
-                  <Text>Créer un compte Institutionnels</Text>
+                  <Text>Créer un compte Institutionnel</Text>
                 </Button>
               </a>
             </Link>
@@ -98,14 +98,14 @@ const HomePage = () => {
             <Link href="/Register/OffreurDeCompetence/Offreur_de_competence">
               <a>
                 <Button>
-                  <Text>Créer un compte Offreur de compétence</Text>
+                  <Text>Créer un compte Offreur de compétences</Text>
                 </Button>
               </a>
             </Link>
             <Link href="/Login/OffreurDeCompetence/Offreur_de_competence">
               <a>
                 <Button>
-                  <Text>Connexion Offreur de compétence</Text>
+                  <Text>Connexion Offreur de compétences</Text>
                 </Button>
               </a>
             </Link>

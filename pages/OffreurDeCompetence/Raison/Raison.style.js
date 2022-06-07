@@ -68,8 +68,6 @@ export const Coche = styled.div`
   }
   input[type="checkbox"]:checked {
     background-color: #f2bf3d;
-    &:before {
-    }
   }
 `;
 
