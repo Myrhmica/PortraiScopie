@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useState, useEffect } from "react";
-=======
-import React, {useState} from "react";
->>>>>>> 557cf842935d07082978f964ce3e60fb2e8f60ca
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "../../Header/Header2";
@@ -67,104 +63,80 @@ import Idea from "../../../public/image/idea.png";
 import Plus from "../../../public/image/plus.png";
 
 const Activites = () => {
-<<<<<<< HEAD
-  const [activite, setActivite] = useState("");
-
-  useEffect(() => {
-    localStorage.setItem("activités", JSON.stringify(activite));
-  }, [activite]);
-
-  const handleSubmit = async (e) => {
-    try {
-      const response = await axios.post(
-        "https://portraiscopie-dev.herokuapp.com/api/portraiscopies/",
-        {
-          activités: activite,
-        }
-      );
-      console.log(response);
-    } catch (err) {
-      console.log("Il y a une erreur");
-    }
-  };
-=======
-
-  const [Activite, setActivite] = useState('');
-  const [erreur, setErreur] = useState('');
+  const [Activite, setActivite] = useState("");
+  const [erreur, setErreur] = useState("");
   const [Activites, setActivites] = useState([]);
   const [id, setId] = useState(null);
 
   const submitform = (e) => {
-        e.preventDefault();
-        if (id === null) {
-            if(Activites.length === 5){
-                setErreur('Vous ne pouvez pas ajouter plus de 5 activités');
-            } else {
-                setErreur('');
-                let Acti = {
-                    id: Activites.length,
-                    Activite: Activite,
-                }
-                setActivites([...Activites, Acti]);
-                setActivite('');
-            }
-        } else {
-            let Acti = {
-                id: id,
-                Activite: Activite,
-            }
-            setActivites(Activites.map(m => m.id === id ? Acti : m));
-            setActivite('');
-            setId(null);
-        }
-    };
-
-    const updateActivite = (id) => {
-        setActivite(Activites[id].Activite);
-        setId(id);
-    };
-
-    const removeActivite = (id) => {
-        setActivites(Activites.filter(m => m.id !== id));
-    };
-
-    const nextStep = () => {
-        if(Activites.length === 0){
-            setErreur('Vous devez ajouter au moins une activité');
-        } else {
-            setErreur('');
-            localStorage.setItem('Activite', JSON.stringify(Activites));
-            console.log(localStorage.getItem('Activite'));
-        }
+    e.preventDefault();
+    if (id === null) {
+      if (Activites.length === 5) {
+        setErreur("Vous ne pouvez pas ajouter plus de 5 activités");
+      } else {
+        setErreur("");
+        let Acti = {
+          id: Activites.length,
+          Activite: Activite,
+        };
+        setActivites([...Activites, Acti]);
+        setActivite("");
+      }
+    } else {
+      let Acti = {
+        id: id,
+        Activite: Activite,
       };
+      setActivites(Activites.map((m) => (m.id === id ? Acti : m)));
+      setActivite("");
+      setId(null);
+    }
+  };
 
-      const listActivite = () => {
-          if (Activites.length === 0) {
-              return <Text>Vous n`avez pas encore ajouté d'activité</Text>
-          } else {
-              return (
-                  <div>
-                      {Activites.map(Acti => (
-                            <div key={Acti.id}>
-                                <Text> Activité : {Acti.Activite}</Text>
-                                <ButtonLink onClick={() => updateActivite(Acti.id)}>
-                                    <a>
-                                        <Text>Modifier</Text>
-                                    </a>
-                                </ButtonLink>
-                                <ButtonLink onClick={()=> removeActivite(Acti.id)}>
-                                    <a>
-                                        <Text>Supprimer</Text>
-                                    </a>
-                                </ButtonLink>
-                            </div>
-                      ))}
-                  </div>
-              )
-          }
-      };
+  const updateActivite = (id) => {
+    setActivite(Activites[id].Activite);
+    setId(id);
+  };
 
->>>>>>> 557cf842935d07082978f964ce3e60fb2e8f60ca
+  const removeActivite = (id) => {
+    setActivites(Activites.filter((m) => m.id !== id));
+  };
+
+  const nextStep = () => {
+    if (Activites.length === 0) {
+      setErreur("Vous devez ajouter au moins une activité");
+    } else {
+      setErreur("");
+      localStorage.setItem("Activite", JSON.stringify(Activites));
+      console.log(localStorage.getItem("Activite"));
+    }
+  };
+
+  const listActivite = () => {
+    if (Activites.length === 0) {
+      return <Text>Vous n`avez pas encore ajouté d'activité</Text>;
+    } else {
+      return (
+        <div>
+          {Activites.map((Acti) => (
+            <div key={Acti.id}>
+              <Text> Activité : {Acti.Activite}</Text>
+              <ButtonLink onClick={() => updateActivite(Acti.id)}>
+                <a>
+                  <Text>Modifier</Text>
+                </a>
+              </ButtonLink>
+              <ButtonLink onClick={() => removeActivite(Acti.id)}>
+                <a>
+                  <Text>Supprimer</Text>
+                </a>
+              </ButtonLink>
+            </div>
+          ))}
+        </div>
+      );
+    }
+  };
 
   return (
     <>
@@ -309,34 +281,25 @@ const Activites = () => {
           <WrapperContent>
             <Title>Activités pour cette compétence</Title>
             <WrapperMenuDeroulant>
-<<<<<<< HEAD
-              <input
-                placeholder="Vous pouvez ajouter 1 à 5 Activités"
-                value={activite}
-                onChange={(e) => setActivite(e.target.value)}
-              />
-
-              {/* Image 
-                    src={}
-                    alt={}
-                    width={}
-                    height={}
-                /> */}
-=======
               <form onSubmit={submitform}>
-                    <input type="text" placeholder="exemple : Remplacer un tuyau" value={Activite} onChange={e => setActivite(e.target.value)} required/>
-                    <br />
-                    <Text style={{ color: 'red', marginLeft: 26, }}>{erreur}</Text>
-                    <WrapperAjout>
-                    <ButtonLink type="submit" value="Ajouter">
-                        <a>
-                            <Image src={Plus} alt={"PortraiScopie"} quality={100} />
-                            <Text>Ajouter</Text>
-                        </a>
-                    </ButtonLink>
-                    </WrapperAjout>
-                </form>
->>>>>>> 557cf842935d07082978f964ce3e60fb2e8f60ca
+                <input
+                  type="text"
+                  placeholder="exemple : Remplacer un tuyau"
+                  value={Activite}
+                  onChange={(e) => setActivite(e.target.value)}
+                  required
+                />
+                <br />
+                <Text style={{ color: "red", marginLeft: 26 }}>{erreur}</Text>
+                <WrapperAjout>
+                  <ButtonLink type="submit" value="Ajouter">
+                    <a>
+                      <Image src={Plus} alt={"PortraiScopie"} quality={100} />
+                      <Text>Ajouter</Text>
+                    </a>
+                  </ButtonLink>
+                </WrapperAjout>
+              </form>
             </WrapperMenuDeroulant>
             {listActivite()}
             <WrapperButton>
@@ -347,15 +310,11 @@ const Activites = () => {
                   </a>
                 </Link>
               </ButtonLinkPrec>
-<<<<<<< HEAD
               <ButtonLink
                 onClick={() => {
-                  handleSubmit();
+                  nextStep();
                 }}
               >
-=======
-              <ButtonLink onClick={() => {nextStep()}}>
->>>>>>> 557cf842935d07082978f964ce3e60fb2e8f60ca
                 <Link href="/OffreurDeCompetence/Taches/Taches">
                   <a>
                     <Text>Suivant</Text>

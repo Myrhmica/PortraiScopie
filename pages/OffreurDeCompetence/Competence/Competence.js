@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Header2 from "../../Header/Header2";
 import Footer from "../../Footer/Footer";
-import axios from 'axios';
+import axios from "axios";
 
 import WrapperALL, {
   WrapperContent,
@@ -24,25 +24,44 @@ import WrapperALL, {
 } from "./Competence.style";
 
 import Idea from "../../../public/image/idea.png";
-
 const Competence = () => {
-  const [competence, setCompetence] = useState("");
+  const [Competence, setCompetence] = useState("");
+  const [erreur, setErreur] = useState("");
+  const [Competences, setCompetences] = useState([]);
+  const [id, setId] = useState(null);
 
-  useEffect(() => {
-    localStorage.setItem("compétences", JSON.stringify(competence));
-  }, [competence]);
+  const submitform = (e) => {
+    e.preventDefault();
+    if (id === null) {
+      if (Competences.length === 5) {
+        setErreur("Vous ne pouvez pas ajouter plus de 5 centres d' intérêts.");
+      } else {
+        setErreur("");
+        let Comp = {
+          id: Competences.length,
+          Competence: Competence,
+        };
+        setCompetences([...Competences, Comp]);
+        setCompetence("");
+      }
+    } else {
+      let Comp = {
+        id: id,
+        Competence: Competence,
+      };
+      setCompetences(Competences.map((m) => (m.id === id ? Comp : m)));
+      setCompetence("");
+      setId(null);
+    }
+  };
 
-  const handleSubmit = async (e) => {
-    try {
-      const response = await axios.post(
-        "https://portraiscopie-dev.herokuapp.com/api/portraiscopies/",
-        {
-          compétences: competence,
-        }
-      );
-      console.log(response);
-    } catch (err) {
-      console.log("il y a une erreur");
+  const nextStep = () => {
+    if (Competences.length === 0) {
+      setErreur("Vous devez ajouter une compétence");
+    } else {
+      setErreur("");
+      localStorage.setItem("Competence", JSON.stringify(Competences));
+      console.log(localStorage.getItem("Competence"));
     }
   };
 
@@ -77,11 +96,17 @@ const Competence = () => {
               vous excellez
             </Text>
             <WrapperInput>
-              <input
-                placeholder="Compétence"
-                value={competence}
-                onChange={(e) => setCompetence(e.target.value)}
-              />
+              <form onSubmit={submitform}>
+                <input
+                  type="text"
+                  placeholder="exemple : Manager une équipe"
+                  value={Competence}
+                  onChange={(e) => setCompetence(e.target.value)}
+                  required
+                />
+                <br />
+                <Text style={{ color: "red", marginLeft: 26 }}>{erreur}</Text>
+              </form>
             </WrapperInput>
             <WrapperButton>
               <ButtonLinkLeft>
@@ -93,7 +118,7 @@ const Competence = () => {
               </ButtonLinkLeft>
               <ButtonLinkRight
                 onClick={() => {
-                  handleSubmit();
+                  nextStep();
                 }}
               >
                 <Link href="/OffreurDeCompetence/Metier/Metier">

@@ -32,7 +32,6 @@ h2 {
   flex-direction: column;
   min-height: 100vh;
 }
-<<<<<<< HEAD
 input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -41,9 +40,3 @@ input[type="checkbox"] {
 `;
 
 export default GlobalStyle;
-=======
-
-`;
-
-export default GlobalStyle;
->>>>>>> 557cf842935d07082978f964ce3e60fb2e8f60ca

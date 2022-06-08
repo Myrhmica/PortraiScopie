@@ -65,92 +65,80 @@ import Idea from "../../../public/image/idea.png";
 import Plus from "../../../public/image/plus.png";
 
 const Diplomes = () => {
-<<<<<<< HEAD
-  const [certification, setCertification] = useState("");
-
-  const handleSubmit = async (e) => {
-    try {
-      const response = await axios.post(
-        "https://portraiscopie-dev.herokuapp.com/api/portraiscopies/",
-        {
-          diplômes: certification,
-=======
-
-  const [Diplome, setDiplome] = useState('');
-  const [erreur, setErreur] = useState('');
+  const [Diplome, setDiplome] = useState("");
+  const [erreur, setErreur] = useState("");
   const [Diplomes, setDiplomes] = useState([]);
   const [id, setId] = useState(null);
 
   const submitform = (e) => {
-        e.preventDefault();
-        if (id === null) {
-            if(Diplomes.length === 5){
-                setErreur('Vous ne pouvez pas ajouter plus de 5 Diplomes');
-            } else {
-                setErreur('');
-                let Dip = {
-                    id: Diplomes.length,
-                    Diplome: Diplome,
-                }
-                setDiplomes([...Diplomes, Dip]);
-                setDiplome('');
-            }
-        } else {
-            let Dip = {
-                id: id,
-                Diplome: Diplome,
-            }
-            setDiplomes(Diplomes.map(m => m.id === id ? Dip : m));
-            setDiplome('');
-            setId(null);
-        }
-    };
-
-    const updateDiplome = (id) => {
-        setDiplome(Diplomes[id].Diplome);
-        setId(id);
-    };
-
-    const removeDiplome = (id) => {
-        setDiplomes(Diplomes.filter(m => m.id !== id));
-    };
-
-    const nextStep = () => {
-        if(Diplomes.length === 0){
-            setErreur('Vous devez ajouter au moins une Diplome');
-        } else {
-            setErreur('');
-            localStorage.setItem('Diplome', JSON.stringify(Diplomes));
-            console.log(localStorage.getItem('Diplome'));
->>>>>>> 557cf842935d07082978f964ce3e60fb2e8f60ca
-        }
+    e.preventDefault();
+    if (id === null) {
+      if (Diplomes.length === 5) {
+        setErreur("Vous ne pouvez pas ajouter plus de 5 Diplomes");
+      } else {
+        setErreur("");
+        let Dip = {
+          id: Diplomes.length,
+          Diplome: Diplome,
+        };
+        setDiplomes([...Diplomes, Dip]);
+        setDiplome("");
+      }
+    } else {
+      let Dip = {
+        id: id,
+        Diplome: Diplome,
       };
+      setDiplomes(Diplomes.map((m) => (m.id === id ? Dip : m)));
+      setDiplome("");
+      setId(null);
+    }
+  };
 
-      const listDiplome = () => {
-          if (Diplomes.length === 0) {
-              return <Text>Vous n`avez pas encore ajouté de tâche</Text>
-          } else {
-              return (
-                  <div>
-                      {Diplomes.map(Dip => (
-                            <div key={Dip.id}>
-                                <Text> Diplome : {Dip.Diplome}</Text>
-                                <ButtonLink onClick={() => updateDiplome(Dip.id)}>
-                                    <a>
-                                        <Text>Modifier</Text>
-                                    </a>
-                                </ButtonLink>
-                                <ButtonLink onClick={()=> removeDiplome(Dip.id)}>
-                                    <a>
-                                        <Text>Supprimer</Text>
-                                    </a>
-                                </ButtonLink>
-                            </div>
-                      ))}
-                  </div>
-              )
-          }
-      };
+  const updateDiplome = (id) => {
+    setDiplome(Diplomes[id].Diplome);
+    setId(id);
+  };
+
+  const removeDiplome = (id) => {
+    setDiplomes(Diplomes.filter((m) => m.id !== id));
+  };
+
+  const nextStep = () => {
+    if (Diplomes.length === 0) {
+      setErreur("Vous devez ajouter au moins une Diplome");
+    } else {
+      setErreur("");
+      localStorage.setItem("Diplome", JSON.stringify(Diplomes));
+      console.log(localStorage.getItem("Diplome"));
+    }
+  };
+
+  const listDiplome = () => {
+    if (Diplomes.length === 0) {
+      return <Text>Vous n`avez pas encore ajouté de tâche</Text>;
+    } else {
+      return (
+        <div>
+          {Diplomes.map((Dip) => (
+            <div key={Dip.id}>
+              <Text> Diplome : {Dip.Diplome}</Text>
+              <ButtonLink onClick={() => updateDiplome(Dip.id)}>
+                <a>
+                  <Text>Modifier</Text>
+                </a>
+              </ButtonLink>
+              <ButtonLink onClick={() => removeDiplome(Dip.id)}>
+                <a>
+                  <Text>Supprimer</Text>
+                </a>
+              </ButtonLink>
+            </div>
+          ))}
+        </div>
+      );
+    }
+  };
 
   return (
     <>
@@ -297,36 +285,27 @@ const Diplomes = () => {
               Certificats/Diplômes/Habilitations pour cette compétence
             </Title>
             <WrapperMenuDeroulant>
-<<<<<<< HEAD
-              <input
-                placeholder="Vous pouvez ajouter 1 à 5 Diplômes, Certificats ou Habilitations"
-                value={certification}
-                onChange={(e) => setCertification(e.target.value)}
-              />
-
-              {/* Image 
-                src={}
-                alt={}
-                width={}
-                height={}
-            /> */}
-=======
               <form onSubmit={submitform}>
-                    <input type="text" placeholder="exemple : CAP BEP Plomberie" value={Diplome} onChange={e => setDiplome(e.target.value)} required/>
-                    <br />
-                    <Text style={{ color: 'red', marginLeft: 26, }}>{erreur}</Text>
-                    <WrapperAjout>
-                    <ButtonLink type="submit" value="Ajouter">
-                        <a>
-                            <Image src={Plus} alt={"PortraiScopie"} quality={100} />
-                            <Text>Ajouter</Text>
-                        </a>
-                    </ButtonLink>
-                    </WrapperAjout>
-                </form>
->>>>>>> 557cf842935d07082978f964ce3e60fb2e8f60ca
+                <input
+                  type="text"
+                  placeholder="exemple : CAP BEP Plomberie"
+                  value={Diplome}
+                  onChange={(e) => setDiplome(e.target.value)}
+                  required
+                />
+                <br />
+                <Text style={{ color: "red", marginLeft: 26 }}>{erreur}</Text>
+                <WrapperAjout>
+                  <ButtonLink type="submit" value="Ajouter">
+                    <a>
+                      <Image src={Plus} alt={"PortraiScopie"} quality={100} />
+                      <Text>Ajouter</Text>
+                    </a>
+                  </ButtonLink>
+                </WrapperAjout>
+              </form>
             </WrapperMenuDeroulant>
-              {listDiplome()}
+            {listDiplome()}
             <WrapperDuCoche>
               <WrapperCoche></WrapperCoche>
               <Text>

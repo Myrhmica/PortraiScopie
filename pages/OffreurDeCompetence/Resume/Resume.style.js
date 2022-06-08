@@ -144,7 +144,7 @@ export const WrapperCompetence = styled.div`
   align-items: center;
 `;
 
-export const Competence = styled.div`
+export const Competences = styled.div`
   margin: 40px;
   width: 300px;
   height: 300px;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "../../Header/Header2";
-import axios from 'axios';
+import axios from "axios";
 
 import WrapperTitle, {
   WrapperProgression,
@@ -64,103 +64,80 @@ import Idea from "../../../public/image/idea.png";
 import Plus from "../../../public/image/plus.png";
 
 const Techniques = () => {
-<<<<<<< HEAD
-  const [techniques, setTechniques] = useState("");
-
-  useEffect(() => {
-    localStorage.setItem("Techniques", JSON.stringify(techniques));
-  }, [techniques]);
-
-  const handleSubmit = async (e) => {
-    try {
-      const response = await axios.post(
-        "https://portraiscopie-dev.herokuapp.com/api/portraiscopies/",
-        {
-          Techniques: techniques,
-        }
-      );
-      console.log(response);
-    } catch (err) {
-      console.log("il y a une erreur");
-    }
-  };
-=======
-  
-  const [Technique, setTechnique] = useState('');
-  const [erreur, setErreur] = useState('');
+  const [Technique, setTechnique] = useState("");
+  const [erreur, setErreur] = useState("");
   const [Techniques, setTechniques] = useState([]);
   const [id, setId] = useState(null);
 
   const submitform = (e) => {
-        e.preventDefault();
-        if (id === null) {
-            if(Techniques.length === 5){
-                setErreur('Vous ne pouvez pas ajouter plus de 5 Techniques');
-            } else {
-                setErreur('');
-                let Tech = {
-                    id: Techniques.length,
-                    Technique: Technique,
-                }
-                setTechniques([...Techniques, Tech]);
-                setTechnique('');
-            }
-        } else {
-            let Tech = {
-                id: id,
-                Technique: Technique,
-            }
-            setTechniques(Techniques.map(m => m.id === id ? Tech : m));
-            setTechnique('');
-            setId(null);
-        }
-    };
-
-    const updateTechnique = (id) => {
-        setTechnique(Techniques[id].Technique);
-        setId(id);
-    };
-
-    const removeTechnique = (id) => {
-        setTechniques(Techniques.filter(m => m.id !== id));
-    };
-
-    const nextStep = () => {
-        if(Techniques.length === 0){
-            setErreur('Vous devez ajouter au moins une Technique');
-        } else {
-            setErreur('');
-            localStorage.setItem('Technique', JSON.stringify(Techniques));
-            console.log(localStorage.getItem('Technique'));
-        }
+    e.preventDefault();
+    if (id === null) {
+      if (Techniques.length === 5) {
+        setErreur("Vous ne pouvez pas ajouter plus de 5 Techniques");
+      } else {
+        setErreur("");
+        let Tech = {
+          id: Techniques.length,
+          Technique: Technique,
+        };
+        setTechniques([...Techniques, Tech]);
+        setTechnique("");
+      }
+    } else {
+      let Tech = {
+        id: id,
+        Technique: Technique,
       };
+      setTechniques(Techniques.map((m) => (m.id === id ? Tech : m)));
+      setTechnique("");
+      setId(null);
+    }
+  };
 
-      const listTechnique = () => {
-          if (Techniques.length === 0) {
-              return <Text>Vous n`avez pas encore ajouté de tâche</Text>
-          } else {
-              return (
-                  <div>
-                      {Techniques.map(Tech => (
-                            <div key={Tech.id}>
-                                <Text> Technique : {Tech.Technique}</Text>
-                                <ButtonLink onClick={() => updateTechnique(Tech.id)}>
-                                    <a>
-                                        <Text>Modifier</Text>
-                                    </a>
-                                </ButtonLink>
-                                <ButtonLink onClick={()=> removeTechnique(Tech.id)}>
-                                    <a>
-                                        <Text>Supprimer</Text>
-                                    </a>
-                                </ButtonLink>
-                            </div>
-                      ))}
-                  </div>
-              )
-          }
-      };
->>>>>>> 557cf842935d07082978f964ce3e60fb2e8f60ca
+  const updateTechnique = (id) => {
+    setTechnique(Techniques[id].Technique);
+    setId(id);
+  };
+
+  const removeTechnique = (id) => {
+    setTechniques(Techniques.filter((m) => m.id !== id));
+  };
+
+  const nextStep = () => {
+    if (Techniques.length === 0) {
+      setErreur("Vous devez ajouter au moins une Technique");
+    } else {
+      setErreur("");
+      localStorage.setItem("Technique", JSON.stringify(Techniques));
+      console.log(localStorage.getItem("Technique"));
+    }
+  };
+
+  const listTechnique = () => {
+    if (Techniques.length === 0) {
+      return <Text>Vous n`avez pas encore ajouté de tâche</Text>;
+    } else {
+      return (
+        <div>
+          {Techniques.map((Tech) => (
+            <div key={Tech.id}>
+              <Text> Technique : {Tech.Technique}</Text>
+              <ButtonLink onClick={() => updateTechnique(Tech.id)}>
+                <a>
+                  <Text>Modifier</Text>
+                </a>
+              </ButtonLink>
+              <ButtonLink onClick={() => removeTechnique(Tech.id)}>
+                <a>
+                  <Text>Supprimer</Text>
+                </a>
+              </ButtonLink>
+            </div>
+          ))}
+        </div>
+      );
+    }
+  };
 
   return (
     <>
@@ -305,36 +282,27 @@ const Techniques = () => {
           <WrapperContent>
             <Title>Techniques pour cette compétence</Title>
             <WrapperMenuDeroulant>
-<<<<<<< HEAD
-              <input
-                placeholder="Vous pouvez ajouter 1 à 5 Techniques"
-                value={techniques}
-                onChange={(e) => setTechniques(e.target.value)}
-              />
-
-              {/* Image 
-                    src={}
-                    alt={}
-                    width={}
-                    height={}
-                /> */}
-=======
               <form onSubmit={submitform}>
-                    <input type="text" placeholder="exemple : Plombier" value={Technique} onChange={e => setTechnique(e.target.value)} required/>
-                    <br />
-                    <Text style={{ color: 'red', marginLeft: 26, }}>{erreur}</Text>
-                    <WrapperAjout>
-                    <ButtonLink type="submit" value="Ajouter">
-                        <a>
-                            <Image src={Plus} alt={"PortraiScopie"} quality={100} />
-                            <Text>Ajouter</Text>
-                        </a>
-                    </ButtonLink>
-                    </WrapperAjout>
-                </form>
->>>>>>> 557cf842935d07082978f964ce3e60fb2e8f60ca
+                <input
+                  type="text"
+                  placeholder="exemple : Plombier"
+                  value={Technique}
+                  onChange={(e) => setTechnique(e.target.value)}
+                  required
+                />
+                <br />
+                <Text style={{ color: "red", marginLeft: 26 }}>{erreur}</Text>
+                <WrapperAjout>
+                  <ButtonLink type="submit" value="Ajouter">
+                    <a>
+                      <Image src={Plus} alt={"PortraiScopie"} quality={100} />
+                      <Text>Ajouter</Text>
+                    </a>
+                  </ButtonLink>
+                </WrapperAjout>
+              </form>
             </WrapperMenuDeroulant>
-              {listTechnique()}
+            {listTechnique()}
             <WrapperButton>
               <ButtonLinkPrec>
                 <Link href="/OffreurDeCompetence/Taches/Tache">
@@ -343,15 +311,11 @@ const Techniques = () => {
                   </a>
                 </Link>
               </ButtonLinkPrec>
-<<<<<<< HEAD
               <ButtonLink
                 onClick={() => {
-                  handleSubmit();
+                  nextStep();
                 }}
               >
-=======
-              <ButtonLink onClick={() => {nextStep()}}>
->>>>>>> 557cf842935d07082978f964ce3e60fb2e8f60ca
                 <Link href="/OffreurDeCompetence/Technologies/Technologies">
                   <a>
                     <Text>Suivant</Text>

@@ -88,7 +88,7 @@ const HomePage = () => {
             <Link href="/Login/Institutionnel/Institutionnel">
               <a>
                 <Button>
-                  <Text>Connexion Institutionnels</Text>
+                  <Text>Connexion Institutionnel</Text>
                 </Button>
               </a>
             </Link>
