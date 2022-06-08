@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import Header2 from "../../Header/Header2";
 import Footer from "../../Footer/Footer";
-import axios from 'axios';
 
 import WrapperContent, {
   WrapperTitle,
@@ -15,7 +14,6 @@ import WrapperContent, {
   TextBottom,
   WrapperCompetence,
   WrapperTop,
-  WrapperInput,
   ButtonLinkLeft,
   ButtonLinkRight,
   WrapperButton,
@@ -26,25 +24,61 @@ import Idea from "../../../public/image/idea.png";
 
 const Competence = () => {
   
-  const [competence, setCompetence] = useState("");
+  const [Competence, setCompetence] = useState('');
+  const [erreur, setErreur] = useState('');
+  const [Competences, setCompetences] = useState([]);
+  const [id, setId] = useState(null);
 
-  useEffect(() => {
-  localStorage.setItem("compétences", JSON.stringify(competence));
-}, [competence]);
+  const submitform = (e) => {
+        e.preventDefault();
+        if (id === null) {
+            if(Competences.length === 5){
+                setErreur("Vous ne pouvez pas ajouter plus de 5 centres d' intérêts.");
+            } else {
+                setErreur('');
+                let Comp = {
+                    id: Competences.length,
+                    Competence: Competence,
+                }
+                setCompetences([...Competences, Comp]);
+                setCompetence('');
+            }
+        } else {
+            let Comp = {
+                id: id,
+                Competence: Competence,
+            }
+            setCompetences(Competences.map(m => m.id === id ? Comp : m));
+            setCompetence('');
+            setId(null);
+        }
+    };
 
-  const handleSubmit = async (e) => {
-    try {
-      const response = await axios.post(
-        "https://portraiscopie-dev.herokuapp.com/api/portraiscopies/",
-        {
-          "compétences" : competence,
-        });
-        console.log(response);
-      } catch(err) {
-        console.log('il y a une erreur');
-    }
-  };
+    const nextStep = () => {
+        if(Competences.length === 0){
+            setErreur("Vous devez ajouter au moins d'un centre d'intérêt ");
+        } else {
+            setErreur('');
+            localStorage.setItem('Competence', JSON.stringify(Competences));
+            console.log(localStorage.getItem('Competence'));
+        }
+      };
 
+      const listCompetence = () => {
+          if (Competences.length === 0) {
+              return <Text>Vous n`avez pas encore ajouté de compétence</Text>
+          } else {
+              return (
+                  <div>
+                      {Competences.map(Comp => (
+                            <div key={Comp.id}>
+                                <Text> Competence : {Comp.Competence}</Text>
+                            </div>
+                      ))}
+                  </div>
+              )
+          }
+      };
 
   return (
     <>
@@ -71,17 +105,18 @@ const Competence = () => {
               />
             </WrapperImage>
           </WrapperTop>
-          <Text>
+          <Title>
             Citez ou choisissez dans la liste une compétence dans laquelle vous
             excellez
-          </Text>
-          <WrapperInput>
-            <input
-              placeholder="Compétence"
-              value={competence}
-              onChange={(e) => setCompetence(e.target.value)}
-            />
-          </WrapperInput>
+          </Title>
+          <WrapperMenuDeroulant>
+             <form onSubmit={submitform}>
+                    <input type="text" placeholder="exemple : Plombier" value={Competence} onChange={e => setCompetence(e.target.value)} required/>
+                    <br />
+                    <Text style={{ color: 'red', marginLeft: 26, }}>{erreur}</Text>
+                </form>
+          </WrapperMenuDeroulant>
+          {listCompetence()}          
           <WrapperButton>
             <ButtonLinkLeft>
               <Link href="/OffreurDeCompetence/Competence/Competence">
@@ -90,7 +125,7 @@ const Competence = () => {
                 </a>
               </Link>
             </ButtonLinkLeft>
-            <ButtonLinkRight onClick={() => {handleSubmit()}}>
+            <ButtonLinkRight onClick={() => {nextStep()}}>
               <Link href="/OffreurDeCompetence/Metier/Metier">
                 <a>
                   <TextBottom>Valider</TextBottom>
