@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Header2 from "../../Header/Header2";
 import Footer from "../../Footer/Footer";
+import axios from 'axios';
 
 import WrapperALL, {
   WrapperContent,

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "../../Header/Header2";
@@ -63,6 +63,7 @@ import Idea from "../../../public/image/idea.png";
 import Plus from "../../../public/image/plus.png";
 
 const Qualites = () => {
+<<<<<<< HEAD
   const [qualites, setQualites] = useState("");
 
   useEffect(() => {
@@ -82,6 +83,83 @@ const Qualites = () => {
       console.log("il y a une erreur");
     }
   };
+=======
+  
+  const [Qualite, setQualite] = useState('');
+  const [erreur, setErreur] = useState('');
+  const [Qualites, setQualites] = useState([]);
+  const [id, setId] = useState(null);
+
+  const submitform = (e) => {
+        e.preventDefault();
+        if (id === null) {
+            if(Qualites.length === 5){
+                setErreur('Vous ne pouvez pas ajouter plus de 5 Qualites');
+            } else {
+                setErreur('');
+                let Quali = {
+                    id: Qualites.length,
+                    Qualite: Qualite,
+                }
+                setQualites([...Qualites, Quali]);
+                setQualite('');
+            }
+        } else {
+            let Quali = {
+                id: id,
+                Qualite: Qualite,
+            }
+            setQualites(Qualites.map(m => m.id === id ? Quali : m));
+            setQualite('');
+            setId(null);
+        }
+    };
+
+    const updateQualite = (id) => {
+        setQualite(Qualites[id].Qualite);
+        setId(id);
+    };
+
+    const removeQualite = (id) => {
+        setQualites(Qualites.filter(m => m.id !== id));
+    };
+>>>>>>> 557cf842935d07082978f964ce3e60fb2e8f60ca
+
+    const nextStep = () => {
+        if(Qualites.length === 0){
+            setErreur('Vous devez ajouter au moins une Qualite');
+        } else {
+            setErreur('');
+            localStorage.setItem('Qualite', JSON.stringify(Qualites));
+            console.log(localStorage.getItem('Qualite'));
+        }
+      };
+
+      const listQualite = () => {
+          if (Qualites.length === 0) {
+              return <Text>Vous n`avez pas encore ajouté de tâche</Text>
+          } else {
+              return (
+                  <div>
+                      {Qualites.map(Quali => (
+                            <div key={Quali.id}>
+                                <Text> Qualite : {Quali.Qualite}</Text>
+                                <ButtonLink onClick={() => updateQualite(Quali.id)}>
+                                    <a>
+                                        <Text>Modifier</Text>
+                                    </a>
+                                </ButtonLink>
+                                <ButtonLink onClick={()=> removeQualite(Quali.id)}>
+                                    <a>
+                                        <Text>Supprimer</Text>
+                                    </a>
+                                </ButtonLink>
+                            </div>
+                      ))}
+                  </div>
+              )
+          }
+      };
 
   return (
     <>
@@ -226,6 +304,7 @@ const Qualites = () => {
           <WrapperContent>
             <Title>Vos qualités mises en avant pour cette compétence</Title>
             <WrapperMenuDeroulant>
+<<<<<<< HEAD
               <input
                 placeholder="Vous pouvez ajouter 1 à 5 Qualités"
                 value={qualites}
@@ -238,12 +317,23 @@ const Qualites = () => {
                   width={}
                   height={}
               /> */}
+=======
+              <form onSubmit={submitform}>
+                    <input type="text" placeholder="exemple : Plombier" value={Qualite} onChange={e => setQualite(e.target.value)} required/>
+                    <br />
+                    <Text style={{ color: 'red', marginLeft: 26, }}>{erreur}</Text>
+                    <WrapperAjout>
+                    <ButtonLink type="submit" value="Ajouter">
+                        <a>
+                            <Image src={Plus} alt={"PortraiScopie"} quality={100} />
+                            <Text>Ajouter</Text>
+                        </a>
+                    </ButtonLink>
+                    </WrapperAjout>
+                </form>
+>>>>>>> 557cf842935d07082978f964ce3e60fb2e8f60ca
             </WrapperMenuDeroulant>
-
-            <WrapperAjout>
-              <Image src={Plus} alt={"PortraiScopie"} quality={100} />
-              <TextAjout>Ajouter</TextAjout>
-            </WrapperAjout>
+              {listQualite()}
             <WrapperButton>
               <ButtonLinkPrec>
                 <Link href="/OffreurDeCompetence/Capacites/Capacites">
@@ -252,11 +342,15 @@ const Qualites = () => {
                   </a>
                 </Link>
               </ButtonLinkPrec>
+<<<<<<< HEAD
               <ButtonLink
                 onClick={() => {
                   handleSubmit();
                 }}
               >
+=======
+              <ButtonLink onClick={() => {nextStep()}}>
+>>>>>>> 557cf842935d07082978f964ce3e60fb2e8f60ca
                 <Link href="/OffreurDeCompetence/Valeurs/Valeurs">
                   <a>
                     <Text>Suivant</Text>

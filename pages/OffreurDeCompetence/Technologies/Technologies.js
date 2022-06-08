@@ -63,6 +63,7 @@ import Idea from "../../../public/image/idea.png";
 import Plus from "../../../public/image/plus.png";
 
 const Technologies = () => {
+<<<<<<< HEAD
   const [technologie, setTechnologie] = useState("");
 
   useEffect(() => {
@@ -82,6 +83,83 @@ const Technologies = () => {
       console.log("il y a une erreur");
     }
   };
+=======
+  
+  const [Technologie, setTechnologie] = useState('');
+  const [erreur, setErreur] = useState('');
+  const [Technologies, setTechnologies] = useState([]);
+  const [id, setId] = useState(null);
+
+  const submitform = (e) => {
+        e.preventDefault();
+        if (id === null) {
+            if(Technologies.length === 5){
+                setErreur('Vous ne pouvez pas ajouter plus de 5 Technologie');
+            } else {
+                setErreur('');
+                let Techno = {
+                    id: Technologies.length,
+                    Technologie: Technologie,
+                }
+                setTechnologies([...Technologies, Techno]);
+                setTechnologie('');
+            }
+        } else {
+            let Techno = {
+                id: id,
+                Technologie: Technologie,
+            }
+            setTechnologies(Technologies.map(m => m.id === id ? Techno : m));
+            setTechnologie('');
+            setId(null);
+        }
+    };
+
+    const updateTechnologie = (id) => {
+        setTechnologie(Technologies[id].Technologie);
+        setId(id);
+    };
+
+    const removeTechnologie = (id) => {
+        setTechnologies(Technologies.filter(m => m.id !== id));
+    };
+
+    const nextStep = () => {
+        if(Technologies.length === 0){
+            setErreur('Vous devez ajouter au moins une Technologie');
+        } else {
+            setErreur('');
+            localStorage.setItem('Technologie', JSON.stringify(Technologies));
+            console.log(localStorage.getItem('Technologie'));
+        }
+      };
+
+      const listTechnologie = () => {
+          if (Technologies.length === 0) {
+              return <Text>Vous n`avez pas encore ajouté de Technologie</Text>
+          } else {
+              return (
+                  <div>
+                      {Technologies.map(Techno => (
+                            <div key={Techno.id}>
+                                <Text> Technologie : {Techno.Technologie}</Text>
+                                <ButtonLink onClick={() => updateTechnologie(Techno.id)}>
+                                    <a>
+                                        <Text>Modifier</Text>
+                                    </a>
+                                </ButtonLink>
+                                <ButtonLink onClick={()=> removeTechnologie(Techno.id)}>
+                                    <a>
+                                        <Text>Supprimer</Text>
+                                    </a>
+                                </ButtonLink>
+                            </div>
+                      ))}
+                  </div>
+              )
+          }
+      };
+>>>>>>> 557cf842935d07082978f964ce3e60fb2e8f60ca
 
   return (
     <>
@@ -129,6 +207,7 @@ const Technologies = () => {
             </Wrapper3>
 
             <Wrapper4>
+<<<<<<< HEAD
               <DividerTop4></DividerTop4>
               <TextTop4>4</TextTop4>
               <DividerTop5></DividerTop5>
@@ -137,6 +216,12 @@ const Technologies = () => {
                   <TextBottom>Techniques</TextBottom>
                 </a>
               </Link>
+=======
+              <DividerTop></DividerTop>
+              <TextTop>4</TextTop>
+              <DividerTop></DividerTop>
+              <TextBottom>Technologie</TextBottom>
+>>>>>>> 557cf842935d07082978f964ce3e60fb2e8f60ca
             </Wrapper4>
 
             <Wrapper5>
@@ -226,6 +311,7 @@ const Technologies = () => {
           <WrapperContent>
             <Title>Technologies pour cette compétence</Title>
             <WrapperMenuDeroulant>
+<<<<<<< HEAD
               <input
                 placeholder="Vous pouvez ajouter 1 à 5 Technologies"
                 value={technologie}
@@ -238,10 +324,29 @@ const Technologies = () => {
                   width={}
                   height={}
               /> */}
+=======
+              <form onSubmit={submitform}>
+                    <input type="text" placeholder="exemple : Plombier" value={Technologie} onChange={e => setTechnologie(e.target.value)} required/>
+                    <br />
+                    <Text style={{ color: 'red', marginLeft: 26, }}>{erreur}</Text>
+                    <WrapperAjout>
+                    <ButtonLink type="submit" value="Ajouter">
+                        <a>
+                            <Image src={Plus} alt={"PortraiScopie"} quality={100} />
+                            <Text>Ajouter</Text>
+                        </a>
+                    </ButtonLink>
+                    </WrapperAjout>
+                </form>
+>>>>>>> 557cf842935d07082978f964ce3e60fb2e8f60ca
             </WrapperMenuDeroulant>
+            {listTechnologie()}
             <WrapperAjout>
+<<<<<<< HEAD
               <Image src={Plus} alt={"PortraiScopie"} quality={100} />
               <TextAjout>Ajouter</TextAjout>
+=======
+>>>>>>> 557cf842935d07082978f964ce3e60fb2e8f60ca
             </WrapperAjout>
             <WrapperButton>
               <ButtonLinkPrec>
@@ -251,11 +356,15 @@ const Technologies = () => {
                   </a>
                 </Link>
               </ButtonLinkPrec>
+<<<<<<< HEAD
               <ButtonLink
                 onClick={() => {
                   handleSubmit();
                 }}
               >
+=======
+              <ButtonLink onClick={() => {nextStep()}}>
+>>>>>>> 557cf842935d07082978f964ce3e60fb2e8f60ca
                 <Link href="/OffreurDeCompetence/Diplomes/Diplomes">
                   <a>
                     <Text>Suivant</Text>

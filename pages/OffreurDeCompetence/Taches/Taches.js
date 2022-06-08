@@ -63,6 +63,7 @@ import Idea from "../../../public/image/idea.png";
 import Plus from "../../../public/image/plus.png";
 
 const Taches = () => {
+<<<<<<< HEAD
   const [tache, setTache] = useState("");
 
   useEffect(() => {
@@ -82,6 +83,83 @@ const Taches = () => {
       console.log("il y a une erreur");
     }
   };
+=======
+
+  const [Tache, setTache] = useState('');
+  const [erreur, setErreur] = useState('');
+  const [Taches, setTaches] = useState([]);
+  const [id, setId] = useState(null);
+
+  const submitform = (e) => {
+        e.preventDefault();
+        if (id === null) {
+            if(Taches.length === 5){
+                setErreur('Vous ne pouvez pas ajouter plus de 5 Tâches');
+            } else {
+                setErreur('');
+                let Tach = {
+                    id: Taches.length,
+                    Tache: Tache,
+                }
+                setTaches([...Taches, Tach]);
+                setTache('');
+            }
+        } else {
+            let Tach = {
+                id: id,
+                Tache: Tache,
+            }
+            setTaches(Taches.map(m => m.id === id ? Tach : m));
+            setTache('');
+            setId(null);
+        }
+    };
+
+    const updateTache = (id) => {
+        setTache(Taches[id].Tache);
+        setId(id);
+    };
+
+    const removeTache = (id) => {
+        setTaches(Taches.filter(m => m.id !== id));
+    };
+
+    const nextStep = () => {
+        if(Taches.length === 0){
+            setErreur('Vous devez ajouter au moins une taâche');
+        } else {
+            setErreur('');
+            localStorage.setItem('Tache', JSON.stringify(Taches));
+            console.log(localStorage.getItem('Tache'));
+        }
+      };
+
+      const listTache = () => {
+          if (Taches.length === 0) {
+              return <Text>Vous n`avez pas encore ajouté de tâche</Text>
+          } else {
+              return (
+                  <div>
+                      {Taches.map(Tach => (
+                            <div key={Tach.id}>
+                                <Text> Tache : {Tach.Tache}</Text>
+                                <ButtonLink onClick={() => updateTache(Tach.id)}>
+                                    <a>
+                                        <Text>Modifier</Text>
+                                    </a>
+                                </ButtonLink>
+                                <ButtonLink onClick={()=> removeTache(Tach.id)}>
+                                    <a>
+                                        <Text>Supprimer</Text>
+                                    </a>
+                                </ButtonLink>
+                            </div>
+                      ))}
+                  </div>
+              )
+          }
+      };
+>>>>>>> 557cf842935d07082978f964ce3e60fb2e8f60ca
 
   return (
     <>
@@ -226,6 +304,7 @@ const Taches = () => {
           <WrapperContent>
             <Title>Tâches pour cette compétence</Title>
             <WrapperMenuDeroulant>
+<<<<<<< HEAD
               <input
                 placeholder="Vous pouvez ajouter 1 à 5 Tâches"
                 value={tache}
@@ -238,25 +317,40 @@ const Taches = () => {
                     width={}
                     height={}
                 /> */}
+=======
+              <form onSubmit={submitform}>
+                    <input type="text" placeholder="exemple : Plombier" value={Tache} onChange={e => setTache(e.target.value)} required/>
+                    <br />
+                    <Text style={{ color: 'red', marginLeft: 26, }}>{erreur}</Text>
+                    <WrapperAjout>
+                    <ButtonLink type="submit" value="Ajouter">
+                        <a>
+                            <Image src={Plus} alt={"PortraiScopie"} quality={100} />
+                            <Text>Ajouter</Text>
+                        </a>
+                    </ButtonLink>
+                    </WrapperAjout>
+                </form>
+>>>>>>> 557cf842935d07082978f964ce3e60fb2e8f60ca
             </WrapperMenuDeroulant>
-
-            <WrapperAjout>
-              <Image src={Plus} alt={"PortraiScopie"} quality={100} />
-              <TextAjout>Ajouter</TextAjout>
-            </WrapperAjout>
+              {listTache()}
             <WrapperButton>
               <ButtonLinkPrec>
-                <Link href="/OffreurDeCompetence/Activites/Activites">
+                <Link href="/OffreurDeCompetence/Activites/Activite">
                   <a>
                     <Text>Précédent</Text>
                   </a>
                 </Link>
               </ButtonLinkPrec>
+<<<<<<< HEAD
               <ButtonLink
                 onClick={() => {
                   handleSubmit();
                 }}
               >
+=======
+              <ButtonLink onClick={() => {nextStep()}}>
+>>>>>>> 557cf842935d07082978f964ce3e60fb2e8f60ca
                 <Link href="/OffreurDeCompetence/Techniques/Techniques">
                   <a>
                     <Text>Suivant</Text>
