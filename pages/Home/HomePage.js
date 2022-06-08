@@ -20,7 +20,6 @@ import WrapperContent, {
 
 // IMAGES
 import FourmiBleu from "../../public/image/FourmiBleu-remove.png";
-import boiteDeDialogue from "../../public/image/boitededialogue.png";
 import Myrhmica from "../../public/image/Myrhmica-color-remove.png";
 import PortraiScopie from "../../public/image/PortraitScopie-remove.png";
 
@@ -65,14 +64,14 @@ const HomePage = () => {
             <Link href="/Register/DemandeurDeCompetence/Demandeur_competence">
               <a>
                 <Button>
-                  <Text>Crée un compte Demandeur de compétence</Text>
+                  <Text>Créer un compte Demandeur de compétences</Text>
                 </Button>
               </a>
             </Link>
             <Link href="/Login/DemandeurDeCompetence/Demandeur_competence">
               <a>
                 <Button>
-                  <Text>Connexion Demandeur de compétence</Text>
+                  <Text>Connexion Demandeur de compétences</Text>
                 </Button>
               </a>
             </Link>
@@ -82,14 +81,14 @@ const HomePage = () => {
             <Link href="/Register/Institutionnel/Institutionnel">
               <a>
                 <Button>
-                  <Text>Crée un compte Institutionnels</Text>
+                  <Text>Créer un compte Institutionnel</Text>
                 </Button>
               </a>
             </Link>
             <Link href="/Login/Institutionnel/Institutionnel">
               <a>
                 <Button>
-                  <Text>Connexion Institutionnels</Text>
+                  <Text>Connexion Institutionnel</Text>
                 </Button>
               </a>
             </Link>
@@ -99,14 +98,14 @@ const HomePage = () => {
             <Link href="/Register/OffreurDeCompetence/Offreur_de_competence">
               <a>
                 <Button>
-                  <Text>Crée un compte Offreur de compétence</Text>
+                  <Text>Créer un compte Offreur de compétences</Text>
                 </Button>
               </a>
             </Link>
             <Link href="/Login/OffreurDeCompetence/Offreur_de_competence">
               <a>
                 <Button>
-                  <Text>Connexion Offreur de compétence</Text>
+                  <Text>Connexion Offreur de compétences</Text>
                 </Button>
               </a>
             </Link>

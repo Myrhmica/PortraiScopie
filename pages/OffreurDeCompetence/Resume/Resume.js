@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Header from "../../Header/Header2";
 
@@ -17,7 +17,7 @@ import WrapperTitle, {
   WrapperDiplomes,
   WrapperMetiers,
   WrapperCompetence,
-  Competence,
+  Competences,
   WrapperCentre_interet,
   WrapperCapacites,
   WrapperQualites,
@@ -29,7 +29,6 @@ import WrapperTitle, {
 } from "./Resume.style";
 
 const Resumes = () => {
-
   const [Centre_interet, setCentre_interet] = useState([]);
   const [Activite, setActivite] = useState([]);
   const [Capacite, setCapacite] = useState([]);
@@ -48,8 +47,8 @@ const Resumes = () => {
     setActivite(JSON.parse(localStorage.getItem("Activite")));
     setCapacite(JSON.parse(localStorage.getItem("Capacite")));
     setQualite(JSON.parse(localStorage.getItem("Qualite")));
-    setDiplome(JSON.parse(localStorage.getItem("Diplome"))); 
-    setTalent(JSON.parse(localStorage.getItem("Talent"))); 
+    setDiplome(JSON.parse(localStorage.getItem("Diplome")));
+    setTalent(JSON.parse(localStorage.getItem("Talent")));
     setTechnique(JSON.parse(localStorage.getItem("Technique")));
     setTechnologie(JSON.parse(localStorage.getItem("Technologie")));
     setValeur(JSON.parse(localStorage.getItem("Valeur")));
@@ -69,110 +68,117 @@ const Resumes = () => {
             </a>
           </Link>
         </ButtonLink>
-        <TitleTop>Imprimer mon PortraiScopie</TitleTop>
+        <ButtonLink onclick="window.print()">
+          <TitleTop>Imprimer mon PortraiScopie</TitleTop>
+        </ButtonLink>
       </WrapperTitle>
       <WrapperAll>
         <Wrapper>
           <WrapperTop>
             <WrapperActivite>
               <Title>Activites</Title>
-                {Activite.map(Acti => (
-                            <div key={Acti.id}>
-                                <Text>{Acti.Activite}</Text>
-                              </div>
-                      ))}
+              {Activite.map((Acti) => (
+                <div key={Acti.id}>
+                  <Text>{Acti.Activite}</Text>
+                </div>
+              ))}
             </WrapperActivite>
             <WrapperTaches>
               <Title>Tâches</Title>
-                {Tache.map(Tach => (
-                            <div key={Tach.id}>
-                                <Text>{Tach.Tache}</Text>
-                              </div>
-                      ))}
+              {Tache.map((Tach) => (
+                <div key={Tach.id}>
+                  <Text>{Tach.Tache}</Text>
+                </div>
+              ))}
             </WrapperTaches>
             <WrapperTechnologies>
               <Title>Technologies / Techniques</Title>
-              <Text>Technologie : {Technologie.map(Tech => (
-                            <div key={Tech.id}>
-                                <Text>{Tech.Technologie}</Text>
-                              </div>
-                      ))}</Text>
-                      <br />
-              <Text> Technique :{Technique.map(Tech => (
-                            <div key={Tech.id}>
-                                <Text>{Tech.Technique}</Text>
-                              </div>
-                      ))}</Text>
+              <Text>
+                Technologie :
+                {Technologie.map((Tech) => (
+                  <div key={Tech.id}>
+                    <Text>{Tech.Technologie}</Text>
+                  </div>
+                ))}
+              </Text>
+              <br />
+              <Text>
+                Technique :
+                {Technique.map((Tech) => (
+                  <div key={Tech.id}>
+                    <Text>{Tech.Technique}</Text>
+                  </div>
+                ))}
+              </Text>
             </WrapperTechnologies>
             <WrapperDiplomes>
               <Title>Diplômes / Habilitations / Certificats</Title>
-              {Diplome.map(Dip => (
-                            <div key={Dip.id}>
-                                <Text>{Dip.Diplome}</Text>
-                              </div>
-                      ))}
+              {Diplome.map((Dip) => (
+                <div key={Dip.id}>
+                  <Text>{Dip.Diplome}</Text>
+                </div>
+              ))}
             </WrapperDiplomes>
           </WrapperTop>
           <WrapperMiddle>
             <WrapperMetiers>
               <Title>Métiers</Title>
-                {Metier.map(Metier => (
-                            <div key={Metier.id}>
-                                <Text>{Metier.metier}</Text>
-                              </div>
-                      ))}
+              {Metier.map((Metier) => (
+                <div key={Metier.id}>
+                  <Text>{Metier.metier}</Text>
+                </div>
+              ))}
             </WrapperMetiers>
             <WrapperCompetence>
-              <Competence>
-                <Title>Libellé de compétences</Title>
-                  {Competence.map(Comp => (
-                            <div key={Comp.id}>
-                                <Text>{Comp.Competence}</Text>
-                              </div>
-                      ))}
-              </Competence>
+              <Competences>
+                {Competence.map((Comp) => (
+                  <div key={Comp.id}>
+                    <Text>{Comp.Competence}</Text>
+                  </div>
+                ))}
+              </Competences>
             </WrapperCompetence>
             <WrapperCentre_interet>
-              <Title>Centres d'intérêts</Title>
-              {Centre_interet.map(CentreInt => (
-                            <div key={CentreInt.id}>
-                                <Text>{CentreInt.Centre_interet}</Text>
-                              </div>
-                      ))}
+              <Title>{"Centres d'intérêts"}</Title>
+              {Centre_interet.map((CentreInt) => (
+                <div key={CentreInt.id}>
+                  <Text>{CentreInt.Centre_interet}</Text>
+                </div>
+              ))}
             </WrapperCentre_interet>
           </WrapperMiddle>
           <WrapperBottom>
             <WrapperCapacites>
               <Title>Capacités</Title>
-              {Capacite.map(Cap => (
-                            <div key={Cap.id}>
-                                <Text>{Cap.Capacite}</Text>
-                              </div>
-                      ))}
+              {Capacite.map((Cap) => (
+                <div key={Cap.id}>
+                  <Text>{Cap.Capacite}</Text>
+                </div>
+              ))}
             </WrapperCapacites>
             <WrapperQualites>
               <Title>Qualités</Title>
-              {Qualite.map(Quali => (
-                            <div key={Quali.id}>
-                                <Text>{Quali.Qualite}</Text>
-                              </div>
-                      ))}
+              {Qualite.map((Quali) => (
+                <div key={Quali.id}>
+                  <Text>{Quali.Qualite}</Text>
+                </div>
+              ))}
             </WrapperQualites>
             <WrapperTalents>
               <Title>Talents</Title>
-              {Talent.map(Tal => (
-                            <div key={Tal.id}>
-                                <Text>{Tal.Talent}</Text>
-                              </div>
-                      ))}
+              {Talent.map((Tal) => (
+                <div key={Tal.id}>
+                  <Text>{Tal.Talent}</Text>
+                </div>
+              ))}
             </WrapperTalents>
             <WrapperValeurs>
               <Title>Valeurs</Title>
-                {Valeur.map(Val => (
-                            <div key={Val.id}>
-                                <Text>{Val.Valeur}</Text>
-                              </div>
-                      ))}
+              {Valeur.map((Val) => (
+                <div key={Val.id}>
+                  <Text>{Val.Valeur}</Text>
+                </div>
+              ))}
             </WrapperValeurs>
           </WrapperBottom>
           <WrapperCopyright>

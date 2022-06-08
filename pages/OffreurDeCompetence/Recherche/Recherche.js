@@ -35,7 +35,7 @@ const Recherche = () => {
         <Title>Quelle compétence rechercher vous ?</Title>
         <WrapperRecherche>
           <input
-            placeholder="Compétence recherché, Technologies, Qualités, ..."
+            placeholder="Compétence recherchée, Technologies, Qualités, ..."
             value={metier}
             onChange={(e) => setMetier(e.target.value)}
           />

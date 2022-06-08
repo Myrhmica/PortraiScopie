@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import HeaderWrapper, {
   WrapperImage,
@@ -16,21 +16,25 @@ import Link from "next/link";
 import Myrhmica from "../../public/image/Myrhmica-color-remove.png";
 import PortraitScopie from "../../public/image/PortraitScopie-remove.png";
 import Profil from "../../public/image/profil.png";
+// import axios from "axios";
 
 const Header2 = () => {
+  {/*const Prenom = () => {
+    const response = await axios.get(
+      "https://portraiscopie-dev.herokuapp.com/api/users/",
+      JSON.parse({
+      }),
+    );
+  };
+console.log(JSON.parse(response?.data));*/}
+
   return (
     <>
       <HeaderWrapper>
         <WrapperImage>
           <Link href="/">
             <a>
-              <Image
-                src={Myrhmica}
-                alt={"Myrhmica"}
-                quality={100}
-                width={115}
-                height={70}
-              />
+              <Image src={Myrhmica} alt={"Myrhmica"} quality={100} />
             </a>
           </Link>
           <Link href="/portraitscopie">
@@ -70,6 +74,11 @@ const Header2 = () => {
           <Link href="/OffreurDeCompetence/Resume/Resume">
             <a>
               <Title>Visualisation</Title>
+            </a>
+          </Link>
+          <Link href="/OffreurDeCompetence/Recherche/Recherche">
+            <a>
+              <Title>Moteur de recherche</Title>
             </a>
           </Link>
         </WrapperTitle>

@@ -73,6 +73,7 @@ export const ButtonLink = styled.div`
 // Text
 export const Title = styled.h2`
   padding-top: 15px;
+  text-align: center;
 `;
 
 export const TitleTop = styled.h2`
@@ -80,10 +81,11 @@ export const TitleTop = styled.h2`
   border-radius: 30px;
   color: white;
   width: 270px;
-  height: 50px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 `;
 
 export const TitleButton = styled.h2`

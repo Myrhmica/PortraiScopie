@@ -7,6 +7,8 @@ export const WrapperImage = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
 
   a {
     display: flex;

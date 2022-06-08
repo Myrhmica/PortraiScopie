@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
-const WrapperContent = styled.div`
+const WrapperALL = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
 `;
 
 export const WrapperTitle = styled.div`
@@ -53,11 +55,20 @@ export const WrapperCoche = styled.div`
   width: 600px;
 `;
 
-export const Coche = styled.button`
-  background-color: white;
-  border-radius: 10px;
-  min-width: 30px;
-  min-height: 30px;
+export const Coche = styled.div`
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    width: 30px;
+    height: 30px;
+  }
+  input[type="checkbox"]:checked {
+    background-color: #f2bf3d;
+  }
 `;
 
 export const ButtonLink = styled.button`
@@ -79,4 +90,4 @@ export const TextBottom = styled.h2`
 
 export const Footer1 = styled.div``;
 
-export default WrapperContent;
+export default WrapperALL;

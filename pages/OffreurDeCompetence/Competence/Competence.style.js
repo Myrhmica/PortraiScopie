@@ -1,6 +1,14 @@
 import styled from "styled-components";
 
-const WrapperContent = styled.div``;
+const WrapperALL = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: space-between;
+  height: 100vh;
+`;
+
+export const WrapperContent = styled.div``;
 
 export const WrapperTitle = styled.div`
   display: flex;
@@ -88,11 +96,6 @@ export const WrapperButton = styled.div`
 
 export const TextBottom = styled.h2``;
 
-export const Footer1 = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-`;
+export const Footer1 = styled.div``;
 
-export default WrapperContent;
+export default WrapperALL;

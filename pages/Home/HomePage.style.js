@@ -3,21 +3,47 @@ import styled from "styled-components";
 const WrapperContent = styled.div``;
 
 export const WrapperContentLeft = styled.div`
-  height: 700px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  img {
-    width: 280px;
-    height: 200px;
+  @media only screen and (min-width: 1251px) {
+    height: 700px;
     display: flex;
     justify-content: center;
-    filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.25));
+    align-items: flex-end;
+    img {
+      width: 280px;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+  }
+  @media only screen and (max-width: 1250px) and (min-width: 701px) {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    img {
+      width: 200px;
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+  }
+  @media only screen and (max-width: 700px) {
   }
 `;
 
 export const WrapperBox = styled.div`
-  padding-bottom: 200px;
+  @media only screen and (min-width: 1251px) {
+    padding-bottom: 200px;
+    display: grid;
+  }
+  @media only screen and (max-width: 1250px) and (min-width: 701px) {
+    padding-bottom: 150px;
+  }
+  @media only screen and (max-width: 700px) {
+    padding-bottom: 100px;
+  }
 `;
 
 export const WrapperDialog = styled.div`
@@ -27,15 +53,31 @@ export const WrapperDialog = styled.div`
 `;
 
 export const Wrapper1 = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 450px;
-  height: 250px;
-  border-radius: 250px / 140px;
-  background: #ffffff;
-  border: 1px solid #2a3985;
-  filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.25));
+  @media only screen and (min-width: 1251px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    height: 250px;
+    border-radius: 250px / 140px;
+    background: #ffffff;
+    border: 1px solid #2a3985;
+    filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.25));
+  }
+  @media only screen and (max-width: 1250px) and (min-width: 701px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    height: 250px;
+    border-radius: 250px / 140px;
+    background: #ffffff;
+    border: 1px solid #2a3985;
+    filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.25));
+  }
+  @media only screen and (max-width: 700px) {
+    padding-bottom: 100px;
+  }
 `;
 
 export const Wrapper2 = styled.div`

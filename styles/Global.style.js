@@ -32,7 +32,11 @@ h2 {
   flex-direction: column;
   min-height: 100vh;
 }
-
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+}
 `;
 
 export default GlobalStyle;

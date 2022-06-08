@@ -7,15 +7,17 @@ import config from "../../../config.json";
 
 const LOGIN_URL = "/api/authenticate";
 
-import WrapperContent, {
+import WrapperALL, {
+  WrapperContent,
   WrapperInscription,
+  WrapperTitle,
   Title,
+  WrapperBottom,
   Subtitle,
   WrapperInput,
   WrapperButton,
   Button,
   Text,
-  Footer1,
 } from "./Demandeur_competence.style";
 
 const Demandeur_competence = () => {
@@ -39,62 +41,68 @@ const Demandeur_competence = () => {
   
   return (
     <>
-      <Header1 />
-      <WrapperContent>
-        <WrapperInscription>
-          <form>
-            <Title>Email</Title>
-            <WrapperInput>
-              <input
-                type="email"
-                autoComplete="off"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-                required
-              />
-            </WrapperInput>
-            <Title>Mot de passe</Title>
-            <WrapperInput>
-              <input
-                type="password"
-                onChange={(e) => setPwd(e.target.value)}
-                value={pwd}
-                required
-              />
-            </WrapperInput>
-            <Subtitle>
-              Pas encore de compte ?
-              <Link href="/Register/DemandeurDeCompetence/Demandeur_competence">
-                <a>Inscrivez-vous</a>
-              </Link>
-            </Subtitle>
+      <WrapperALL>
+        <Header1 />
+        <WrapperContent>
+          <WrapperInscription>
+            <form>
+              <WrapperTitle>
+                <Title>Email</Title>
+              </WrapperTitle>
+              <WrapperInput>
+                <input
+                  type="email"
+                  autoComplete="off"
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
+                  required
+                />
+              </WrapperInput>
+              <WrapperTitle>
+                <Title>Mot de passe</Title>
+              </WrapperTitle>
+              <WrapperInput>
+                <input
+                  type="password"
+                  onChange={(e) => setPwd(e.target.value)}
+                  value={pwd}
+                  required
+                />
+              </WrapperInput>
+              <WrapperBottom>
+                <Subtitle>
+                  Pas encore de compte ?
+                  <Link href="/Register/DemandeurDeCompetence/Demandeur_competence">
+                    <a>Inscrivez-vous</a>
+                  </Link>
+                </Subtitle>
 
-            <WrapperButton>
-              <Button>
-                <Link href="/MotDePasse/MotDePasse">
-                  <a>
-                    <Text>Changer de mot de passe</Text>
-                  </a>
-                </Link>
-              </Button>
-              <Button
-                onClick={() => {
-                  handleSubmit();
-                }}
-              >
-                <Link href="/OffreurDeCompetence/Conseil/Conseil">
-                  <a>
-                    <Text>Connexion</Text>
-                  </a>
-                </Link>
-              </Button>
-            </WrapperButton>
-          </form>
-        </WrapperInscription>
-      </WrapperContent>
-      <Footer1>
+                <WrapperButton>
+                  <Button>
+                    <Link href="/MotDePasse/MotDePasse">
+                      <a>
+                        <Text>Changer de mot de passe</Text>
+                      </a>
+                    </Link>
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      handleSubmit();
+                    }}
+                  >
+                    <Link href="/OffreurDeCompetence/Conseil/Conseil">
+                      <a>
+                        <Text>Connexion</Text>
+                      </a>
+                    </Link>
+                  </Button>
+                </WrapperButton>
+              </WrapperBottom>
+            </form>
+          </WrapperInscription>
+        </WrapperContent>
         <Footer />
-      </Footer1>
+      </WrapperALL>
     </>
   );
 };
