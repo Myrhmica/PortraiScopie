@@ -41,6 +41,7 @@ const Resumes = () => {
   const [Valeur, setValeur] = useState([]);
   const [Tache, setTache] = useState([]);
   const [Metier, setMetier] = useState([]);
+  const [Competence, setCompetence] = useState([]);
 
   useEffect(() => {
     setCentre_interet(JSON.parse(localStorage.getItem("Centre_interet")));
@@ -54,6 +55,7 @@ const Resumes = () => {
     setValeur(JSON.parse(localStorage.getItem("Valeur")));
     setTache(JSON.parse(localStorage.getItem("Tache")));
     setMetier(JSON.parse(localStorage.getItem("metiers")));
+    setCompetence(JSON.parse(localStorage.getItem("Competence")));
 }, [])
 
   return (
@@ -123,7 +125,11 @@ const Resumes = () => {
             <WrapperCompetence>
               <Competence>
                 <Title>Libellé de compétences</Title>
-                  
+                  {Competence.map(Comp => (
+                            <div key={Comp.id}>
+                                <Text>{Comp.Competence}</Text>
+                              </div>
+                      ))}
               </Competence>
             </WrapperCompetence>
             <WrapperCentre_interet>

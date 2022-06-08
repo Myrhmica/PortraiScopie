@@ -18,6 +18,7 @@ import WrapperContent, {
   ButtonLinkRight,
   WrapperButton,
   Footer1,
+  WrapperInput
 } from "./Competence.style";
 
 import Idea from "../../../public/image/idea.png";
@@ -56,28 +57,12 @@ const Competence = () => {
 
     const nextStep = () => {
         if(Competences.length === 0){
-            setErreur("Vous devez ajouter au moins d'un centre d'intérêt ");
+            setErreur("Vous devez ajouter une compétence");
         } else {
             setErreur('');
             localStorage.setItem('Competence', JSON.stringify(Competences));
             console.log(localStorage.getItem('Competence'));
         }
-      };
-
-      const listCompetence = () => {
-          if (Competences.length === 0) {
-              return <Text>Vous n`avez pas encore ajouté de compétence</Text>
-          } else {
-              return (
-                  <div>
-                      {Competences.map(Comp => (
-                            <div key={Comp.id}>
-                                <Text> Competence : {Comp.Competence}</Text>
-                            </div>
-                      ))}
-                  </div>
-              )
-          }
       };
 
   return (
@@ -105,18 +90,17 @@ const Competence = () => {
               />
             </WrapperImage>
           </WrapperTop>
-          <Title>
+          <Text>
             Citez ou choisissez dans la liste une compétence dans laquelle vous
             excellez
-          </Title>
-          <WrapperMenuDeroulant>
+          </Text>
+          <WrapperInput>
              <form onSubmit={submitform}>
-                    <input type="text" placeholder="exemple : Plombier" value={Competence} onChange={e => setCompetence(e.target.value)} required/>
+                    <input type="text" placeholder="exemple : Manager une équipe" value={Competence} onChange={e => setCompetence(e.target.value)} required/>
                     <br />
                     <Text style={{ color: 'red', marginLeft: 26, }}>{erreur}</Text>
                 </form>
-          </WrapperMenuDeroulant>
-          {listCompetence()}          
+          </WrapperInput>
           <WrapperButton>
             <ButtonLinkLeft>
               <Link href="/OffreurDeCompetence/Competence/Competence">
