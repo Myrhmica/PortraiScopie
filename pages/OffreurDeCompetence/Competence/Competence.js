@@ -34,7 +34,7 @@ const Competence = () => {
     e.preventDefault();
     if (id === null) {
       if (Competences.length === 5) {
-        setErreur("Vous ne pouvez pas ajouter plus de 5 centres d' intérêts.T");
+        setErreur("Vous ne pouvez pas ajouter plus de 5 centres d' intérêts.");
       } else {
         setErreur("");
         let Comp = {
