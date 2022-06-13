@@ -1,11 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Footer from "../../Footer/Footer";
 import Header1 from "../../Header/Header1";
-import axios from "axios";
-import config from "../../../config.json";
-
-const LOGIN_URL = "/api/authenticate";
 
 import WrapperALL, {
   WrapperContent,
@@ -21,22 +17,21 @@ import WrapperALL, {
 } from "./Demandeur_competence.style";
 
 const Demandeur_competence = () => {
+
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
+  const [Personnas, setPersonnas] = useState([]);
+  const [id, setId] = useState(null);
 
-  const handleSubmit = async (e) => {
-    try {
-      const response = await axios.post(
-        "https://portraiscopie-dev.herokuapp.com/api/authenticate",
-        {
-          email: email,
-          password: pwd,
-        }
-      );
-      console.log(response);
-    } catch (err) {
-      console.log("il y a une erreur");
+  const submitform = async (e) => {
+    let user = {
+        email: email,
+        pwd: pwd,
+        Personnas: Personnas,
+        id: id
     }
+      localStorage.setItem('user', JSON.stringify(user));
+      console.log(user);
   };
   
   return (
@@ -45,7 +40,7 @@ const Demandeur_competence = () => {
         <Header1 />
         <WrapperContent>
           <WrapperInscription>
-            <form>
+            <form onSubmit={submitform()}>
               <WrapperTitle>
                 <Title>Email</Title>
               </WrapperTitle>
@@ -87,7 +82,7 @@ const Demandeur_competence = () => {
                   </Button>
                   <Button
                     onClick={() => {
-                      handleSubmit();
+                      submitform();
                     }}
                   >
                     <Link href="/OffreurDeCompetence/Conseil/Conseil">

@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import Header2 from "../../Header/Header2";
 import Footer from "../../Footer/Footer";
-import axios from "axios";
 
 import WrapperALL, {
   WrapperContent,
@@ -24,6 +23,7 @@ import WrapperALL, {
 } from "./Competence.style";
 
 import Idea from "../../../public/image/idea.png";
+
 const Competence = () => {
   const [Competence, setCompetence] = useState("");
   const [erreur, setErreur] = useState("");
@@ -34,7 +34,7 @@ const Competence = () => {
     e.preventDefault();
     if (id === null) {
       if (Competences.length === 5) {
-        setErreur("Vous ne pouvez pas ajouter plus de 5 competence.");
+        setErreur("Vous ne pouvez mettre qu'une seule compétences.");
       } else {
         setErreur("");
         let Comp = {
@@ -101,8 +101,6 @@ const Competence = () => {
                   required
                 />
                 <br />
-              </form>
-            </WrapperInput>
             <WrapperButton>
               <ButtonLinkLeft>
                 <Link href="/OffreurDeCompetence/Competence/Competence">
@@ -113,18 +111,18 @@ const Competence = () => {
               </ButtonLinkLeft>
               <ButtonLinkRight
                 type="submit"
-                value="ajouter"
+                value={Competence}
                 onClick={() => {
                   nextStep();
                 }}
               >
                 <Link href="/OffreurDeCompetence/Metier/Metier">
-                  <a>
                     <TextBottom>Valider</TextBottom>
-                  </a>
                 </Link>
               </ButtonLinkRight>
             </WrapperButton>
+            </form>
+            </WrapperInput>
           </WrapperCompetence>
         </WrapperContent>
         <Footer1>

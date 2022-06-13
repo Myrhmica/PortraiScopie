@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
 import HeaderWrapper, {
   WrapperImage,
@@ -16,17 +16,41 @@ import Link from "next/link";
 import Myrhmica from "../../public/image/Myrhmica-color-remove.png";
 import PortraitScopie from "../../public/image/PortraitScopie-remove.png";
 import Profil from "../../public/image/profil.png";
-// import axios from "axios";
+
+import axios from 'axios'
 
 const Header2 = () => {
-  {/*const Prenom = () => {
-    const response = await axios.get(
-      "https://portraiscopie-dev.herokuapp.com/api/users/",
-      JSON.parse({
-      }),
-    );
-  };
-console.log(JSON.parse(response?.data));*/}
+  const request = () => {
+    const [user, setUser] = useState(null)
+    const [user_id, setUserId] = useState(5)
+
+    const request = async () => {
+        try {
+            let response = await axios.get(`https://portraiscopie-dev.herokuapp.com/api/users/${user_id}`);
+            setUser(response.data)
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        if (user === null) {
+            request();
+        }
+        console.log(user);
+    },)
+
+    if (user === null) {
+        return (
+            <div>
+                <h1>Loading...</h1>
+            </div>
+        )
+
+    } else {
+        return <h1>{user.firstName}</h1>   
+    }
+}
 
   return (
     <>
@@ -58,7 +82,7 @@ console.log(JSON.parse(response?.data));*/}
                 width={40}
                 height={40}
               />
-              <Text>Profil</Text>
+              {request()}
             </a>
           </Link>
         </WrapperImage>

@@ -4,7 +4,6 @@ import Header from "../../Header/Header2";
 import Footer from "../../Footer/Footer";
 import Image from "next/image";
 import Progression from "../../BarreDeProgression/Progression";
-import axios from "axios";
 
 import WrapperALL, {
   WrapperTitle,
@@ -32,6 +31,7 @@ import Idea from "../../../public/image/idea.png";
 import Plus from "../../../public/image/plus.png";
 
 const Metier = () => {
+  
   const [debut, setDebut] = useState("");
   const [fin, setFin] = useState("");
   const [metier, setMetier] = useState("");
@@ -83,13 +83,12 @@ const Metier = () => {
     setMetiers(Metiers.filter((m) => m.id !== id));
   };
 
-  const nextStep = () => {
+  const nextStep = await => {
     if (Metiers.length === 0) {
-      setErreur("Vous devez ajouter au moins un métier");
-    } else {
-      setErreur("");
       localStorage.setItem("metiers", JSON.stringify(Metiers));
       console.log(localStorage.getItem("metiers"));
+    } else {
+      setErreur("");
     }
   };
 
@@ -133,14 +132,13 @@ const Metier = () => {
         <Header />
         <WrapperTitle>
           <WrapperTop>
-            <TitleTop>Mon PortraiScopie</TitleTop>
-            <TitleColor>
+            <TitleTop>
             {Competence.map((Comp) => (
                   <div key={Comp.id}>
                     <Text>{Comp.Competence}</Text>
                   </div>
                 ))}
-            </TitleColor>
+            </TitleTop>
           </WrapperTop>
         </WrapperTitle>
 

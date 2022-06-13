@@ -82,6 +82,7 @@ const Demandeur_competence = () => {
         </Link>
       </WrapperImage>
       <WrapperInscription>
+      <form>
         <WrapperInput>
           <Title>Entité / Raisons sociale ou Nom Prénom</Title>
           <input
@@ -141,13 +142,7 @@ const Demandeur_competence = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </WrapperInput>
-        {/*
-          <Title>Confirmer mot de passe</Title>
-          <WrapperInput>
-            <input placeholder="Confirmer mot de passe" />
-          </WrapperInput> 
-          */}
-
+        </form>
         <Subtitle>
           Vous avez déjà un compte ?
           <Link href="/Login/DemandeurDeCompetence/Demandeur_competence">

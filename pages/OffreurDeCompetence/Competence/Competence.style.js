@@ -72,7 +72,8 @@ export const ButtonLinkLeft = styled.button`
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
   width: 250px;
-  dislpay: flex;
+  height: 100px;
+  display: flex;
   justify-content: center;
   align-items: center;
   margin: 25px;
@@ -84,7 +85,8 @@ export const ButtonLinkRight = styled.button`
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
   width: 200px;
-  dislpay: flex;
+  height: 100px;
+  display: flex;
   justify-content: center;
   align-items: center;
   margin: 25px;
