@@ -22,12 +22,12 @@ const Header2 = () => {
     <>
       <HeaderWrapper>
         <WrapperImage>
-          <Link href="/">
+          <Link href="https://myrhmica.fr">
             <a>
               <Image src={Myrhmica} alt={"Myrhmica"} quality={100} />
             </a>
           </Link>
-          <Link href="/portraitscopie">
+          <Link href="/">
             <a>
               <Image
                 src={PortraitScopie}

@@ -26,8 +26,6 @@ export const WrapperMiddle = styled.div`
   flex-direction: row;
   width: 100%;
   padding: 10px;
-  padding-right: 40px;
-  padding-left: 40px;
 `;
 
 export const WrapperCard = styled.div`
@@ -50,11 +48,35 @@ export const WrapperBox = styled.div`
   height: 225px;
 `;
 
+export const WrapperBottom1 = styled.div`
+  width: 100%;
+  height: 90px;
+  margin-top: 20px;
+  margin-right: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+export const WrapperCompetence = styled.div`
+  background: #2a3985;
+  border-radius: 30px;
+  width: 200px;
+  height: 90px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const WrapperBottom = styled.div`
   background: #2a3985;
   border-radius: 30px;
   height: 90px;
-  margin-top: 75px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 20px;
   margin-right: 50px;
   display: flex;
   flex-direction: row;
@@ -93,11 +115,12 @@ export const TextBottom = styled.h2`
   background-color: white;
   color: black;
   border-radius: 20px;
-  width: 140px;
+  width: 150px;
   height: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 `;
 
 export default WrapperTitle;

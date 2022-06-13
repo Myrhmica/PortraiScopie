@@ -16,7 +16,9 @@ export const Title = styled.h1`
   font-weight: 500;
   font-size: 25px;
 `;
-export const Text = styled.p``;
+export const Text = styled.p`
+  margin: 0px;
+`;
 
 export const WrapperAll = styled.div`
   display: flex;
@@ -84,22 +86,23 @@ export const WrapperTaches = styled.div`
   min-height: 0px;
   max-height: 200px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   text-align: center;
 `;
 
-export const WrapperTechnologies = styled.div`
+export const WrapperTechniqueTechnologies = styled.div`
   margin: 40px;
   border: 2px solid #c993ef;
   border-radius: 20px;
-  min-width: 300px;
-  max-width: 300px;
-  min-height: 0px;
-  max-height: 200px;
+  width: 300px;
+  height: 200px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   text-align: center;
 `;
+
 export const WrapperDiplomes = styled.div`
   margin: 40px;
   border: 2px solid #c993ef;
@@ -109,6 +112,7 @@ export const WrapperDiplomes = styled.div`
   min-height: 0px;
   max-height: 200px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   text-align: center;
 `;
@@ -121,6 +125,7 @@ export const WrapperMetiers = styled.div`
   min-height: 0px;
   max-height: 200px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   text-align: center;
 `;
@@ -144,6 +149,11 @@ export const WrapperCompetence = styled.div`
   align-items: center;
 `;
 
+export const TextComp = styled.h2`
+  font-weight: bold;
+  font-size: 24px;
+`;
+
 export const Competences = styled.div`
   margin: 40px;
   width: 300px;
@@ -165,8 +175,11 @@ export const WrapperCentre_interet = styled.div`
   min-height: 0px;
   max-height: 200px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  text-align: center;
 `;
+
 export const WrapperCapacites = styled.div`
   margin: 40px;
   border: 2px solid #c993ef;
@@ -176,8 +189,11 @@ export const WrapperCapacites = styled.div`
   min-height: 0px;
   max-height: 200px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  text-align: center;
 `;
+
 export const WrapperQualites = styled.div`
   margin: 40px;
   border: 2px solid #c993ef;
@@ -187,8 +203,11 @@ export const WrapperQualites = styled.div`
   min-height: 0px;
   max-height: 200px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  text-align: center;
 `;
+
 export const WrapperTalents = styled.div`
   margin: 40px;
   border: 2px solid #c993ef;
@@ -198,7 +217,9 @@ export const WrapperTalents = styled.div`
   min-height: 0px;
   max-height: 200px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  text-align: center;
 `;
 export const WrapperValeurs = styled.div`
   margin: 40px;
@@ -209,7 +230,9 @@ export const WrapperValeurs = styled.div`
   min-height: 0px;
   max-height: 200px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  text-align: center;
 `;
 export const WrapperCopyright = styled.div`
   min-width: 300px;

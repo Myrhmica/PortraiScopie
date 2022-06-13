@@ -10,7 +10,7 @@ import WrapperContent, {
   Title,
   WrapperInput,
   WrapperCoche,
-  CheckBox,
+  Coche,
   Subtitle,
   WrapperButton,
   Button,
@@ -23,7 +23,6 @@ import Myrhmica from "../../../public/image/Myrhmica-color-remove.png";
 import PortraitScopie from "../../../public/image/PortraitScopie-remove.png";
 
 const Demandeur_competence = () => {
-
   const [entityName, setEntityName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -64,12 +63,12 @@ const Demandeur_competence = () => {
   return (
     <WrapperContent>
       <WrapperImage>
-        <Link href="/">
+        <Link href="https:/myrhmica.fr">
           <a>
             <Image src={Myrhmica} alt={"Myrhmica"} quality={100} />
           </a>
         </Link>
-        <Link href="/https:/myrhmica.fr.">
+        <Link href="/">
           <a>
             <Image
               src={PortraitScopie}
@@ -155,7 +154,9 @@ const Demandeur_competence = () => {
           </Link>
         </Subtitle>
         <WrapperCoche>
-          <CheckBox></CheckBox>
+          <Coche>
+            <input type="checkbox" />
+          </Coche>
           <Text>
             J’ai pris connaissance et j’accepte la
             <Link href="/Login/DemandeurDeCompetence/Demandeur_competence">

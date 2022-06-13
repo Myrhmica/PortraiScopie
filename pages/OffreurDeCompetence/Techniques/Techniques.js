@@ -58,6 +58,13 @@ import WrapperTitle, {
   WrapperButton,
   ButtonLinkPrec,
   ButtonLink,
+  WrapperAdd,
+  WrapperAllAdd,
+  WrapperTextI,
+  TextI,
+  WrapperButtonAdd,
+  ButtonLinkAdd,
+  ButtonLinkMS,
 } from "./Techniques.style";
 
 import Idea from "../../../public/image/idea.png";
@@ -106,6 +113,8 @@ const Techniques = () => {
   const nextStep = () => {
     if (Techniques.length === 0) {
       setErreur("Vous devez ajouter au moins une Technique");
+      localStorage.setItem("Technique", JSON.stringify(Techniques));
+      console.log(localStorage.getItem("Technique"));
     } else {
       setErreur("");
       localStorage.setItem("Technique", JSON.stringify(Techniques));
@@ -115,37 +124,50 @@ const Techniques = () => {
 
   const listTechnique = () => {
     if (Techniques.length === 0) {
-      return <Text>Vous n`avez pas encore ajouté de tâche</Text>;
     } else {
       return (
-        <div>
+        <WrapperAdd>
           {Techniques.map((Tech) => (
             <div key={Tech.id}>
-              <Text> Technique : {Tech.Technique}</Text>
-              <ButtonLink onClick={() => updateTechnique(Tech.id)}>
-                <a>
-                  <Text>Modifier</Text>
-                </a>
-              </ButtonLink>
-              <ButtonLink onClick={() => removeTechnique(Tech.id)}>
-                <a>
-                  <Text>Supprimer</Text>
-                </a>
-              </ButtonLink>
+              <WrapperAllAdd>
+                <WrapperTextI>
+                  <TextI>{Tech.Technique}</TextI>
+                </WrapperTextI>
+                <WrapperButtonAdd>
+                  <ButtonLinkMS onClick={() => updateTechnique(Tech.id)}>
+                    <a>
+                      <Text>Modifier</Text>
+                    </a>
+                  </ButtonLinkMS>
+                  <ButtonLinkMS onClick={() => removeTechnique(Tech.id)}>
+                    <a>
+                      <Text>Supprimer</Text>
+                    </a>
+                  </ButtonLinkMS>
+                </WrapperButtonAdd>
+              </WrapperAllAdd>
             </div>
           ))}
-        </div>
+        </WrapperAdd>
       );
     }
   };
+
+  const [Competence, setCompetence] = useState([]);
+  useEffect(() => {
+    setCompetence(JSON.parse(localStorage.getItem("Competence")));
+  }, []);
 
   return (
     <>
       <Header />
       <WrapperTitle>
         <WrapperTop>
-          <TitleTop>Mon PortraiScopie</TitleTop>
-          <TitleColor>{/*Compétence choisie*/}</TitleColor>
+          {Competence.map((Comp) => (
+            <div key={Comp.id}>
+              <TitleTop>{Comp.Competence}</TitleTop>
+            </div>
+          ))}
         </WrapperTop>
       </WrapperTitle>
 
@@ -157,7 +179,7 @@ const Techniques = () => {
               <DividerTop1></DividerTop1>
               <Link href="/OffreurDeCompetence/Metier/Metier">
                 <a>
-                  <TextBottom>Métiers</TextBottom>
+                  <TextBottom>Métier(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper1>
@@ -168,7 +190,7 @@ const Techniques = () => {
               <DividerTop3></DividerTop3>
               <Link href="/OffreurDeCompetence/Activites/Activites">
                 <a>
-                  <TextBottom>Activités</TextBottom>
+                  <TextBottom>Activité(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper2>
@@ -179,7 +201,7 @@ const Techniques = () => {
               <DividerTop4></DividerTop4>
               <Link href="/OffreurDeCompetence/Taches/Taches">
                 <a>
-                  <TextBottom>Tâches</TextBottom>
+                  <TextBottom>Tâche(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper3>
@@ -190,7 +212,7 @@ const Techniques = () => {
               <DividerTop5></DividerTop5>
               <Link href="/OffreurDeCompetence/Techniques/Techniques">
                 <a>
-                  <TextBottom>Techniques</TextBottom>
+                  <TextBottom>Technique(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper4>
@@ -201,7 +223,7 @@ const Techniques = () => {
               <DividerTop6></DividerTop6>
               <Link href="/OffreurDeCompetence/Technologies/Technologies">
                 <a>
-                  <TextBottom>Technologies</TextBottom>
+                  <TextBottom>Technologie(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper5>
@@ -212,7 +234,7 @@ const Techniques = () => {
               <DividerTop7></DividerTop7>
               <Link href="/OffreurDeCompetence/Diplomes/Diplomes">
                 <a>
-                  <TextBottom>Diplômes</TextBottom>
+                  <TextBottom>Diplôme(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper6>
@@ -223,7 +245,7 @@ const Techniques = () => {
               <DividerTop8></DividerTop8>
               <Link href="/OffreurDeCompetence/Capacites/Capacites">
                 <a>
-                  <TextBottom>Capacités</TextBottom>
+                  <TextBottom>Capacité(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper7>
@@ -234,7 +256,7 @@ const Techniques = () => {
               <DividerTop9></DividerTop9>
               <Link href="/OffreurDeCompetence/Qualites/Qualites">
                 <a>
-                  <TextBottom>Qualités</TextBottom>
+                  <TextBottom>Qualité(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper8>
@@ -245,7 +267,7 @@ const Techniques = () => {
               <DividerTop10></DividerTop10>
               <Link href="/OffreurDeCompetence/Valeurs/Valeurs">
                 <a>
-                  <TextBottom>Valeurs</TextBottom>
+                  <TextBottom>Valeur(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper9>
@@ -256,7 +278,7 @@ const Techniques = () => {
               <DividerTop11></DividerTop11>
               <Link href="/OffreurDeCompetence/Talents/Talents">
                 <a>
-                  <TextBottom>Talents</TextBottom>
+                  <TextBottom>Talent(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper10>
@@ -266,26 +288,26 @@ const Techniques = () => {
               <TextTop11>11</TextTop11>
               <Link href="/OffreurDeCompetence/Centre_interet/Centre_interet">
                 <a>
-                  <TextBottom>{"Centre d'intérêt"}</TextBottom>
+                  <TextBottom>{"Centre(s) d'intérêt"}</TextBottom>
                 </a>
               </Link>
             </Wrapper11>
           </WrapperProgression>
 
           <WrapperImp>
-            <TitleImp>Techniques</TitleImp>
+            <TitleImp>Technique(s) en lien avec cette compétence</TitleImp>
             <WrapperImage>
               <Image src={Idea} alt={"Idée"} quality={100} />
             </WrapperImage>
           </WrapperImp>
           <Divider></Divider>
           <WrapperContent>
-            <Title>Techniques pour cette compétence</Title>
+            <Title>Citer 1 à 5 techniques</Title>
             <WrapperMenuDeroulant>
               <form onSubmit={submitform}>
                 <input
                   type="text"
-                  placeholder="exemple : Plombier"
+                  placeholder="Ex : Soudage MIG-MAG"
                   value={Technique}
                   onChange={(e) => setTechnique(e.target.value)}
                   required
@@ -293,34 +315,32 @@ const Techniques = () => {
                 <br />
                 <Text style={{ color: "red", marginLeft: 26 }}>{erreur}</Text>
                 <WrapperAjout>
-                  <ButtonLink type="submit" value="Ajouter">
+                  <ButtonLinkAdd type="submit" value="Ajouter">
                     <a>
                       <Image src={Plus} alt={"PortraiScopie"} quality={100} />
                       <Text>Ajouter</Text>
                     </a>
-                  </ButtonLink>
+                  </ButtonLinkAdd>
                 </WrapperAjout>
               </form>
             </WrapperMenuDeroulant>
             {listTechnique()}
             <WrapperButton>
-              <ButtonLinkPrec>
-                <Link href="/OffreurDeCompetence/Taches/Tache">
-                  <a>
-                    <Text>Précédent</Text>
-                  </a>
-                </Link>
+              <ButtonLinkPrec
+                onClick={() => {
+                  window.location = "/OffreurDeCompetence/Taches/Taches";
+                }}
+              >
+                Précédent
               </ButtonLinkPrec>
               <ButtonLink
                 onClick={() => {
                   nextStep();
+                  window.location =
+                    "/OffreurDeCompetence/Technologies/Technologies";
                 }}
               >
-                <Link href="/OffreurDeCompetence/Technologies/Technologies">
-                  <a>
-                    <Text>Suivant</Text>
-                  </a>
-                </Link>
+                Suivant
               </ButtonLink>
             </WrapperButton>
           </WrapperContent>

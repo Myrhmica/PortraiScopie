@@ -56,6 +56,7 @@ export const WrapperInput = styled.div`
   padding: 40px;
   padding-left: 150px;
   input {
+    border: none;
     font-size: 20px;
     padding-left: 30px;
     border: none;
@@ -63,6 +64,15 @@ export const WrapperInput = styled.div`
     width: 700px;
     height: 70px;
     box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  input:focus {
+    outline: none;
+  }
+  input:required {
+    border: 2px solid red;
+  }
+  input:checked {
+    border: 2px solid green;
   }
 `;
 
@@ -72,29 +82,38 @@ export const ButtonLinkLeft = styled.button`
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
   width: 250px;
+  height: 50px;
   dislpay: flex;
   justify-content: center;
   align-items: center;
-  margin: 25px;
+  margin: 15px;
 `;
 
 export const ButtonLinkRight = styled.button`
+  font-size: 20px;
   color: white;
   background: #2a3985;
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
   width: 200px;
-  dislpay: flex;
+  height: 50px;
+  display: flex;
   justify-content: center;
   align-items: center;
-  margin: 25px;
+  margin: 15px;
 `;
 
 export const WrapperButton = styled.div`
-  padding-left: 700px;
+  width: 800px;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 `;
 
-export const TextBottom = styled.h2``;
+export const TextBottom = styled.h2`
+  margin: 0;
+`;
 
 export const Footer1 = styled.div``;
 

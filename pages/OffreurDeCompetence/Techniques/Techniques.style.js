@@ -411,7 +411,6 @@ export const WrapperMenuDeroulant = styled.div`
 `;
 
 export const WrapperAjout = styled.div`
-  padding-top: 10px;
   margin-left: 25px;
   display: flex;
   flex-direction: row;
@@ -419,11 +418,13 @@ export const WrapperAjout = styled.div`
 `;
 
 export const ButtonLink = styled.button`
+  font-size: 20px;
   color: white;
   background: #2a3985;
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
   width: 200px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -432,11 +433,13 @@ export const ButtonLink = styled.button`
 `;
 
 export const ButtonLinkPrec = styled.button`
+  font-size: 20px;
   color: white;
   background: #c4c4c4;
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
   width: 200px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -447,6 +450,72 @@ export const ButtonLinkPrec = styled.button`
 export const WrapperButton = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+export const WrapperAdd = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+export const WrapperAllAdd = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const ButtonLinkAdd = styled.button`
+  color: white;
+  background: #2a3985;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  width: 130px;
+  height: 50px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  line-height: 24px;
+  a {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+`;
+
+export const ButtonLinkMS = styled.button`
+  color: white;
+  background: #2a3985;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  width: 130px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  line-height: 24px;
+`;
+
+export const WrapperButtonAdd = styled.div`
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+`;
+
+export const WrapperTextI = styled.div`
+  background: #f0efe9;
+  width: 250px;
+  height: 130px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+export const TextI = styled.p`
+  margin: 0;
+  font-size: 20px;
 `;
 
 export default WrapperTitle;

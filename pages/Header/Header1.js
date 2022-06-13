@@ -15,19 +15,19 @@ const Header1 = () => {
     <>
       <HeaderWrapper>
         <WrapperImage>
-          <Link href="/">
+          <Link href="https://myrhmica.fr">
             <a>
               <Image src={Myrhmica} alt={"Myrhmica"} quality={100} />
             </a>
           </Link>
-          <Link href="/portraitscopie">
+          <Link href="/">
             <a>
               <Image
                 src={PortraitScopie}
                 alt={"PortraitScopie"}
                 quality={100}
-                width={300}
-                height={75}
+                width={270}
+                height={70}
               />
             </a>
           </Link>

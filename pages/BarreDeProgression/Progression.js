@@ -51,7 +51,7 @@ const Progression = () => {
             <DividerTop1></DividerTop1>
             <Link href="/OffreurDeCompetence/Metier/Metier">
               <a>
-                <TextBottom>Métiers</TextBottom>
+                <TextBottom>Métier(s)</TextBottom>
               </a>
             </Link>
           </Wrapper1>
@@ -62,7 +62,7 @@ const Progression = () => {
             <DividerTop3></DividerTop3>
             <Link href="/OffreurDeCompetence/Activites/Activites">
               <a>
-                <TextBottom>Activités</TextBottom>
+                <TextBottom>Activité(s)</TextBottom>
               </a>
             </Link>
           </Wrapper2>
@@ -73,7 +73,7 @@ const Progression = () => {
             <DividerTop4></DividerTop4>
             <Link href="/OffreurDeCompetence/Taches/Taches">
               <a>
-                <TextBottom>Tâches</TextBottom>
+                <TextBottom>Tâche(s)</TextBottom>
               </a>
             </Link>
           </Wrapper3>
@@ -84,7 +84,7 @@ const Progression = () => {
             <DividerTop5></DividerTop5>
             <Link href="/OffreurDeCompetence/Techniques/Techniques">
               <a>
-                <TextBottom>Techniques</TextBottom>
+                <TextBottom>Technique(s)</TextBottom>
               </a>
             </Link>
           </Wrapper4>
@@ -95,7 +95,7 @@ const Progression = () => {
             <DividerTop6></DividerTop6>
             <Link href="/OffreurDeCompetence/Technologies/Technologies">
               <a>
-                <TextBottom>Technologies</TextBottom>
+                <TextBottom>Technologie(s)</TextBottom>
               </a>
             </Link>
           </Wrapper5>
@@ -106,7 +106,7 @@ const Progression = () => {
             <DividerTop7></DividerTop7>
             <Link href="/OffreurDeCompetence/Diplomes/Diplomes">
               <a>
-                <TextBottom>Diplômes</TextBottom>
+                <TextBottom>Diplôme(s)</TextBottom>
               </a>
             </Link>
           </Wrapper6>
@@ -117,7 +117,7 @@ const Progression = () => {
             <DividerTop8></DividerTop8>
             <Link href="/OffreurDeCompetence/Capacites/Capacites">
               <a>
-                <TextBottom>Capacités</TextBottom>
+                <TextBottom>Capacité(s)</TextBottom>
               </a>
             </Link>
           </Wrapper7>
@@ -128,7 +128,7 @@ const Progression = () => {
             <DividerTop9></DividerTop9>
             <Link href="/OffreurDeCompetence/Qualites/Qualites">
               <a>
-                <TextBottom>Qualités</TextBottom>
+                <TextBottom>Qualité(s)</TextBottom>
               </a>
             </Link>
           </Wrapper8>
@@ -139,7 +139,7 @@ const Progression = () => {
             <DividerTop10></DividerTop10>
             <Link href="/OffreurDeCompetence/Valeurs/Valeurs">
               <a>
-                <TextBottom>Valeurs</TextBottom>
+                <TextBottom>Valeur(s)</TextBottom>
               </a>
             </Link>
           </Wrapper9>
@@ -150,7 +150,7 @@ const Progression = () => {
             <DividerTop11></DividerTop11>
             <Link href="/OffreurDeCompetence/Talents/Talents">
               <a>
-                <TextBottom>Talents</TextBottom>
+                <TextBottom>Talent(s)</TextBottom>
               </a>
             </Link>
           </Wrapper10>
@@ -160,7 +160,7 @@ const Progression = () => {
             <TextTop11>11</TextTop11>
             <Link href="/OffreurDeCompetence/Centre_interet/Centre_interet">
               <a>
-                <TextBottom>{"Centre d'intérêt"}</TextBottom>
+                <TextBottom>{"Centre(s) d'intérêt"}</TextBottom>
               </a>
             </Link>
           </Wrapper11>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "../../Header/Header2";
@@ -57,6 +57,13 @@ import WrapperTitle, {
   ButtonLink,
   ButtonLinkPrec,
   WrapperButton,
+  WrapperAdd,
+  WrapperAllAdd,
+  WrapperTextI,
+  TextI,
+  WrapperButtonAdd,
+  ButtonLinkAdd,
+  ButtonLinkMS,
 } from "./Qualites.style";
 
 import Idea from "../../../public/image/idea.png";
@@ -105,6 +112,8 @@ const Qualites = () => {
   const nextStep = () => {
     if (Qualites.length === 0) {
       setErreur("Vous devez ajouter au moins une Qualite");
+      localStorage.setItem("Qualite", JSON.stringify(Qualites));
+      console.log(localStorage.getItem("Qualite"));
     } else {
       setErreur("");
       localStorage.setItem("Qualite", JSON.stringify(Qualites));
@@ -114,37 +123,50 @@ const Qualites = () => {
 
   const listQualite = () => {
     if (Qualites.length === 0) {
-      return <Text>Vous n`avez pas encore ajouté de tâche</Text>;
     } else {
       return (
-        <div>
+        <WrapperAdd>
           {Qualites.map((Quali) => (
             <div key={Quali.id}>
-              <Text> Qualite : {Quali.Qualite}</Text>
-              <ButtonLink onClick={() => updateQualite(Quali.id)}>
-                <a>
-                  <Text>Modifier</Text>
-                </a>
-              </ButtonLink>
-              <ButtonLink onClick={() => removeQualite(Quali.id)}>
-                <a>
-                  <Text>Supprimer</Text>
-                </a>
-              </ButtonLink>
+              <WrapperAllAdd>
+                <WrapperTextI>
+                  <TextI>{Quali.Qualite}</TextI>
+                </WrapperTextI>
+                <WrapperButtonAdd>
+                  <ButtonLinkMS onClick={() => updateQualite(Quali.id)}>
+                    <a>
+                      <Text>Modifier</Text>
+                    </a>
+                  </ButtonLinkMS>
+                  <ButtonLinkMS onClick={() => removeQualite(Quali.id)}>
+                    <a>
+                      <Text>Supprimer</Text>
+                    </a>
+                  </ButtonLinkMS>
+                </WrapperButtonAdd>
+              </WrapperAllAdd>
             </div>
           ))}
-        </div>
+        </WrapperAdd>
       );
     }
   };
+
+  const [Competence, setCompetence] = useState([]);
+  useEffect(() => {
+    setCompetence(JSON.parse(localStorage.getItem("Competence")));
+  }, []);
 
   return (
     <>
       <Header />
       <WrapperTitle>
         <WrapperTop>
-          <TitleTop>Mon PortraiScopie</TitleTop>
-          <TitleColor>{/*Compétence choisie*/}</TitleColor>
+          {Competence.map((Comp) => (
+            <div key={Comp.id}>
+              <TitleTop>{Comp.Competence}</TitleTop>
+            </div>
+          ))}
         </WrapperTop>
       </WrapperTitle>
 
@@ -156,7 +178,7 @@ const Qualites = () => {
               <DividerTop1></DividerTop1>
               <Link href="/OffreurDeCompetence/Metier/Metier">
                 <a>
-                  <TextBottom>Métiers</TextBottom>
+                  <TextBottom>Métier(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper1>
@@ -167,7 +189,7 @@ const Qualites = () => {
               <DividerTop3></DividerTop3>
               <Link href="/OffreurDeCompetence/Activites/Activites">
                 <a>
-                  <TextBottom>Activités</TextBottom>
+                  <TextBottom>Activité(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper2>
@@ -178,7 +200,7 @@ const Qualites = () => {
               <DividerTop4></DividerTop4>
               <Link href="/OffreurDeCompetence/Taches/Taches">
                 <a>
-                  <TextBottom>Tâches</TextBottom>
+                  <TextBottom>Tâche(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper3>
@@ -189,7 +211,7 @@ const Qualites = () => {
               <DividerTop5></DividerTop5>
               <Link href="/OffreurDeCompetence/Techniques/Techniques">
                 <a>
-                  <TextBottom>Techniques</TextBottom>
+                  <TextBottom>Technique(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper4>
@@ -200,7 +222,7 @@ const Qualites = () => {
               <DividerTop6></DividerTop6>
               <Link href="/OffreurDeCompetence/Technologies/Technologies">
                 <a>
-                  <TextBottom>Technologies</TextBottom>
+                  <TextBottom>Technologie(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper5>
@@ -211,7 +233,7 @@ const Qualites = () => {
               <DividerTop7></DividerTop7>
               <Link href="/OffreurDeCompetence/Diplomes/Diplomes">
                 <a>
-                  <TextBottom>Diplômes</TextBottom>
+                  <TextBottom>Diplôme(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper6>
@@ -222,7 +244,7 @@ const Qualites = () => {
               <DividerTop8></DividerTop8>
               <Link href="/OffreurDeCompetence/Capacites/Capacites">
                 <a>
-                  <TextBottom>Capacités</TextBottom>
+                  <TextBottom>Capacité(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper7>
@@ -233,7 +255,7 @@ const Qualites = () => {
               <DividerTop9></DividerTop9>
               <Link href="/OffreurDeCompetence/Qualites/Qualites">
                 <a>
-                  <TextBottom>Qualités</TextBottom>
+                  <TextBottom>Qualité(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper8>
@@ -244,7 +266,7 @@ const Qualites = () => {
               <DividerTop10></DividerTop10>
               <Link href="/OffreurDeCompetence/Valeurs/Valeurs">
                 <a>
-                  <TextBottom>Valeurs</TextBottom>
+                  <TextBottom>Valeur(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper9>
@@ -255,7 +277,7 @@ const Qualites = () => {
               <DividerTop11></DividerTop11>
               <Link href="/OffreurDeCompetence/Talents/Talents">
                 <a>
-                  <TextBottom>Talents</TextBottom>
+                  <TextBottom>Talent(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper10>
@@ -265,26 +287,26 @@ const Qualites = () => {
               <TextTop11>11</TextTop11>
               <Link href="/OffreurDeCompetence/Centre_interet/Centre_interet">
                 <a>
-                  <TextBottom>{"Centre d'intérêt"}</TextBottom>
+                  <TextBottom>{"Centre(s) d'intérêt"}</TextBottom>
                 </a>
               </Link>
             </Wrapper11>
           </WrapperProgression>
 
           <WrapperImp>
-            <TitleImp>Mes qualités</TitleImp>
+            <TitleImp>Ma/Mes qualité(s) en lien avec cette compétence</TitleImp>
             <WrapperImage>
               <Image src={Idea} alt={"Idée"} quality={100} />
             </WrapperImage>
           </WrapperImp>
           <Divider></Divider>
           <WrapperContent>
-            <Title>Vos qualités mises en avant pour cette compétence</Title>
+            <Title>Citez 1 à 5 qualités</Title>
             <WrapperMenuDeroulant>
               <form onSubmit={submitform}>
                 <input
                   type="text"
-                  placeholder="exemple : Plombier"
+                  placeholder="Ex : Ecoute client"
                   value={Qualite}
                   onChange={(e) => setQualite(e.target.value)}
                   required
@@ -292,12 +314,12 @@ const Qualites = () => {
                 <br />
                 <Text style={{ color: "red", marginLeft: 26 }}>{erreur}</Text>
                 <WrapperAjout>
-                  <ButtonLink type="submit" value="Ajouter">
+                  <ButtonLinkAdd type="submit" value="Ajouter">
                     <a>
                       <Image src={Plus} alt={"PortraiScopie"} quality={100} />
                       <Text>Ajouter</Text>
                     </a>
-                  </ButtonLink>
+                  </ButtonLinkAdd>
                 </WrapperAjout>
               </form>
             </WrapperMenuDeroulant>

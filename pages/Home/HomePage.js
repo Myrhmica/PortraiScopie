@@ -27,13 +27,17 @@ const HomePage = () => {
   return (
     <WrapperContent>
       <WrapperImageTop>
-        <Image
-          src={Myrhmica}
-          alt={"Myrhmica"}
-          quality={100}
-          width={175}
-          height={110}
-        />
+        <Link href="https://myrhmica.fr">
+          <a>
+            <Image
+              src={Myrhmica}
+              alt={"Myrhmica"}
+              quality={100}
+              width={175}
+              height={110}
+            />
+          </a>
+        </Link>
       </WrapperImageTop>
 
       <WrapperContentMiddle>
@@ -113,13 +117,17 @@ const HomePage = () => {
         </WrapperContentRight>
       </WrapperContentMiddle>
       <WrapperImageBottom>
-        <Image
-          src={PortraiScopie}
-          alt={"PortraiScopie"}
-          quality={100}
-          width={400}
-          height={100}
-        />
+        <Link href="/">
+          <a>
+            <Image
+              src={PortraiScopie}
+              alt={"PortraiScopie"}
+              quality={100}
+              width={400}
+              height={100}
+            />
+          </a>
+        </Link>
       </WrapperImageBottom>
     </WrapperContent>
   );
