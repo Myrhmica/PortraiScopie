@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Header from "../../Header/Header2";
-import axios from "axios";
 
 import WrapperTitle, {
   WrapperRecherche,
@@ -12,8 +11,23 @@ import WrapperTitle, {
 } from "./Recherche.style";
 
 import Rechercher from "../../../public/image/rechercher.png";
+import axios from "axios";
 
-const Recherche = () => {
+const Recherche = async (e) => {
+
+  // récupérer les infos de l'API 
+  // afficher les données 
+  // script d'affichage des données que lorque l'on écrit
+
+  const Response = () => {
+    fetch("https://portraiscopie-dev.herokuapp.com/api/technicals/")
+    .then(response => response.json())
+    .then(data => {
+      output.textContent = `{data.technicals}`;
+    })
+  }
+
+
   return (
     <>
       <Header />
@@ -21,9 +35,9 @@ const Recherche = () => {
         <Title>Quelle compétence rechercher vous ?</Title>
         <WrapperRecherche>
           <input
+            className="Input"
             placeholder="Compétence recherchée, Technologies, Qualités, ..."
-            value={metier}
-            onChange={(e) => setMetier(e.target.value)}
+            onClick={() => {Response()}}
           />
           <WrapperImage>
             <Image
