@@ -28,4 +28,24 @@ export const WrapperImage = styled.div`
 
 export const Title = styled.h2``;
 
+export const WrapperButton = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const ButtonLink = styled.button`
+  font-size: 20px;
+  color: white;
+  background: #2a3985;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  width: 200px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 25px;
+  line-height: 24px;
+`;
+
 export default WrapperTitle;

@@ -351,7 +351,7 @@ export const TitleImp = styled.h2`
 `;
 
 export const Text = styled.p`
-  font-size: 20px;
+  font-size: 16px;
 `;
 
 export const TextAjout = styled.h2`
@@ -449,18 +449,96 @@ export const WrapperButton = styled.div`
   justify-content: space-between;
 `;
 
-export const WrapperCoche = styled.div`
-  border: 2px solid #000000;
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
+export const Coche = styled.div`
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 23px;
+    height: 23px;
+  }
+  input[type="checkbox"]:checked {
+    background-color: #f2bf3d;
+  }
 `;
 
 export const WrapperDuCoche = styled.div`
   margin-left: 25px;
+  width: 600px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+`;
+
+export const WrapperAdd = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+export const WrapperAllAdd = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const ButtonLinkAdd = styled.button`
+  color: white;
+  background: #2a3985;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  width: 130px;
+  height: 50px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  line-height: 24px;
+  a {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+  }
+`;
+
+export const ButtonLinkMS = styled.button`
+  color: white;
+  background: #2a3985;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  width: 130px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  line-height: 24px;
+`;
+
+export const WrapperButtonAdd = styled.div`
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+`;
+
+export const WrapperTextI = styled.div`
+  background: #f0efe9;
+  width: 250px;
+  height: 130px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+export const TextI = styled.p`
+  margin: 0;
+  font-size: 20px;
 `;
 
 export default WrapperTitle;

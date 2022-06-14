@@ -11,7 +11,7 @@ import WrapperContent, {
   Title,
   WrapperInput,
   WrapperCoche,
-  CheckBox,
+  Coche,
   Subtitle,
   WrapperButton,
   Button,
@@ -64,12 +64,12 @@ const Institutionnel = () => {
   return (
     <WrapperContent>
       <WrapperImage>
-        <Link href="/">
+        <Link href="https:/myrhmica.fr">
           <a>
             <Image src={Myrhmica} alt={"Myrhmica"} quality={100} />
           </a>
         </Link>
-        <Link href="/https:/myrhmica.fr.">
+        <Link href="/">
           <a>
             <Image
               src={PortraitScopie}
@@ -145,7 +145,9 @@ const Institutionnel = () => {
           </Link>
         </Subtitle>
         <WrapperCoche>
-          <CheckBox></CheckBox>
+          <Coche>
+            <input type="checkbox" />
+          </Coche>
           <Text>
             J’ai pris connaissance et j’accepte la
             <Link href="/Login/Institutionnel/Institutionnel">
@@ -155,7 +157,11 @@ const Institutionnel = () => {
         </WrapperCoche>
 
         <WrapperButton>
-          <Button onClick={() => {handleSubmit()}}>
+          <Button
+            onClick={() => {
+              handleSubmit();
+            }}
+          >
             <Link href="/OffreurDeCompetence/Conseil/Conseil">
               <a>
                 <Text>Connexion</Text>

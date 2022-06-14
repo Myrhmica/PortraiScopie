@@ -16,11 +16,12 @@ export const WrapperTitle = styled.div`
 `;
 
 export const Title = styled.h2`
+  font-size: 22px;
   color: white;
   background-color: #f2bf3d;
   border-radius: 20px;
-  width: 650px;
-  height: 75px;
+  width: 550px;
+  height: 70px;
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
   display: flex;
   justify-content: center;
@@ -29,6 +30,7 @@ export const Title = styled.h2`
 
 export const Text = styled.h2`
   padding-left: 15px;
+  font-size: 20px;
 `;
 
 export const WrapperCocheAll = styled.div`
@@ -61,10 +63,10 @@ export const Coche = styled.div`
     -moz-appearance: none;
     -ms-appearance: none;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid #ccc;
-    width: 30px;
-    height: 30px;
+    width: 23px;
+    height: 23px;
   }
   input[type="checkbox"]:checked {
     background-color: #f2bf3d;
@@ -78,11 +80,12 @@ export const ButtonLink = styled.button`
 `;
 
 export const TextBottom = styled.h2`
+  font-size: 20px;
   color: white;
   background: #2a3985;
   border-radius: 30px;
-  width: 200px;
-  height: 75px;
+  width: 150px;
+  height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;

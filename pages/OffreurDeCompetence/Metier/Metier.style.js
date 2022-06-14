@@ -27,16 +27,20 @@ export const WrapperTitle = styled.div`
 export const WrapperTop = styled.div`
   background: #f2bf3d;
   border-radius: 30px;
-  width: 500px;
+  width: 400px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 30px;
 `;
+
 export const TitleTop = styled.h2`
   color: white;
-  font-size: 20px;
+  font-size: 30px;
+  font-weight: bold;
 `;
+
 export const TitleColor = styled.h2`
   color: #2a3985;
 `;
@@ -99,6 +103,12 @@ export const WrapperMenuDeroulant = styled.div`
   }
 `;
 
+export const WrapperMetier = styled.div``;
+
+export const WrapperDebut = styled.div``;
+
+export const WrapperFin = styled.div``;
+
 export const WrapperDate = styled.div`
   width: 450px;
   display: flex;
@@ -123,11 +133,13 @@ export const WrapperButton = styled.div`
 `;
 
 export const ButtonLink = styled.button`
+  font-size: 20px;
   color: white;
   background: #2a3985;
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
   width: 200px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -137,11 +149,13 @@ export const ButtonLink = styled.button`
 `;
 
 export const ButtonLinkPrec = styled.button`
+  font-size: 20px;
   color: white;
   background: #c4c4c4;
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
   width: 200px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -149,34 +163,78 @@ export const ButtonLinkPrec = styled.button`
   line-height: 24px;
 `;
 
-export const WrapperCoche = styled.div`
-  input {
-    background-color: white;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    width: 25px;
-    height: 25px;
-  }
-  input[type="checkbox"]:checked {
-    background-color: #f2bf3d;
+export const WrapperAjout = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+`;
+
+export const WrapperAdd = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+export const WrapperAllAdd = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const ButtonLinkAdd = styled.button`
+  color: white;
+  background: #2a3985;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  width: 130px;
+  height: 50px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  line-height: 24px;
+  a {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
   }
 `;
 
-export const WrapperDuCoche = styled.div`
+export const ButtonLinkMS = styled.button`
+  color: white;
+  background: #2a3985;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  width: 130px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  line-height: 24px;
+`;
+
+export const WrapperButtonAdd = styled.div`
   width: 300px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+`;
+
+export const WrapperTextI = styled.div`
+  background: #f0efe9;
+  width: 250px;
+  height: 130px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
 `;
 
-export const WrapperAjout = styled.div`
-  width: 100px;
-  padding-left: 7px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
+export const TextI = styled.p`
+  margin: 0;
+  font-size: 20px;
 `;
 
 export default WrapperALL;

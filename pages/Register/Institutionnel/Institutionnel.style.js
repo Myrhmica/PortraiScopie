@@ -60,12 +60,20 @@ export const WrapperCoche = styled.div`
   }
 `;
 
-export const CheckBox = styled.div`
-  width: 20px;
-  height: 20px;
-  background: #ffffff;
-  border: 1px solid #000000;
-  border-radius: 5px;
+export const Coche = styled.div`
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    width: 30px;
+    height: 30px;
+  }
+  input[type="checkbox"]:checked {
+    background-color: #f2bf3d;
+  }
 `;
 
 export const WrapperButton = styled.div`

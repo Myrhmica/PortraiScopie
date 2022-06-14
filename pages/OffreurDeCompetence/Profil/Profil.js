@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "../../Header/Header1";
@@ -7,6 +7,8 @@ import WrapperTitle, {
   WrapperTop,
   WrapperMiddle,
   WrapperCard,
+  WrapperBottom1,
+  WrapperCompetence,
   WrapperBottom,
   WrapperBox,
   ButtonLink,
@@ -21,6 +23,11 @@ import WrapperTitle, {
 import profil from "../../../public/image/profil.png";
 
 const Profil = () => {
+  const [Competence, setCompetence] = useState([]);
+  useEffect(() => {
+    setCompetence(JSON.parse(localStorage.getItem("Competence")));
+  }, []);
+
   return (
     <>
       <Header />
@@ -60,62 +67,109 @@ const Profil = () => {
             <WrapperBox></WrapperBox>
           </WrapperCard>
         </WrapperMiddle>
+        <WrapperBottom1>
+          <WrapperCompetence
+            onClick={() => {
+              window.location = "/OffreurDeCompetence/Competence/Competence";
+            }}
+          >
+            {Competence.map((Comp) => (
+              <div key={Comp.id}>
+                <TextBottom>{Comp.Competence}</TextBottom>
+              </div>
+            ))}
+          </WrapperCompetence>
+        </WrapperBottom1>
         <WrapperBottom>
-          <Link href="/OffreurDeCompetence/Metier/Metier">
-            <a>
-              <TextBottom>Métiers</TextBottom>
-            </a>
-          </Link>
-          <Link href="/OffreurDeCompetence/Activites/Activites">
-            <a>
-              <TextBottom>Activités</TextBottom>
-            </a>
-          </Link>
-          <Link href="/OffreurDeCompetence/Taches/Taches">
-            <a>
-              <TextBottom>Tâches</TextBottom>
-            </a>
-          </Link>
-          <Link href="/OffreurDeCompetence/Techniques/Techniques">
-            <a>
-              <TextBottom>Techniques</TextBottom>
-            </a>
-          </Link>
-          <Link href="/OffreurDeCompetence/Technologies/Technologies">
-            <a>
-              <TextBottom>Technologies</TextBottom>
-            </a>
-          </Link>
-          <Link href="/OffreurDeCompetence/Diplomes/Diplomes">
-            <a>
-              <TextBottom>Diplômes</TextBottom>
-            </a>
-          </Link>
-          <Link href="/OffreurDeCompetence/Capacites/Capacites">
-            <a>
-              <TextBottom>Capacités</TextBottom>
-            </a>
-          </Link>
-          <Link href="/OffreurDeCompetence/Qualites/Qualites">
-            <a>
-              <TextBottom>Qualités</TextBottom>
-            </a>
-          </Link>
-          <Link href="/OffreurDeCompetence/Valeurs/Valeurs">
-            <a>
-              <TextBottom>Valeurs</TextBottom>
-            </a>
-          </Link>
-          <Link href="/OffreurDeCompetence/Talents/Talents">
-            <a>
-              <TextBottom>Talents</TextBottom>
-            </a>
-          </Link>
-          <Link href="/OffreurDeCompetence/Centre_interet/Centre_interet">
-            <a>
-              <TextBottom>Centres d’intérêt</TextBottom>
-            </a>
-          </Link>
+          <TextBottom
+            onClick={() => {
+              window.location = "/OffreurDeCompetence/Metier/Metier";
+            }}
+          >
+            Métier(s)
+          </TextBottom>
+
+          <TextBottom
+            onClick={() => {
+              window.location = "/OffreurDeCompetence/Activites/Activites";
+            }}
+          >
+            Activité(s)
+          </TextBottom>
+
+          <TextBottom
+            onClick={() => {
+              window.location = "/OffreurDeCompetence/Taches/Taches";
+            }}
+          >
+            Tâche(s)
+          </TextBottom>
+
+          <TextBottom
+            onClick={() => {
+              window.location = "/OffreurDeCompetence/Techniques/Techniques";
+            }}
+          >
+            Technique(s)
+          </TextBottom>
+
+          <TextBottom
+            onClick={() => {
+              window.location =
+                "/OffreurDeCompetence/Technologies/Technologies";
+            }}
+          >
+            Technologie(s)
+          </TextBottom>
+
+          <TextBottom
+            onClick={() => {
+              window.location = "/OffreurDeCompetence/Diplomes/Diplomes";
+            }}
+          >
+            Diplôme(s)
+          </TextBottom>
+
+          <TextBottom
+            onClick={() => {
+              window.location = "/OffreurDeCompetence/Capacites/Capacites";
+            }}
+          >
+            Capacité(s)
+          </TextBottom>
+
+          <TextBottom
+            onClick={() => {
+              window.location = "/OffreurDeCompetence/Qualites/Qualites";
+            }}
+          >
+            Qualité(s)
+          </TextBottom>
+
+          <TextBottom
+            onClick={() => {
+              window.location = "/OffreurDeCompetence/Valeurs/Valeurs";
+            }}
+          >
+            Valeur(s)
+          </TextBottom>
+
+          <TextBottom
+            onClick={() => {
+              window.location = "/OffreurDeCompetence/Talents/Talents";
+            }}
+          >
+            Talent(s)
+          </TextBottom>
+
+          <TextBottom
+            onClick={() => {
+              window.location =
+                "/OffreurDeCompetence/Centre_interet/Centre_interet";
+            }}
+          >
+            Centre(s) d’intérêt
+          </TextBottom>
         </WrapperBottom>
       </WrapperTitle>
     </>

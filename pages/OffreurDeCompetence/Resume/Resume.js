@@ -13,10 +13,13 @@ import WrapperTitle, {
   WrapperBottom,
   WrapperActivite,
   WrapperTaches,
+  WrapperTechniqueTechnologies,
+  WrapperTechnique,
   WrapperTechnologies,
   WrapperDiplomes,
   WrapperMetiers,
   WrapperCompetence,
+  TextComp,
   Competences,
   WrapperCentre_interet,
   WrapperCapacites,
@@ -25,22 +28,21 @@ import WrapperTitle, {
   WrapperValeurs,
   WrapperCopyright,
   ButtonLink,
-  WrapperButton,
 } from "./Resume.style";
 
 const Resumes = () => {
-  const [Centre_interet, setCentre_interet] = useState([]);
+  const [Competence, setCompetence] = useState([]);
+  const [Metier, setMetier] = useState([]);
   const [Activite, setActivite] = useState([]);
-  const [Capacite, setCapacite] = useState([]);
-  const [Qualite, setQualite] = useState([]);
-  const [Diplome, setDiplome] = useState([]);
-  const [Talent, setTalent] = useState([]);
+  const [Tache, setTache] = useState([]);
   const [Technique, setTechnique] = useState([]);
   const [Technologie, setTechnologie] = useState([]);
+  const [Diplome, setDiplome] = useState([]);
+  const [Capacite, setCapacite] = useState([]);
+  const [Qualite, setQualite] = useState([]);
   const [Valeur, setValeur] = useState([]);
-  const [Tache, setTache] = useState([]);
-  const [Metier, setMetier] = useState([]);
-  const [Competence, setCompetence] = useState([]);
+  const [Talent, setTalent] = useState([]);
+  const [Centre_interet, setCentre_interet] = useState([]);
 
   useEffect(() => {
     setCentre_interet(JSON.parse(localStorage.getItem("Centre_interet")));
@@ -75,44 +77,57 @@ const Resumes = () => {
       <WrapperAll>
         <Wrapper>
           <WrapperTop>
-            <WrapperActivite>
-              <Title>Activites</Title>
+            <WrapperActivite
+              onClick={() => {
+                window.location = "/OffreurDeCompetence/Activites/Activites";
+              }}
+            >
+              <Title>Activité(s)</Title>
               {Activite.map((Acti) => (
                 <div key={Acti.id}>
                   <Text>{Acti.Activite}</Text>
                 </div>
               ))}
             </WrapperActivite>
-            <WrapperTaches>
-              <Title>Tâches</Title>
+            <WrapperTaches
+              onClick={() => {
+                window.location = "/OffreurDeCompetence/Taches/Taches";
+              }}
+            >
+              <Title>Tâche(s)</Title>
               {Tache.map((Tach) => (
                 <div key={Tach.id}>
                   <Text>{Tach.Tache}</Text>
                 </div>
               ))}
             </WrapperTaches>
-            <WrapperTechnologies>
-              <Title>Technologies / Techniques</Title>
+            <WrapperTechniqueTechnologies
+              onClick={() => {
+                window.location = "/OffreurDeCompetence/Techniques/Techniques";
+              }}
+            >
+              <Title>Technique(s)/ Technologie(s)</Title>
               <Text>
-                Technologie :
-                {Technologie.map((Tech) => (
-                  <div key={Tech.id}>
-                    <Text>{Tech.Technologie}</Text>
-                  </div>
-                ))}
-              </Text>
-              <br />
-              <Text>
-                Technique :
                 {Technique.map((Tech) => (
                   <div key={Tech.id}>
                     <Text>{Tech.Technique}</Text>
                   </div>
                 ))}
               </Text>
-            </WrapperTechnologies>
-            <WrapperDiplomes>
-              <Title>Diplômes / Habilitations / Certificats</Title>
+              <Text>
+                {Technologie.map((Tech) => (
+                  <div key={Tech.id}>
+                    <Text>{Tech.Technologie}</Text>
+                  </div>
+                ))}
+              </Text>
+            </WrapperTechniqueTechnologies>
+            <WrapperDiplomes
+              onClick={() => {
+                window.location = "/OffreurDeCompetence/Diplomes/Diplomes";
+              }}
+            >
+              <Title>Diplôme(s) / Certificat(s) / Habilitation(s)</Title>
               {Diplome.map((Dip) => (
                 <div key={Dip.id}>
                   <Text>{Dip.Diplome}</Text>
@@ -121,25 +136,38 @@ const Resumes = () => {
             </WrapperDiplomes>
           </WrapperTop>
           <WrapperMiddle>
-            <WrapperMetiers>
-              <Title>Métiers</Title>
+            <WrapperMetiers
+              onClick={() => {
+                window.location = "/OffreurDeCompetence/Metier/Metier";
+              }}
+            >
+              <Title>Métier(s)</Title>
               {Metier.map((Metier) => (
                 <div key={Metier.id}>
                   <Text>{Metier.metier}</Text>
                 </div>
               ))}
             </WrapperMetiers>
-            <WrapperCompetence>
+            <WrapperCompetence
+              onClick={() => {
+                window.location = "/OffreurDeCompetence/Competence/Competence";
+              }}
+            >
               <Competences>
                 {Competence.map((Comp) => (
                   <div key={Comp.id}>
-                    <Text>{Comp.Competence}</Text>
+                    <TextComp>{Comp.Competence}</TextComp>
                   </div>
                 ))}
               </Competences>
             </WrapperCompetence>
-            <WrapperCentre_interet>
-              <Title>{"Centres d'intérêts"}</Title>
+            <WrapperCentre_interet
+              onClick={() => {
+                window.location =
+                  "/OffreurDeCompetence/Centre_interet/Centre_interet";
+              }}
+            >
+              <Title>{"Centre(s) d'intérêt"}</Title>
               {Centre_interet.map((CentreInt) => (
                 <div key={CentreInt.id}>
                   <Text>{CentreInt.Centre_interet}</Text>
@@ -148,32 +176,48 @@ const Resumes = () => {
             </WrapperCentre_interet>
           </WrapperMiddle>
           <WrapperBottom>
-            <WrapperCapacites>
-              <Title>Capacités</Title>
+            <WrapperCapacites
+              onClick={() => {
+                window.location = "/OffreurDeCompetence/Capacites/Capacites";
+              }}
+            >
+              <Title>Capacité(s)</Title>
               {Capacite.map((Cap) => (
                 <div key={Cap.id}>
                   <Text>{Cap.Capacite}</Text>
                 </div>
               ))}
             </WrapperCapacites>
-            <WrapperQualites>
-              <Title>Qualités</Title>
+            <WrapperQualites
+              onClick={() => {
+                window.location = "/OffreurDeCompetence/Qualites/Qualites";
+              }}
+            >
+              <Title>Qualité(s)</Title>
               {Qualite.map((Quali) => (
                 <div key={Quali.id}>
                   <Text>{Quali.Qualite}</Text>
                 </div>
               ))}
             </WrapperQualites>
-            <WrapperTalents>
-              <Title>Talents</Title>
+            <WrapperTalents
+              onClick={() => {
+                window.location = "/OffreurDeCompetence/Talents/Talents";
+              }}
+            >
+              <Title>Talent(s)</Title>
               {Talent.map((Tal) => (
                 <div key={Tal.id}>
                   <Text>{Tal.Talent}</Text>
                 </div>
               ))}
             </WrapperTalents>
-            <WrapperValeurs>
-              <Title>Valeurs</Title>
+            <WrapperValeurs
+              onClick={() => {
+                window.location = "/OffreurDeCompetence/Valeurs/Valeurs";
+              }}
+            >
+              <Title>Valeur(s)</Title>
               {Valeur.map((Val) => (
                 <div key={Val.id}>
                   <Text>{Val.Valeur}</Text>

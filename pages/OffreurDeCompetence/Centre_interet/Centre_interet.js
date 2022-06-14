@@ -57,6 +57,13 @@ import WrapperTitle, {
   ButtonLink,
   ButtonLinkPrec,
   WrapperButton,
+  WrapperAdd,
+  WrapperAllAdd,
+  WrapperTextI,
+  TextI,
+  WrapperButtonAdd,
+  ButtonLinkAdd,
+  ButtonLinkMS,
 } from "./Centre_interet.style";
 
 import Idea from "../../../public/image/idea.png";
@@ -107,6 +114,8 @@ const Centre_interet = () => {
   const nextStep = () => {
     if (Centre_interets.length === 0) {
       setErreur("Vous devez ajouter au moins d'un centre d'intérêt ");
+      localStorage.setItem("Centre_interet", JSON.stringify(Centre_interets));
+      console.log(localStorage.getItem("Centre_interet"));
     } else {
       setErreur("");
       localStorage.setItem("Centre_interet", JSON.stringify(Centre_interets));
@@ -116,37 +125,54 @@ const Centre_interet = () => {
 
   const listCentre_interet = () => {
     if (Centre_interets.length === 0) {
-      return <Text>Vous n`avez pas encore ajouté de tâche</Text>;
     } else {
       return (
-        <div>
+        <WrapperAdd>
           {Centre_interets.map((CentreInt) => (
             <div key={CentreInt.id}>
-              <Text> Centre_interet : {CentreInt.Centre_interet}</Text>
-              <ButtonLink onClick={() => updateCentre_interet(CentreInt.id)}>
-                <a>
-                  <Text>Modifier</Text>
-                </a>
-              </ButtonLink>
-              <ButtonLink onClick={() => removeCentre_interet(CentreInt.id)}>
-                <a>
-                  <Text>Supprimer</Text>
-                </a>
-              </ButtonLink>
+              <WrapperAllAdd>
+                <WrapperTextI>
+                  <TextI>{CentreInt.Centre_interet}</TextI>
+                </WrapperTextI>
+                <WrapperButtonAdd>
+                  <ButtonLinkMS
+                    onClick={() => updateCentre_interet(CentreInt.id)}
+                  >
+                    <a>
+                      <Text>Modifier</Text>
+                    </a>
+                  </ButtonLinkMS>
+                  <ButtonLinkMS
+                    onClick={() => removeCentre_interet(CentreInt.id)}
+                  >
+                    <a>
+                      <Text>Supprimer</Text>
+                    </a>
+                  </ButtonLinkMS>
+                </WrapperButtonAdd>
+              </WrapperAllAdd>
             </div>
           ))}
-        </div>
+        </WrapperAdd>
       );
     }
   };
+
+  const [Competence, setCompetence] = useState([]);
+  useEffect(() => {
+    setCompetence(JSON.parse(localStorage.getItem("Competence")));
+  }, []);
 
   return (
     <>
       <Header />
       <WrapperTitle>
         <WrapperTop>
-          <TitleTop>Mon PortraiScopie</TitleTop>
-          <TitleColor>{/*Compétence choisie*/}</TitleColor>
+          {Competence.map((Comp) => (
+            <div key={Comp.id}>
+              <TitleTop>{Comp.Competence}</TitleTop>
+            </div>
+          ))}
         </WrapperTop>
       </WrapperTitle>
 
@@ -158,7 +184,7 @@ const Centre_interet = () => {
               <DividerTop1></DividerTop1>
               <Link href="/OffreurDeCompetence/Metier/Metier">
                 <a>
-                  <TextBottom>Métiers</TextBottom>
+                  <TextBottom>Métier(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper1>
@@ -169,7 +195,7 @@ const Centre_interet = () => {
               <DividerTop3></DividerTop3>
               <Link href="/OffreurDeCompetence/Activites/Activites">
                 <a>
-                  <TextBottom>Activités</TextBottom>
+                  <TextBottom>Activité(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper2>
@@ -180,7 +206,7 @@ const Centre_interet = () => {
               <DividerTop4></DividerTop4>
               <Link href="/OffreurDeCompetence/Taches/Taches">
                 <a>
-                  <TextBottom>Tâches</TextBottom>
+                  <TextBottom>Tâche(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper3>
@@ -191,7 +217,7 @@ const Centre_interet = () => {
               <DividerTop5></DividerTop5>
               <Link href="/OffreurDeCompetence/Techniques/Techniques">
                 <a>
-                  <TextBottom>Techniques</TextBottom>
+                  <TextBottom>Technique(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper4>
@@ -202,7 +228,7 @@ const Centre_interet = () => {
               <DividerTop6></DividerTop6>
               <Link href="/OffreurDeCompetence/Technologies/Technologies">
                 <a>
-                  <TextBottom>Technologies</TextBottom>
+                  <TextBottom>Technologie(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper5>
@@ -213,7 +239,7 @@ const Centre_interet = () => {
               <DividerTop7></DividerTop7>
               <Link href="/OffreurDeCompetence/Diplomes/Diplomes">
                 <a>
-                  <TextBottom>Diplômes</TextBottom>
+                  <TextBottom>Diplôme(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper6>
@@ -224,7 +250,7 @@ const Centre_interet = () => {
               <DividerTop8></DividerTop8>
               <Link href="/OffreurDeCompetence/Capacites/Capacites">
                 <a>
-                  <TextBottom>Capacités</TextBottom>
+                  <TextBottom>Capacité(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper7>
@@ -235,7 +261,7 @@ const Centre_interet = () => {
               <DividerTop9></DividerTop9>
               <Link href="/OffreurDeCompetence/Qualites/Qualites">
                 <a>
-                  <TextBottom>Qualités</TextBottom>
+                  <TextBottom>Qualité(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper8>
@@ -246,7 +272,7 @@ const Centre_interet = () => {
               <DividerTop10></DividerTop10>
               <Link href="/OffreurDeCompetence/Valeurs/Valeurs">
                 <a>
-                  <TextBottom>Valeurs</TextBottom>
+                  <TextBottom>Valeur(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper9>
@@ -257,7 +283,7 @@ const Centre_interet = () => {
               <DividerTop11></DividerTop11>
               <Link href="/OffreurDeCompetence/Talents/Talents">
                 <a>
-                  <TextBottom>Talents</TextBottom>
+                  <TextBottom>Talent(s)</TextBottom>
                 </a>
               </Link>
             </Wrapper10>
@@ -267,28 +293,28 @@ const Centre_interet = () => {
               <TextTop11>11</TextTop11>
               <Link href="/OffreurDeCompetence/Centre_interet/Centre_interet">
                 <a>
-                  <TextBottom>{"Centre d'intérêt"}</TextBottom>
+                  <TextBottom>{"Centre(s) d'intérêt"}</TextBottom>
                 </a>
               </Link>
             </Wrapper11>
           </WrapperProgression>
 
           <WrapperImp>
-            <TitleImp>Mes centres d’intérêt</TitleImp>
+            <TitleImp>
+              Mon/Mes centre(s) d’intérêt en lien avec cette compétence
+            </TitleImp>
             <WrapperImage>
               <Image src={Idea} alt={"Idée"} quality={100} />
             </WrapperImage>
           </WrapperImp>
           <Divider></Divider>
           <WrapperContent>
-            <Title>
-              Vos centres d’intérêt qui mettent en lumière cette compétence
-            </Title>
+            <Title>Citez 1 à 5 centres d’intérêt</Title>
             <WrapperMenuDeroulant>
               <form onSubmit={submitform}>
                 <input
                   type="text"
-                  placeholder="exemple : Plombier"
+                  placeholder="Ex : Ferronnerie d'art"
                   value={Centre_interet}
                   onChange={(e) => setCentre_interet(e.target.value)}
                   required
@@ -296,20 +322,16 @@ const Centre_interet = () => {
                 <br />
                 <Text style={{ color: "red", marginLeft: 26 }}>{erreur}</Text>
                 <WrapperAjout>
-                  <ButtonLink type="submit" value="Ajouter">
+                  <ButtonLinkAdd type="submit" value="Ajouter">
                     <a>
                       <Image src={Plus} alt={"PortraiScopie"} quality={100} />
                       <Text>Ajouter</Text>
                     </a>
-                  </ButtonLink>
+                  </ButtonLinkAdd>
                 </WrapperAjout>
               </form>
             </WrapperMenuDeroulant>
             {listCentre_interet()}
-            <WrapperAjout>
-              <Image src={Plus} alt={"PortraiScopie"} quality={100} />
-              <TextAjout>Ajouter</TextAjout>
-            </WrapperAjout>
             <WrapperButton>
               <ButtonLinkPrec>
                 <Link href="/OffreurDeCompetence/Talents/Talents">

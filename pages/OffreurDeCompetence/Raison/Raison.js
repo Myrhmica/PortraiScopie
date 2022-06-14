@@ -138,7 +138,7 @@ const Raison = () => {
               <Coche>
                 <input type="checkbox" />
               </Coche>
-              <Text>Autres(précisez)</Text>
+              <Text>Autres (précisez)</Text>
             </WrapperCoche>
           </WrapperCocheRight>
         </WrapperCocheAll>

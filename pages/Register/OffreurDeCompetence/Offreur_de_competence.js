@@ -11,7 +11,7 @@ import WrapperContent, {
   Title,
   WrapperInput,
   WrapperCoche,
-  CheckBox,
+  Coche,
   Subtitle,
   WrapperButton,
   Button,
@@ -64,12 +64,12 @@ const Offreur_de_competence = () => {
   return (
     <WrapperContent>
       <WrapperImage>
-        <Link href="/">
+        <Link href="https:/myrhmica.fr">
           <a>
             <Image src={Myrhmica} alt={"Myrhmica"} quality={100} />
           </a>
         </Link>
-        <Link href="/https:/myrhmica.fr.">
+        <Link href="/">
           <a>
             <Image
               src={PortraitScopie}
@@ -83,10 +83,10 @@ const Offreur_de_competence = () => {
       </WrapperImage>
       <WrapperInscription>
         <WrapperInput>
-          <Title>Entité / Raisons Sociale ou Nom Prénom</Title>
+          <Title>Entité / Raison Sociale ou Nom Prénom</Title>
           <input
             type="text"
-            placeholder="exemple : Myrhmica"
+            placeholder="Ex : Myrhmica"
             value={entityName}
             onChange={(e) => setEntityName(e.target.value)}
           />
@@ -96,7 +96,7 @@ const Offreur_de_competence = () => {
           <Title>Nom</Title>
           <input
             type="text"
-            placeholder="exemple : Durand"
+            placeholder="Ex : Durand"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
@@ -106,7 +106,7 @@ const Offreur_de_competence = () => {
           <Title>Prénom</Title>
           <input
             type="text"
-            placeholder="exemple : Pierre"
+            placeholder="Ex : Pierre"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
@@ -116,7 +116,7 @@ const Offreur_de_competence = () => {
           <Title>Pseudo</Title>
           <input
             type="text"
-            placeholder="exemple : Pierre1234"
+            placeholder="Ex : Pierre1234"
             value={pseudo}
             onChange={(e) => setPseudo(e.target.value)}
           />
@@ -149,13 +149,15 @@ const Offreur_de_competence = () => {
         */}
 
         <Subtitle>
-          Vous avez déjà un compte ?
+          <Text>Vous avez déjà un compte ? </Text>
           <Link href="/Login/Institutionnel/Institutionnel">
             <a>Connectez-vous</a>
           </Link>
         </Subtitle>
         <WrapperCoche>
-          <CheckBox></CheckBox>
+          <Coche>
+            <input type="checkbox" />
+          </Coche>
           <Text>
             J’ai pris connaissance et j’accepte la
             <Link href="/Login/Institutionnel/Institutionnel">

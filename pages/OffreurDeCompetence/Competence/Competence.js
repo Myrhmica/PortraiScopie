@@ -30,35 +30,112 @@ const Competence = () => {
   const [Competences, setCompetences] = useState([]);
   const [id, setId] = useState(null);
 
+  const [metiers, setMetiers] = useState([]);
+  const [Activite, setActivite] = useState([]);
+  const [Tache, setTache] = useState([]);
+  const [Technique, setTechnique] = useState([]);
+  const [Technologie, setTechnologie] = useState([]);
+  const [Diplome, setDiplome] = useState([]);
+  const [Capacite, setCapacite] = useState([]);
+  const [Qualite, setQualite] = useState([]);
+  const [Valeur, setValeur] = useState([]);
+  const [Talent, setTalent] = useState([]);
+  const [Centre_interet, setCentre_interet] = useState([]);
+
+  useEffect(() => {
+    setCentre_interet(JSON.parse(localStorage.getItem("Centre_interet")));
+    setActivite(JSON.parse(localStorage.getItem("Activite")));
+    setCapacite(JSON.parse(localStorage.getItem("Capacite")));
+    setQualite(JSON.parse(localStorage.getItem("Qualite")));
+    setDiplome(JSON.parse(localStorage.getItem("Diplome")));
+    setTalent(JSON.parse(localStorage.getItem("Talent")));
+    setTechnique(JSON.parse(localStorage.getItem("Technique")));
+    setTechnologie(JSON.parse(localStorage.getItem("Technologie")));
+    setValeur(JSON.parse(localStorage.getItem("Valeur")));
+    setTache(JSON.parse(localStorage.getItem("Tache")));
+    setMetiers(JSON.parse(localStorage.getItem("metiers")));
+  }, []);
+
   const submitform = (e) => {
     e.preventDefault();
-    if (id === null) {
-      if (Competences.length === 5) {
-        setErreur("Vous ne pouvez mettre qu'une seule compétences.");
-      } else {
-        setErreur("");
-        let Comp = {
-          id: Competences.length,
-          Competence: Competence,
-        };
-        setCompetences([...Competences, Comp]);
-        setCompetence("");
-      }
+    if (Competence.length === 0) {
     } else {
+      setErreur("Merci d'avoir renseigner ce champ");
       let Comp = {
-        id: id,
+        id: Competences.length,
         Competence: Competence,
       };
-      setCompetences(Competences.map((m) => (m.id === id ? Comp : m)));
+      setCompetences(Competences.push(Comp));
+      localStorage.setItem("Competence", JSON.stringify(Competences));
+      console.log(localStorage.getItem("Competence"));
       setCompetence("");
-      setId(null);
+
+      if (metiers.length === 0) {
+        localStorage.setItem("metiers", JSON.stringify(metiers));
+        console.log(localStorage.getItem("metiers"));
+      }
+
+      if (Activite.length === 0) {
+        localStorage.setItem("Activite", JSON.stringify(Activite));
+        console.log(localStorage.getItem("Activite"));
+      }
+
+      if (Tache.length === 0) {
+        localStorage.setItem("Tache", JSON.stringify(Tache));
+        console.log(localStorage.getItem("Tache"));
+      }
+
+      if (Technique.length === 0) {
+        localStorage.setItem("Technique", JSON.stringify(Technique));
+        console.log(localStorage.getItem("Technique"));
+      }
+
+      if (Technologie.length === 0) {
+        localStorage.setItem("Technologie", JSON.stringify(Technologie));
+        console.log(localStorage.getItem("Technologie"));
+      }
+
+      if (Diplome.length === 0) {
+      } else {
+        localStorage.setItem("Diplome", JSON.stringify(Diplome));
+        console.log(localStorage.getItem("Diplome"));
+      }
+
+      if (Capacite.length === 0) {
+      } else {
+        localStorage.setItem("Capacite", JSON.stringify(Capacite));
+        console.log(localStorage.getItem("Capacite"));
+      }
+
+      if (Qualite.length === 0) {
+      } else {
+        localStorage.setItem("Qualite", JSON.stringify(Qualite));
+        console.log(localStorage.getItem("Qualite"));
+      }
+
+      if (Valeur.length === 0) {
+        localStorage.setItem("Valeur", JSON.stringify(Valeur));
+        console.log(localStorage.getItem("Valeur"));
+      }
+
+      if (Talent.length === 0) {
+        localStorage.setItem("Talent", JSON.stringify(Talent));
+        console.log(localStorage.getItem("Talent"));
+      }
+
+      if (Centre_interet.length === 0) {
+        localStorage.setItem("Centre_interet", JSON.stringify(Centre_interet));
+        console.log(localStorage.getItem("Centre_interet"));
+      }
     }
   };
 
   const nextStep = () => {
-      setErreur("");
-      localStorage.setItem("Competence", JSON.stringify(Competences));
-      console.log(localStorage.getItem("Competence"));
+    if (Competence.length === 0) {
+      setErreur("Veuillez renseigner ce champ");
+    } else {
+      window.location = "/OffreurDeCompetence/Metier/Metier";
+    }
   };
 
   return (
@@ -89,16 +166,15 @@ const Competence = () => {
             </WrapperTop>
             <Text>
               Citez ou choisissez dans la liste une compétence dans laquelle
-              vous excellez
+              vous excellez !
             </Text>
             <WrapperInput>
               <form onSubmit={submitform}>
                 <input
                   type="text"
-                  placeholder="exemple : Manager une équipe"
+                  placeholder="Ex : Manager une équipe"
                   value={Competence}
                   onChange={(e) => setCompetence(e.target.value)}
-                  required
                 />
                 <br />
             <WrapperButton>

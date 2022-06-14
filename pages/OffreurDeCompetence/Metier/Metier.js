@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import Header from "../../Header/Header2";
 import Footer from "../../Footer/Footer";
 import Image from "next/image";
@@ -12,19 +11,27 @@ import WrapperALL, {
   TitleImp,
   WrapperImage,
   TitleTop,
-  TitleColor,
   Text,
-  TextAjout,
+  WrapperTextI,
+  TextI,
   Wrapper,
   WrapperAll,
   WrapperImp,
   Divider,
   WrapperContent,
   WrapperMenuDeroulant,
+  WrapperMetier,
+  WrapperDebut,
+  WrapperFin,
   WrapperAjout,
+  WrapperAdd,
+  WrapperButtonAdd,
   ButtonLink,
+  ButtonLinkAdd,
+  ButtonLinkMS,
   ButtonLinkPrec,
   WrapperButton,
+  WrapperAllAdd,
 } from "./Metier.style";
 
 import Idea from "../../../public/image/idea.png";
@@ -52,23 +59,13 @@ const Metier = () => {
           debut: debut,
           fin: fin,
         };
-        setMetiers([...Metiers, Metier]);
+        setMetiers(Metiers.push(Metier));
+        localStorage.setItem("metiers", JSON.stringify(Metiers));
+        console.log(localStorage.getItem("metiers"));
         setMetier("");
         setDebut("");
         setFin("");
       }
-    } else {
-      let Metier = {
-        id: id,
-        metier: metier,
-        debut: debut,
-        fin: fin,
-      };
-      setMetiers(Metiers.map((m) => (m.id === id ? Metier : m)));
-      setMetier("");
-      setDebut("");
-      setFin("");
-      setId(null);
     }
   };
 
@@ -94,37 +91,39 @@ const Metier = () => {
 
   const listMetier = () => {
     if (Metiers.length === 0) {
-      return <Text>Vous n`avez pas encore ajouté de métiers</Text>;
-    } else {
       return (
-        <div>
+        <WrapperAdd>
           {Metiers.map((met) => (
             <div key={met.id}>
-              <Text> Métier : {met.metier}</Text>
-              <Text> Debut: {met.debut}</Text>
-              <Text> Fin: {met.fin}</Text>
-              <ButtonLink onClick={() => updateMetier(met.id)}>
-                <a>
-                  <Text>Modifier</Text>
-                </a>
-              </ButtonLink>
-              <ButtonLink onClick={() => removeMetier(met.id)}>
-                <a>
-                  <Text>Supprimer</Text>
-                </a>
-              </ButtonLink>
+              <WrapperAllAdd>
+                <WrapperTextI>
+                  <TextI>{met.metier}</TextI>
+                  <TextI>{met.debut}</TextI>
+                  <TextI>{met.fin}</TextI>
+                </WrapperTextI>
+                <WrapperButtonAdd>
+                  <ButtonLinkMS onClick={() => updateMetier(met.id)}>
+                    <a>
+                      <Text>Modifier</Text>
+                    </a>
+                  </ButtonLinkMS>
+                  <ButtonLinkMS onClick={() => removeMetier(met.id)}>
+                    <a>
+                      <Text>Supprimer</Text>
+                    </a>
+                  </ButtonLinkMS>
+                </WrapperButtonAdd>
+              </WrapperAllAdd>
             </div>
           ))}
-        </div>
+        </WrapperAdd>
       );
     }
   };
-
   const [Competence, setCompetence] = useState([]);
   useEffect(() => {
     setCompetence(JSON.parse(localStorage.getItem("Competence")));
-    console.log(typeof(Competence));
-}, []);
+  }, []);
 
   return (
     <>
@@ -132,13 +131,11 @@ const Metier = () => {
         <Header />
         <WrapperTitle>
           <WrapperTop>
-            <TitleTop>
             {Competence.map((Comp) => (
-                  <div key={Comp.id}>
-                    <Text>{Comp.Competence}</Text>
-                  </div>
-                ))}
-            </TitleTop>
+              <div key={Comp.id}>
+                <TitleTop>{Comp.Competence}</TitleTop>
+              </div>
+            ))}
           </WrapperTop>
         </WrapperTitle>
 
@@ -146,7 +143,7 @@ const Metier = () => {
           <WrapperAll>
             <Progression></Progression>
             <WrapperImp>
-              <TitleImp>Métiers</TitleImp>
+              <TitleImp>Métier(s) en lien avec cette compétence</TitleImp>
               <WrapperImage>
                 <Image src={Idea} alt={"Myrhmica"} quality={100} />
               </WrapperImage>
@@ -154,65 +151,68 @@ const Metier = () => {
             <Divider></Divider>
 
             <WrapperContent>
-              <Title>Le metier exercé pour cette compétence</Title>
+              <Title>Citez 1 à 5 métiers</Title>
               <WrapperMenuDeroulant>
                 <form onSubmit={submitform}>
-                  <input
-                    type="text"
-                    placeholder="exemple : Plombier"
-                    value={metier}
-                    onChange={(e) => setMetier(e.target.value)}
-                    required
-                  />
-                  <br />
-                  <Text style={{ color: "red", marginLeft: 26 }}>{erreur}</Text>
-                  <Title>Date de début</Title>
-                  <input
-                    type="date"
-                    placeholder="01/01/2000"
-                    value={debut}
-                    onChange={(e) => setDebut(e.target.value)}
-                    required
-                  />
-                  <br />
-                  <Title>Date de fin</Title>
-                  <input
-                    type="date"
-                    placeholder="07/08/2003"
-                    value={fin}
-                    onChange={(e) => setFin(e.target.value)}
-                    required
-                  />
-                  <br />
+                  <WrapperMetier>
+                    <input
+                      type="text"
+                      placeholder="Ex : Plombier"
+                      value={metier}
+                      onChange={(e) => setMetier(e.target.value)}
+                      required
+                    />
+                    <br />
+                    <Text style={{ color: "red", marginLeft: 26 }}>
+                      {erreur}
+                    </Text>
+                  </WrapperMetier>
+                  <WrapperDebut>
+                    <Title>Date de début</Title>
+                    <input
+                      type="date"
+                      value={debut}
+                      onChange={(e) => setDebut(e.target.value)}
+                      required
+                    />
+                    <br />
+                  </WrapperDebut>
+                  <WrapperFin>
+                    <Title>Date de fin</Title>
+                    <input
+                      type="date"
+                      value={fin}
+                      onChange={(e) => setFin(e.target.value)}
+                      required
+                    />
+                    <br />
+                  </WrapperFin>
                   <WrapperAjout>
-                    <ButtonLink type="submit" value="Ajouter">
+                    <ButtonLinkAdd type="submit" value="Ajouter">
                       <a>
                         <Image src={Plus} alt={"PortraiScopie"} quality={100} />
                         <Text>Ajouter</Text>
                       </a>
-                    </ButtonLink>
+                    </ButtonLinkAdd>
                   </WrapperAjout>
                 </form>
               </WrapperMenuDeroulant>
               {listMetier()}
               <WrapperButton>
-                <ButtonLinkPrec>
-                  <Link href="/OffreurDeCompetence/Competence/Competence">
-                    <a>
-                      <Text>Précédent</Text>
-                    </a>
-                  </Link>
+                <ButtonLinkPrec
+                  onClick={() => {
+                    window.location =
+                      "/OffreurDeCompetence/Competence/Competence";
+                  }}
+                >
+                  Précédent
                 </ButtonLinkPrec>
                 <ButtonLink
                   onClick={() => {
                     nextStep();
                   }}
                 >
-                  <Link href="/OffreurDeCompetence/Activites/Activites">
-                    <a>
-                      <Text>Suivant</Text>
-                    </a>
-                  </Link>
+                  Suivant
                 </ButtonLink>
               </WrapperButton>
             </WrapperContent>

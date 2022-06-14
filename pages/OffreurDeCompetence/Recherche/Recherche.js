@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Header from "../../Header/Header2";
+import axios from "axios";
 
 import WrapperTitle, {
   WrapperRecherche,
   WrapperImage,
   Title,
+  WrapperButton,
+  ButtonLink,
 } from "./Recherche.style";
 
 import Rechercher from "../../../public/image/rechercher.png";
@@ -32,6 +35,15 @@ const Recherche = () => {
             />
           </WrapperImage>
         </WrapperRecherche>
+        <WrapperButton>
+          <ButtonLink
+            onClick={() => {
+              history.back();
+            }}
+          >
+            Revenir en arrière
+          </ButtonLink>
+        </WrapperButton>
       </WrapperTitle>
     </>
   );
