@@ -22,6 +22,7 @@ const Demandeur_competence = () => {
   const [pwd, setPwd] = useState("");
   const [Personnas, setPersonnas] = useState([]);
   const [id, setId] = useState(null);
+  const [erreur, setErreur] = useState("");
 
   const submitform = async (e) => {
     let user = {
@@ -33,6 +34,14 @@ const Demandeur_competence = () => {
       localStorage.setItem('user', JSON.stringify(user));
       console.log(user);
   };
+
+  const nextStep = () => {
+    if((email.length != 0 && pwd.length != 0)) {
+      window.location = "/OffreurDeCompetence/Conseil/Conseil";
+    } else {
+      setErreur("Veuillez remplir tous les champ");
+    } 
+  }
   
   return (
     <>
@@ -64,6 +73,11 @@ const Demandeur_competence = () => {
                   required
                 />
               </WrapperInput>
+              <Text style={{
+                color: 'red',
+                fontSize: 20,
+                fontWeight: 'bold',
+              }}>{erreur}</Text>
               <WrapperBottom>
                 <Subtitle>
                   Pas encore de compte ?
@@ -82,14 +96,10 @@ const Demandeur_competence = () => {
                   </Button>
                   <Button
                     onClick={() => {
-                      submitform();
+                      nextStep();
                     }}
                   >
-                    <Link href="/OffreurDeCompetence/Conseil/Conseil">
-                      <a>
-                        <Text>Connexion</Text>
-                      </a>
-                    </Link>
+                    <Text>Connexion</Text>
                   </Button>
                 </WrapperButton>
               </WrapperBottom>

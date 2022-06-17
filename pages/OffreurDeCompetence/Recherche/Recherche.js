@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, {useState, useEffect} from "react";
 import Image from "next/image";
 import Header from "../../Header/Header2";
+import fetchData from '../../api/fetchData';
 
 import WrapperTitle, {
   WrapperRecherche,
@@ -11,22 +12,20 @@ import WrapperTitle, {
 } from "./Recherche.style";
 
 import Rechercher from "../../../public/image/rechercher.png";
-import axios from "axios";
+import TechnicalsData from "../../../components/TechnicalsData";
+import Link from "next/link";
 
-const Recherche = async (e) => {
+const Recherche = () => {
 
-  // récupérer les infos de l'API 
-  // afficher les données 
-  // script d'affichage des données que lorque l'on écrit
+  const [data, setData] = useState("");
+  const [search, setSearch] = useState("");
+  const [eheh, setEheh] = useState("");
 
-  const Response = () => {
-    fetch("https://portraiscopie-dev.herokuapp.com/api/technicals/")
-    .then(response => response.json())
-    .then(data => {
-      output.textContent = `{data.technicals}`;
-    })
-  }
-
+  useEffect(() => {
+    const data = fetchData();
+    setData(data.result);
+  },[]);
+  console.log(data);
 
   return (
     <>
@@ -34,19 +33,19 @@ const Recherche = async (e) => {
       <WrapperTitle>
         <Title>Quelle compétence rechercher vous ?</Title>
         <WrapperRecherche>
-          <input
-            className="Input"
-            placeholder="Compétence recherchée, Technologies, Qualités, ..."
-            onClick={() => {Response()}}
-          />
           <WrapperImage>
-            <Image
-              src={Rechercher}
-              alt={"Myrhmica"}
-              quality={100}
-              width={70}
-              height={70}
-            />
+          <TechnicalsData />
+            <Link href={""}>
+              <a>
+                <Image
+                  src={Rechercher}
+                  alt={"Myrhmica"}
+                  quality={100}
+                  width={70}
+                  height={70}
+              />
+              </a>
+            </Link>
           </WrapperImage>
         </WrapperRecherche>
         <WrapperButton>

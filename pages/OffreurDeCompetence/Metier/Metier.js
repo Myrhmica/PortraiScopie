@@ -37,7 +37,7 @@ import WrapperALL, {
 import Idea from "../../../public/image/idea.png";
 import Plus from "../../../public/image/plus.png";
 
-const Metier = () => {
+const Metier = async (e) => {
   
   const [debut, setDebut] = useState("");
   const [fin, setFin] = useState("");
@@ -46,20 +46,22 @@ const Metier = () => {
   const [Metiers, setMetiers] = useState([]);
   const [id, setId] = useState(null);
 
+
   const submitform = (e) => {
     e.preventDefault();
     if (id === null) {
+      console.log(Metiers);
       if (Metiers.length === 5) {
         setErreur("Vous ne pouvez pas ajouter plus de 5 métiers");
       } else {
         setErreur("");
-        let Metier = {
+        let met = {
           id: Metiers.length,
           metier: metier,
           debut: debut,
           fin: fin,
         };
-        setMetiers(Metiers.push(Metier));
+        setMetiers(Metiers.push(met));
         localStorage.setItem("metiers", JSON.stringify(Metiers));
         console.log(localStorage.getItem("metiers"));
         setMetier("");
@@ -80,17 +82,25 @@ const Metier = () => {
     setMetiers(Metiers.filter((m) => m.id !== id));
   };
 
-  const nextStep = await => {
-    if (Metiers.length === 0) {
-      localStorage.setItem("metiers", JSON.stringify(Metiers));
-      console.log(localStorage.getItem("metiers"));
+   const nextStep = () => {
+    if (metier.length === 0) {
+      setErreur("Veuillez renseigner ce champ");
     } else {
       setErreur("");
+      window.location = "/OffreurDeCompetence/Activites/Activites";
     }
   };
 
   const listMetier = () => {
     if (Metiers.length === 0) {
+      console.log("Liste des Metiers = 0");
+      console.log(Metiers);
+    } else {
+      console.log(metier);
+      console.log("Sa passe mais pas le .map");
+      console.log(Metiers + " Pourquoi");
+      Metiers = [Metiers];
+      console.log(Metiers + " now");
       return (
         <WrapperAdd>
           {Metiers.map((met) => (
@@ -120,6 +130,7 @@ const Metier = () => {
       );
     }
   };
+
   const [Competence, setCompetence] = useState([]);
   useEffect(() => {
     setCompetence(JSON.parse(localStorage.getItem("Competence")));

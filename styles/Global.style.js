@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import 'antd/dist/antd.css';
 
 const GlobalStyle = createGlobalStyle`
 html,
@@ -36,6 +37,9 @@ input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
+}
+.Search_bar{
+  
 }
 `;
 

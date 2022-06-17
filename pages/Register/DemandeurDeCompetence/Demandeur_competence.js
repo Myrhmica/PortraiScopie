@@ -30,6 +30,8 @@ const Demandeur_competence = () => {
   const [lastName, setLastName] = useState("");
   const [pseudo, setPseudo] = useState("");
 
+  const [erreur, setErreur] =useState("");
+
   const handleSubmit = async (e) => {
     console.log("Le lien a été cliqué.");
     try {
@@ -60,6 +62,14 @@ const Demandeur_competence = () => {
     }
   };
 
+  const nextStep = () => {
+    if((entityName.length != 0 && firstName.length != 0 && lastName.length != 0 && email.length != 0 && password.length != 0 && pseudo.length != 0)) {
+      window.location = "/OffreurDeCompetence/Conseil/Conseil";
+    } else {
+      setErreur("Veuillez remplir tous les champ");
+    } 
+  }
+
   return (
     <WrapperContent>
       <WrapperImage>
@@ -81,7 +91,7 @@ const Demandeur_competence = () => {
         </Link>
       </WrapperImage>
       <WrapperInscription>
-      <form>
+      <form onSubmit={handleSubmit()}>
         <WrapperInput>
           <Title>Entité / Raisons sociale ou Nom Prénom</Title>
           <input
@@ -142,6 +152,11 @@ const Demandeur_competence = () => {
           />
         </WrapperInput>
         </form>
+        <Text style={{
+          color: 'red',
+          fontSize: 20,
+          fontWeight: 'bold',
+        }}>{erreur}</Text>
         <Subtitle>
           Vous avez déjà un compte ?
           <Link href="/Login/DemandeurDeCompetence/Demandeur_competence">
@@ -163,14 +178,10 @@ const Demandeur_competence = () => {
         <WrapperButton>
           <Button
             onClick={() => {
-              handleSubmit();
+              nextStep();
             }}
           >
-            <Link href="/OffreurDeCompetence/Conseil/Conseil">
-              <a>
-                <Text>Connexion</Text>
-              </a>
-            </Link>
+            Connexion
           </Button>
         </WrapperButton>
       </WrapperInscription>
