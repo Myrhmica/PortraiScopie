@@ -49,18 +49,47 @@ const Metier = () => {
 
   const submitform = (e) => {
     e.preventDefault();
+
     if (id === null) {
+      Metiers = JSON.parse(window.localStorage.getItem("metiers"));
       if (Metiers.length === 5) {
-        setErreur("Vous ne pouvez pas ajouter plus de 5 métiers");
+        setErreur("Vous avez atteint le nombre maximum de métiers");
       } else {
         setErreur("");
-        let Metier = {
-          id: Metiers.length,
+        let ListeMetiers = Metiers.length;
+        switch (ListeMetiers) {
+          case 0:
+            console.log("Metiers.length == 0");
+            id = 1;
+            break;
+          case 1:
+            console.log("Metiers.length == 1");
+            id = 2;
+            if (removeMetier(Metiers[id])) {
+              console.log("Remove");
+              id = id - 1;
+            }
+            break;
+          case 2:
+            console.log("Metiers.length == 2");
+            id = 3;
+            break;
+          case 3:
+            console.log("Metiers.length == 3");
+            id = 4;
+            break;
+          case 4:
+            console.log("Metiers.length == 4");
+            id = 5;
+            break;
+        }
+        let met = {
+          id: id,
           metier: metier,
           debut: debut,
           fin: fin,
         };
-        setMetiers(Metiers.push(Metier));
+        setMetiers(Metiers.push(met));
         localStorage.setItem("metiers", JSON.stringify(Metiers));
         console.log(localStorage.getItem("metiers"));
         setMetier("");
@@ -70,19 +99,53 @@ const Metier = () => {
     }
   };
 
-  const updateMetier = (id) => {
-    setMetier(Metiers[id].metier);
-    setDebut(Metiers[id].debut);
-    setFin(Metiers[id].fin);
-    setId(id);
+  let use = false;
+
+  const updateMetier = async (id, metier, debut, fin) => {
+    Metiers = JSON.parse(window.localStorage.getItem("metiers"));
+    if (use == true) {
+      console.log("Metiers Before");
+      console.log(Metiers);
+      setMetier(metier);
+      setDebut(debut);
+      setFin(fin);
+      setId(id);
+      console.log(localStorage.getItem("metiers"));
+
+      let met = {
+        id: id,
+        metier: metier,
+        debut: debut,
+        fin: fin,
+      };
+      setMetiers(Metiers.push(met));
+      console.log(id);
+      Metiers.splice((id, metier, debut, fin), 0);
+      localStorage.setItem("metiers", JSON.stringify(Metiers));
+      console.log(met);
+      console.log("Metiers After");
+      console.log(Metiers);
+    }
   };
 
   const removeMetier = (id) => {
-    setMetiers(Metiers.filter((m) => m.id !== id));
+    if (use == true) {
+      Metiers = JSON.parse(window.localStorage.getItem("metiers"));
+      console.log("Before remove");
+      console.log(Metiers);
+      Metiers.splice(id - 1, 1);
+      if (Metiers.length == 1) {
+        Metiers.splice(0, 1);
+      }
+      localStorage.setItem("metiers", JSON.stringify(Metiers));
+      console.log("After remove");
+      console.log(Metiers);
+      return;
+    }
   };
 
   const nextStep = () => {
-    if (metier.length === 0) {
+    if (Metiers.length === 0) {
       setErreur("Veuillez renseigner ce champ");
     } else {
       setErreur("");
@@ -91,35 +154,14 @@ const Metier = () => {
   };
 
   const listMetier = () => {
-    if (Metiers.length === 1) {
-      return (
-        <WrapperAdd>
-          {Metiers.map((met) => (
-            <div key={met.id}>
-              <WrapperAllAdd>
-                <WrapperTextI>
-                  <TextI>{met.metier}</TextI>
-                  <TextI>{met.debut}</TextI>
-                  <TextI>{met.fin}</TextI>
-                </WrapperTextI>
-                <WrapperButtonAdd>
-                  <ButtonLinkMS onClick={() => updateMetier(met.id)}>
-                    <a>
-                      <Text>Modifier</Text>
-                    </a>
-                  </ButtonLinkMS>
-                  <ButtonLinkMS onClick={() => removeMetier(met.id)}>
-                    <a>
-                      <Text>Supprimer</Text>
-                    </a>
-                  </ButtonLinkMS>
-                </WrapperButtonAdd>
-              </WrapperAllAdd>
-            </div>
-          ))}
-        </WrapperAdd>
-      );
+    if (Metiers.length === 0) {
+      console.log("Liste des Metiers = 0");
     } else {
+      let Metiers = JSON.parse(window.localStorage.getItem("metiers"));
+      console.log(Metiers);
+      let ListeMetiers = Metiers[id];
+      console.log(ListeMetiers);
+
       return (
         <WrapperAdd>
           {Metiers.map((met) => (
@@ -131,12 +173,28 @@ const Metier = () => {
                   <TextI>{met.fin}</TextI>
                 </WrapperTextI>
                 <WrapperButtonAdd>
-                  <ButtonLinkMS onClick={() => updateMetier(met.id)}>
+                  <ButtonLinkMS
+                    onClick={() => {
+                      if (use == true) {
+                      } else {
+                        use = true;
+                        updateMetier(met.id, met.metier, met.debut, met.fin);
+                      }
+                    }}
+                  >
                     <a>
                       <Text>Modifier</Text>
                     </a>
                   </ButtonLinkMS>
-                  <ButtonLinkMS onClick={() => removeMetier(met.id)}>
+                  <ButtonLinkMS
+                    onClick={() => {
+                      if (use == true) {
+                      } else {
+                        use = true;
+                        removeMetier(met.id);
+                      }
+                    }}
+                  >
                     <a>
                       <Text>Supprimer</Text>
                     </a>
@@ -149,6 +207,7 @@ const Metier = () => {
       );
     }
   };
+
   const [Competence, setCompetence] = useState([]);
   useEffect(() => {
     setCompetence(JSON.parse(localStorage.getItem("Competence")));
@@ -217,7 +276,11 @@ const Metier = () => {
                     <br />
                   </WrapperFin>
                   <WrapperAjout>
-                    <ButtonLinkAdd type="submit" value="Ajouter">
+                    <ButtonLinkAdd
+                      type="submit"
+                      value="Ajouter"
+                      onClick={submitform}
+                    >
                       <a>
                         <Image src={Plus} alt={"PortraiScopie"} quality={100} />
                         <Text>Ajouter</Text>

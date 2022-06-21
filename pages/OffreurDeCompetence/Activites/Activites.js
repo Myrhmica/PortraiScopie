@@ -155,12 +155,6 @@ const Activites = () => {
   useEffect(() => {
     setCompetence(JSON.parse(localStorage.getItem("Competence")));
   }, []);
-  const NamePage = () => {
-    let hostname = location.hostname;
-    document.getElementById("/OffreurDeCompetence/Taches/Taches").innerHTML =
-      hostname;
-    console.log(hostname);
-  };
   return (
     <>
       <Header />

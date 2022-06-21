@@ -31,6 +31,23 @@ const Competence = () => {
   const [Competences, setCompetences] = useState([]);
   const [id, setId] = useState(null);
 
+  const submitform = (e) => {
+    e.preventDefault();
+    if (Competence.length === 0) {
+    } else {
+      setErreur("Merci d'avoir renseigner ce champ");
+      setId(id);
+      let Comp = {
+        id: Competences.length,
+        Competence: Competence,
+      };
+      setCompetences(Competences.push(Comp));
+      localStorage.setItem("Competence", JSON.stringify(Competences));
+      console.log(localStorage.getItem("Competence"));
+      setCompetence("");
+    }
+  };
+
   const [metiers, setMetiers] = useState([]);
   const [Activite, setActivite] = useState([]);
   const [Tache, setTache] = useState([]);
@@ -57,77 +74,82 @@ const Competence = () => {
     setMetiers(JSON.parse(localStorage.getItem("metiers")));
   }, []);
 
-  const submitform = (e) => {
-    e.preventDefault();
-    if (Competence.length === 0) {
+  const ValeurOther = () => {
+    if (metiers == undefined || metiers.length === 0) {
+      metiers = [];
+      localStorage.setItem("metiers", JSON.stringify(metiers));
+      console.log(localStorage.getItem("metiers"));
     } else {
-      setErreur("Merci d'avoir renseigner ce champ");
-      let Comp = {
-        id: Competences.length,
-        Competence: Competence,
-      };
-      setCompetences(Competences.push(Comp));
-      localStorage.setItem("Competence", JSON.stringify(Competences));
-      console.log(localStorage.getItem("Competence"));
-      setCompetence("");
+    }
 
-      if (metiers.length === 0) {
-        localStorage.setItem("metiers", JSON.stringify(metiers));
-        console.log(localStorage.getItem("metiers"));
-      }
+    if (Activite == undefined || Activite.length === 0) {
+      Activite = [];
+      localStorage.setItem("Activite", JSON.stringify(Activite));
+      console.log(localStorage.getItem("Activite"));
+    } else {
+    }
 
-      if (Activite.length === 0) {
-        localStorage.setItem("Activite", JSON.stringify(Activite));
-        console.log(localStorage.getItem("Activite"));
-      }
+    if (Tache == undefined || Tache.length === 0) {
+      Tache = [];
+      localStorage.setItem("Tache", JSON.stringify(Tache));
+      console.log(localStorage.getItem("Tache"));
+    } else {
+    }
 
-      if (Tache.length === 0) {
-        localStorage.setItem("Tache", JSON.stringify(Tache));
-        console.log(localStorage.getItem("Tache"));
-      }
+    if (Technique == undefined || Technique.length === 0) {
+      Technique = [];
+      localStorage.setItem("Technique", JSON.stringify(Technique));
+      console.log(localStorage.getItem("Technique"));
+    } else {
+    }
 
-      if (Technique.length === 0) {
-        localStorage.setItem("Technique", JSON.stringify(Technique));
-        console.log(localStorage.getItem("Technique"));
-      }
+    if (Technologie == undefined || Technologie.length === 0) {
+      Technologie = [];
+      localStorage.setItem("Technologie", JSON.stringify(Technologie));
+      console.log(localStorage.getItem("Technologie"));
+    } else {
+    }
 
-      if (Technologie.length === 0) {
-        localStorage.setItem("Technologie", JSON.stringify(Technologie));
-        console.log(localStorage.getItem("Technologie"));
-      }
+    if (Diplome == undefined || Diplome.length === 0) {
+      Diplome = [];
+      localStorage.setItem("Diplome", JSON.stringify(Diplome));
+      console.log(localStorage.getItem("Diplome"));
+    } else {
+    }
 
-      if (Diplome.length === 0) {
-      } else {
-        localStorage.setItem("Diplome", JSON.stringify(Diplome));
-        console.log(localStorage.getItem("Diplome"));
-      }
+    if (Capacite == undefined || Capacite.length === 0) {
+      Capacite = [];
+      localStorage.setItem("Capacite", JSON.stringify(Capacite));
+      console.log(localStorage.getItem("Capacite"));
+    } else {
+    }
 
-      if (Capacite.length === 0) {
-      } else {
-        localStorage.setItem("Capacite", JSON.stringify(Capacite));
-        console.log(localStorage.getItem("Capacite"));
-      }
+    if (Qualite == undefined || Qualite.length === 0) {
+      Qualite = [];
+      localStorage.setItem("Qualite", JSON.stringify(Qualite));
+      console.log(localStorage.getItem("Qualite"));
+    } else {
+    }
 
-      if (Qualite.length === 0) {
-      } else {
-        localStorage.setItem("Qualite", JSON.stringify(Qualite));
-        console.log(localStorage.getItem("Qualite"));
-      }
+    if (Valeur == undefined || Valeur.length === 0) {
+      Valeur = [];
+      localStorage.setItem("Valeur", JSON.stringify(Valeur));
+      console.log(localStorage.getItem("Valeur"));
+    } else {
+    }
 
-      if (Valeur.length === 0) {
-        localStorage.setItem("Valeur", JSON.stringify(Valeur));
-        console.log(localStorage.getItem("Valeur"));
-      }
+    if (Talent == undefined || Talent.length === 0) {
+      Talent = [];
+      localStorage.setItem("Talent", JSON.stringify(Talent));
+      console.log(localStorage.getItem("Talent"));
+    } else {
+    }
 
-      if (Talent.length === 0) {
-        localStorage.setItem("Talent", JSON.stringify(Talent));
-        console.log(localStorage.getItem("Talent"));
-      }
-
-      if (Centre_interet.length === 0) {
-        localStorage.setItem("Centre_interet", JSON.stringify(Centre_interet));
-        console.log(localStorage.getItem("Centre_interet"));
-      }
+    if (Centre_interet == undefined || Centre_interet.length === 0) {
+      Centre_interet = [];
+      localStorage.setItem("Centre_interet", JSON.stringify(Centre_interet));
+      console.log(localStorage.getItem("Centre_interet"));
+    } else {
     }
   };
 
@@ -135,6 +157,7 @@ const Competence = () => {
     if (Competence.length === 0) {
       setErreur("Veuillez renseigner ce champ");
     } else {
+      ValeurOther();
       window.location = "/OffreurDeCompetence/Metier/Metier";
     }
   };
